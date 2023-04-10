@@ -80,7 +80,7 @@ input[type=submit]:hover {
  	display: block;
     width: 60px;
     background: white;
-    padding: 10px;
+    padding: 7px;
     text-align: center;
     border-radius: 5px;
     color: green;
@@ -175,7 +175,7 @@ input[type=submit]:hover {
 		
 		<c:if test="${user.me_auth == 2 || user.me_auth == 1}">
 			<div class="row">	
-				<a href="<c:url value="/Update?me_id=${Detail.me_id}"></c:url>" class="btn-update">수정</a>
+				<a href="<c:url value="/Update?me_id=${Detail.me_id}"></c:url>" class="btn-update" style="margin-top: 36px; margin-left: 14px">수정</a>
 			</div>		
 		</c:if>
 </div>

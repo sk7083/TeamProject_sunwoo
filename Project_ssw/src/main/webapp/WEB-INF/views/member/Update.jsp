@@ -76,25 +76,26 @@ input[type=submit]:hover {
   }
 }
 
-.btn-update{
+.btn-delete{
  	display: block;
-    width: 60px;
+    width: 90px;
     background: white;
-    padding: 10px;
+    padding: 7px;
     text-align: center;
     border-radius: 5px;
-    color: green;
-    border: 1px solid green;
+    color: red;
+    border: 1px solid red;
     font-weight: bold;
     line-height: auto;
     text-decoration: none;
  }
  
- .btn-update:hover{
+ .btn-delete{
    	text-decoration: none;
    	color: white;
-   	background: green;
+   	background: red;
  }
+
 </style>
 </head>
 <body>
@@ -175,13 +176,15 @@ input[type=submit]:hover {
 		      <input type="text" name="me_birth" value="${Detail.me_birth}" class="wer" placeholder="2000-01-01"> 
 		    </div>
 		  </div>
-
-
-		<button type="submit" class="btn btn-outline-primary" style="float: left; margin-top : 20px">수d정완료</button>
-
+		<div style="float: left; ">
+			<button type="submit" class="btn btn-outline-primary" style="margin-top: 36px">수정완료</button>
+		</div>
 	</form>
+		<a href="<c:url value="/Delete/${Detail.me_id}"></c:url>" class="btn-delete" style="text-decoration:none">회원탈퇴</a>
+		
 		<button class="btn btn-outline-danger" name="cancle"
-				onclick="cancle();" style="margin-left : 20px; margin-top : 20px">취소</button>
+				onclick="cancle();" style="margin-left : 30px; margin-top: 20px">뒤로가기</button>
+
 </div>
 </body>
 </html>
@@ -189,7 +192,7 @@ input[type=submit]:hover {
 <script type="text/javascript">
 
 function cancle(){
-    location.href = "information";
+    location.href = "/springTest";
 }
 </script>
 

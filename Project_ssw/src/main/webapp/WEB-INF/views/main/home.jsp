@@ -15,7 +15,7 @@
 </c:if>
 
 <c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-	<a href="<c:url value="/myPage"></c:url>">마이페이지</a><br>
+	<a href="<c:url value="/Detail?me_id=${user.me_id}"></c:url>">마이페이지</a><br>
 	<a href="<c:url value="/logout"></c:url>">로그아웃</a><br>
 	<a href="<c:url value="/boardList"></c:url>">게시판 리스트</a><br>
 	<a href="<c:url value="/index"></c:url>">새로운 집</a><br>

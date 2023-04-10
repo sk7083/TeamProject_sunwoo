@@ -95,6 +95,26 @@ input[type=submit]:hover {
    	color: white;
    	background: green;
  }
+ 
+ .btn-back{
+ 	display: block;
+    width: 90px;
+    background: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: blue;
+    border: 1px solid blue;
+    font-weight: bold;
+    line-height: auto;
+    text-decoration: none;
+ }
+ 
+ .btn-back:hover{
+   	text-decoration: none;
+   	color: white;
+   	background: blue;
+ }
 </style>
 </head>
 <body>
@@ -130,11 +150,14 @@ input[type=submit]:hover {
 			<input type="file" class="form-control" name="files">
 		</div>
 		
-		<c:if test="${user.me_auth == 2 || user.me_auth == 1}">
-			<div class="row">	
-			<a href="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}"></c:url>" class="btn-update">수정</a>
+		<c:if test="${user.me_auth == 2}">
+			<div class="row" style="float: left;">	
+			<a href="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}"></c:url>" class="btn-update" style="margin-right: 30px">수정</a>
 			</div>		
 		</c:if>
+		<div class="row">	
+			<a href="<c:url value="/boardList"></c:url>" class="btn-back">뒤로가기</a>
+		</div>
 </div>
 </body>
 </html>

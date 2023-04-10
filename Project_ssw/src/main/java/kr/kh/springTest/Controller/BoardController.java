@@ -33,7 +33,7 @@ public class BoardController {
 		for(BoardVO bor : list) {
 		}
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		System.out.println("됫나요");
+		System.out.println("123");
 		mv.addObject("user", user);
 		mv.addObject("list", list);
 		mv.setViewName("board/boardList");

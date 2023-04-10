@@ -165,13 +165,13 @@ public class HomeController {
 	
 	//회원정보 수정 (POST)
 	@RequestMapping(value = "/Update", method = RequestMethod.POST)
-	public ModelAndView memberUpdatePOST(ModelAndView mv, MemberVO member) throws Exception{
+	public ModelAndView memberUpdatePOST(ModelAndView mv, MemberVO member) throws Exception{		
 		System.out.println("=======================================");
 		int res = memberService.memberUpdate(member);
 		System.out.println("res값 확인 : "+res);
 		if(res != 0) {
 			System.out.println("회원정보 수정 완료");
-			mv.setViewName("redirect:/");
+			mv.setViewName("redirect:/Detail");
 		} else {
 			System.out.println("회원정보 수정 실패");
 			mv.setViewName("redirect:/information");
