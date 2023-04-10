@@ -77,7 +77,7 @@ input[type=submit]:hover {
 }
 
 .btn-delete{
- 	display: block;
+
     width: 90px;
     background: white;
     padding: 7px;
@@ -85,17 +85,14 @@ input[type=submit]:hover {
     border-radius: 5px;
     color: red;
     border: 1px solid red;
-    font-weight: bold;
     line-height: auto;
     text-decoration: none;
  }
  
- .btn-delete{
-   	text-decoration: none;
+ .btn-delete:hover{
    	color: white;
    	background: red;
  }
-
 </style>
 </head>
 <body>
@@ -176,15 +173,13 @@ input[type=submit]:hover {
 		      <input type="text" name="me_birth" value="${Detail.me_birth}" class="wer" placeholder="2000-01-01"> 
 		    </div>
 		  </div>
-		<div style="float: left; ">
-			<button type="submit" class="btn btn-outline-primary" style="margin-top: 36px">수정완료</button>
-		</div>
-	</form>
-		<a href="<c:url value="/Delete/${Detail.me_id}"></c:url>" class="btn-delete" style="text-decoration:none">회원탈퇴</a>
-		
-		<button class="btn btn-outline-danger" name="cancle"
-				onclick="cancle();" style="margin-left : 30px; margin-top: 20px">뒤로가기</button>
+		<button type="submit" class="btn btn-outline-primary" style="margin-top: 36px; display: block; float: left; margin-right: 15px; margin-bottom: 15px">수정완료</button>
 
+	</form>
+	<div style="padding-top: 20px">
+		<a href="<c:url value="/Delete/${Detail.me_id}"></c:url>" class="btn-delete" style="text-decoration:none; display: block; float: left">회원탈퇴</a>
+		<button class="btn btn-outline-danger" name="cancle" onclick="cancle();" style="margin-left : 15px;">뒤로가기</button>
+	</div>
 </div>
 </body>
 </html>

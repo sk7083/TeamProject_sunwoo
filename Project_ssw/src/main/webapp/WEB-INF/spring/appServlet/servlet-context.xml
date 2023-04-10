@@ -15,7 +15,16 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/download/**" location="file:///D:/uploadfiles/" />
-
+	<resources mapping="/css/**" location="/resources/css" />
+	<resources mapping="/js/**" location="/resources/js" />
+	<resources mapping="/images/**" location="/resources/images" />
+	
+	<!-- 메인페이지 템플릿 사용을 위한 리소스 연결 23-04-10 -->
+	<resources mapping="/css/**" location="/resources/seapalace-master/css" />
+	<resources mapping="/js/**" location="/resources/seapalace-master/js" />
+	<resources mapping="/img/**" location="/resources/seapalace-master/img" />
+	<resources mapping="/scss/**" location="/resources/seapalace-master/scss" />
+	<resources mapping="/vendors/**" location="/resources/seapalace-master/vendors" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

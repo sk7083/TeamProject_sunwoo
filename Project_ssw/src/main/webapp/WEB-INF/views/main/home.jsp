@@ -27,12 +27,15 @@
 <a href="<c:url value="/information"></c:url>">회원정보</a><br>
 </c:if>
 
+
+
 <a href="<c:url value="/about"></c:url>">about</a><br>
-<a href="<c:url value="keto-1.0.0/blog"></c:url>">blog</a><br>
-<a href="<c:url value="keto-1.0.0/contact"></c:url>">contact</a><br>
-<a href="<c:url value="keto-1.0.0/about"></c:url>">about</a><br>
-<a href="<c:url value="keto-1.0.0/about"></c:url>">about</a><br>
-<a href="<c:url value="keto-1.0.0/about"></c:url>">about</a><br>
+<a href="<c:url value="/blog"></c:url>">blog</a><br>
+<a href="<c:url value="/blogSingle"></c:url>">blogSingle</a><br>
+<a href="<c:url value="/index"></c:url>">index</a><br>
+<a href="<c:url value="/contact"></c:url>">contact</a><br>
+<a href="<c:url value="/gallery"></c:url>">gallery</a><br>
+<a href="<c:url value="/properties"></c:url>">properties</a><br>
 </body>
 </html>
 

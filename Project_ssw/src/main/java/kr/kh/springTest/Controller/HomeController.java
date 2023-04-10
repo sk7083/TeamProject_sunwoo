@@ -142,14 +142,6 @@ public class HomeController {
 		return mv;
 	}
 	
-	//새로운 메인화면 틀
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView myPage(ModelAndView mv) throws Exception{
-
-		mv.setViewName("main/index");
-		return mv;
-	}
-	
 	//회원정보 수정 (GET)
 	@RequestMapping(value = "/Update", method = RequestMethod.GET)
 	public ModelAndView memberUpdate(ModelAndView mv, HttpSession session, MemberVO member, 
@@ -193,12 +185,61 @@ public class HomeController {
 		}
 		return mv;
 	}
+//	================================[화면 구현]================================
 	
 	//메인화면 (about)
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public ModelAndView aboutMain(ModelAndView mv) throws Exception{
 		
-		mv.setViewName("main/about");
+		mv.setViewName("mainPage/about");
+		return mv;
+	}
+	
+	//메인화면 (blog)
+	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	public ModelAndView blogMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/blog");
+		return mv;
+	}
+	
+	//메인화면 (blog-single)
+	@RequestMapping(value = "/blogSingle", method = RequestMethod.GET)
+	public ModelAndView blogSingleMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/blogSingle");
+		return mv;
+	}
+	
+	//메인화면 (contact)
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public ModelAndView contactMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/contact");
+		return mv;
+	}
+	
+	//메인화면 (gallery)
+	@RequestMapping(value = "/gallery", method = RequestMethod.GET)
+	public ModelAndView galleryMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/gallery");
+		return mv;
+	}
+	
+	//메인화면 (index)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView indexMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/index");
+		return mv;
+	}
+	
+	//메인화면 (properties)
+	@RequestMapping(value = "/properties", method = RequestMethod.GET)
+	public ModelAndView propertiesMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/properties");
 		return mv;
 	}
 }

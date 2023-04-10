@@ -49,8 +49,11 @@
   <h4>공지사항</h4>
 	<button type="button" class="btn btn-outline-primary" name="btn-Main"
 		onclick="Main();">메인화면</button>
-	<button type="button" class="btn btn-outline-success" name="btn-Writing"
-		onclick="Writing();">글쓰기</button>
+		
+	<c:if test="${user.me_auth == 2}">
+		<button type="button" class="btn btn-outline-success" name="btn-Writing"
+			onclick="Writing();">글쓰기</button>
+	</c:if>
   <table class="table table-hover">
     <thead>
       <tr>
