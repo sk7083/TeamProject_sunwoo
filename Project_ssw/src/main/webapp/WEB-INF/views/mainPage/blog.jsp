@@ -25,7 +25,7 @@
       <div class="container">
         <div class="d-flex align-items-center">
           <div id="logo">
-            <a href="index.html"><img src="resources/seapalace-master/img/Logo.png" alt="" title="" /></a>
+            <a href="<c:url value="/index"></c:url>"><img src="resources/seapalace-master/img/Logo.png" alt="" title="" /></a>
           </div>
           <div class="ml-auto d-none d-md-block d-md-flex">
             <div class="media header-top-info">
@@ -60,19 +60,19 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="properties.html">Properties</a></li>
-              <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="<c:url value="/index"></c:url>">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="<c:url value="/about"></c:url>">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
+              <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Blog</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item active"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li>
+                  <li class="nav-item active"><a class="nav-link" href="<c:url value="/blog"></c:url>">Blog</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Blog Details</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
             </ul>
           </div>
 
@@ -117,7 +117,7 @@
                       <img class="card-img rounded-0" src="resources/seapalace-master/img/blog/cat-post/cat-post-3.jpg" alt="post">
                       <div class="categories_details">
                           <div class="categories_text">
-                              <a href="blog-single.html">
+                              <a href="<c:url value="/blogSingle"></c:url>">
                                   <h5>Social Life</h5>
                               </a>
                               <div class="border_line"></div>
@@ -131,7 +131,7 @@
                       <img class="card-img rounded-0" src="resources/seapalace-master/img/blog/cat-post/cat-post-2.jpg" alt="post">
                       <div class="categories_details">
                           <div class="categories_text">
-                              <a href="blog-single.html">
+                              <a href="<c:url value="/blogSingle"></c:url>">
                                   <h5>Politics</h5>
                               </a>
                               <div class="border_line"></div>
@@ -145,7 +145,7 @@
                       <img class="card-img rounded-0" src="resources/seapalace-master/img/blog/cat-post/cat-post-1.jpg" alt="post">
                       <div class="categories_details">
                           <div class="categories_text">
-                              <a href="blog-single.html">
+                              <a href="<c:url value="/blogSingle"></c:url>">
                                   <h5>Food</h5>
                               </a>
                               <div class="border_line"></div>
@@ -202,13 +202,13 @@
                               <div class="blog_post">
                                   <img src="resources/seapalace-master/img/blog/main-blog/m-blog-1.jpg" alt="">
                                   <div class="blog_details">
-                                      <a href="blog-single.html">
+                                      <a href="<c:url value="/blogSingle"></c:url>">
                                           <h2>Astronomy Binoculars A Great Alternative</h2>
                                       </a>
                                       <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
                                           why you should have to spend money on boot camp when you can get the MCSE study
                                           materials yourself at a fraction.</p>
-                                      <a class="button button-blog" href="blog-single.html">View More</a>
+                                      <a class="button button-blog" href="<c:url value="/blogSingle"></c:url>">View More</a>
                                   </div>
                               </div>
                           </div>
@@ -250,13 +250,13 @@
                               <div class="blog_post">
                                   <img src="resources/seapalace-master/img/blog/main-blog/m-blog-2.jpg" alt="">
                                   <div class="blog_details">
-                                      <a href="blog-single.html">
+                                      <a href="<c:url value="/blogSingle"></c:url>">
                                           <h2>The Basics Of Buying A Telescope</h2>
                                       </a>
                                       <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
                                           why you should have to spend money on boot camp when you can get the MCSE study
                                           materials yourself at a fraction.</p>
-                                      <a href="blog-single.html" class="button button-blog">View More</a>
+                                      <a href="<c:url value="/blogSingle"></c:url>" class="button button-blog">View More</a>
                                   </div>
                               </div>
                           </div>
@@ -298,13 +298,13 @@
                               <div class="blog_post">
                                   <img src="resources/seapalace-master/img/blog/main-blog/m-blog-3.jpg" alt="">
                                   <div class="blog_details">
-                                      <a href="blog-single.html">
+                                      <a href="<c:url value="/blogSingle"></c:url>">
                                           <h2>The Glossary Of Telescopes</h2>
                                       </a>
                                       <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
                                           why you should have to spend money on boot camp when you can get the MCSE study
                                           materials yourself at a fraction.</p>
-                                      <a href="blog-single.html" class="button button-blog">View More</a>
+                                      <a href="<c:url value="/blogSingle"></c:url>" class="button button-blog">View More</a>
                                   </div>
                               </div>
                           </div>
@@ -346,13 +346,13 @@
                               <div class="blog_post">
                                   <img src="resources/seapalace-master/img/blog/main-blog/m-blog-4.jpg" alt="">
                                   <div class="blog_details">
-                                      <a href="blog-single.html">
+                                      <a href="<c:url value="/blogSingle"></c:url>">
                                           <h2>The Night Sky</h2>
                                       </a>
                                       <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
                                           why you should have to spend money on boot camp when you can get the MCSE study
                                           materials yourself at a fraction.</p>
-                                      <a href="blog-single.html" class="button button-blog">View More</a>
+                                      <a href="<c:url value="/blogSingle"></c:url>" class="button button-blog">View More</a>
                                   </div>
                               </div>
                           </div>
@@ -394,13 +394,13 @@
                               <div class="blog_post">
                                   <img src="resources/seapalace-master/img/blog/main-blog/m-blog-5.jpg" alt="">
                                   <div class="blog_details">
-                                      <a href="blog-single.html">
+                                      <a href="<c:url value="/blogSingle"></c:url>">
                                           <h2>Telescopes 101</h2>
                                       </a>
                                       <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
                                           why you should have to spend money on boot camp when you can get the MCSE study
                                           materials yourself at a fraction.</p>
-                                      <a href="blog-single.html" class="button button-blog">View More</a>
+                                      <a href="<c:url value="/blogSingle"></c:url>" class="button button-blog">View More</a>
                                   </div>
                               </div>
                           </div>
@@ -483,7 +483,7 @@
                           <div class="media post_item">
                               <img src="resources/seapalace-master/img/blog/popular-post/post1.jpg" alt="post">
                               <div class="media-body">
-                                  <a href="blog-single.html">
+                                  <a href="<c:url value="/blogSingle"></c:url>">
                                       <h3>Space The Final Frontier</h3>
                                   </a>
                                   <p>02 Hours ago</p>
@@ -492,7 +492,7 @@
                           <div class="media post_item">
                               <img src="resources/seapalace-master/img/blog/popular-post/post2.jpg" alt="post">
                               <div class="media-body">
-                                  <a href="blog-single.html">
+                                  <a href="<c:url value="/blogSingle"></c:url>">
                                       <h3>The Amazing Hubble</h3>
                                   </a>
                                   <p>02 Hours ago</p>
@@ -501,7 +501,7 @@
                           <div class="media post_item">
                               <img src="resources/seapalace-master/img/blog/popular-post/post3.jpg" alt="post">
                               <div class="media-body">
-                                  <a href="blog-single.html">
+                                  <a href="<c:url value="/blogSingle"></c:url>l">
                                       <h3>Astronomy Or Astrology</h3>
                                   </a>
                                   <p>03 Hours ago</p>
@@ -510,7 +510,7 @@
                           <div class="media post_item">
                               <img src="resources/seapalace-master/img/blog/popular-post/post4.jpg" alt="post">
                               <div class="media-body">
-                                  <a href="blog-single.html">
+                                  <a href="<c:url value="/blogSingle"></c:url>">
                                       <h3>Asteroids telescope</h3>
                                   </a>
                                   <p>01 Hours ago</p>
