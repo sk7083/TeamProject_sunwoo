@@ -194,5 +194,11 @@ public class HomeController {
 		return mv;
 	}
 	
-	
+	//메인화면 (about)
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public ModelAndView aboutMain(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("main/about");
+		return mv;
+	}
 }
