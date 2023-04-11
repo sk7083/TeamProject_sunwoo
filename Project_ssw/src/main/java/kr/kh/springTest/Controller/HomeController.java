@@ -84,14 +84,14 @@ public class HomeController {
 		return mv;
 	}
 	
-
-	//로그인 (GET)
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView memberLogin(ModelAndView mv) throws Exception{
-		mv.setViewName("member/login");
-		return mv;
-	}
-
+//
+//	//로그인 (GET)
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public ModelAndView memberLogin(ModelAndView mv) throws Exception{
+//		mv.setViewName("member/login");
+//		return mv;
+//	}
+//
 	//로그인 (POST)
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView memberLoginPost(ModelAndView mv, HttpSession session, MemberVO member) throws Exception{
@@ -112,10 +112,10 @@ public class HomeController {
 			System.out.println("user값 : "+user);
 			//세션에 값 저장
 			session.setAttribute("user", user);
-			mv.setViewName("redirect:/");
+			mv.setViewName("redirect:/index");
 		} else {
 			System.out.println("실패");
-			mv.setViewName("redirect:/login");
+			mv.setViewName("redirect:/index");
 		}
 
 		return mv;
@@ -227,19 +227,42 @@ public class HomeController {
 		return mv;
 	}
 	
-	//메인화면 (index)
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView indexMain(ModelAndView mv) throws Exception{
+//	========================================================================================
+
+	
+//	//메인화면 (index)
+//	@RequestMapping(value = "/index", method = RequestMethod.GET)
+//	public ModelAndView indexMain(ModelAndView mv) throws Exception{
+//		
+//		mv.setViewName("mainPage/index");
+//		return mv;
+//	}
+	
+	//로그인 (GET)
+		@RequestMapping(value = "/index", method = RequestMethod.GET)
+		public ModelAndView indexLogin(ModelAndView mv) throws Exception{
+			mv.setViewName("mainPage/index");
+			return mv;
+		}
+
+
 		
-		mv.setViewName("mainPage/index");
-		return mv;
-	}
+//		========================================================================================
+	
 	
 	//메인화면 (properties)
 	@RequestMapping(value = "/properties", method = RequestMethod.GET)
 	public ModelAndView propertiesMain(ModelAndView mv) throws Exception{
 		
 		mv.setViewName("mainPage/properties");
+		return mv;
+	}
+	
+	//메인화면_회원가입 (MainRegister)
+	@RequestMapping(value = "/MainRegister", method = RequestMethod.GET)
+	public ModelAndView MainRegister(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("mainPage/MainRegister");
 		return mv;
 	}
 }

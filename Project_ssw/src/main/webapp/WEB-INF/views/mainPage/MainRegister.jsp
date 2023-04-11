@@ -59,10 +59,12 @@
   <link rel="stylesheet" href="resources/seapalace-master/css/style.css">
   
   <!-- w3schools 부트스트랩 Forms (로그인 창) -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!--  datepicker 달력 위젯 (회원가입 생년월일) -->
+
 </head>
 
 
@@ -258,370 +260,61 @@
     <!-- ================ welcome section start ================= --> 
     <section class="welcome">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-5 mb-4 mb-lg-0">
-            <div class="row no-gutters welcome-images">
-              <div class="col-sm-7">
-                <div class="card">
-                  <img class="" src="resources/seapalace-master/img/home/welcomeBanner1.png" alt="Card image cap">
-                </div>
-              </div>
-              <div class="col-sm-5">
-                <div class="card">
-                  <img class="" src="resources/seapalace-master/img/home/welcomeBanner2.png" alt="Card image cap">
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="card">
-                  <img class="" src="resources/seapalace-master/img/home/welcomeBanner3.png" alt="Card image cap">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="welcome-content">
-              <h2 class="mb-4"><span class="d-block">Welcome</span> to our residence</h2>
-              <p>Beginning blessed second a creepeth. Darkness wherein fish years good air whose after seed appear midst evenin, appear void give third bearing divide one so blessed moved firmament gathered </p>
-              <p>Beginning blessed second a creepeth. Darkness wherein fish years good air whose after seed appear midst evenin, appear void give third bearing divide one so blessed</p>
-              <a class="button button--active home-banner-btn mt-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
     <!-- ================ welcome section end ================= --> 
 
 
     <!-- ================ Explore section start ================= -->
-    <section class="section-margin">
-      <div class="container">
-        <div class="section-intro text-center pb-80px">
-          <div class="section-intro__style">
-            <img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-          </div>
-          <h2>Explore Our Rooms</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-explore">
-              <div class="card-explore__img">
-                <img class="card-img" src="resources/seapalace-master/img/home/explore1.png" alt="">
-              </div>
-              <div class="card-body">
-                <h3 class="card-explore__price">$150.00 <sub>/ Per Night</sub></h3>
-                <h4 class="card-explore__title"><a href="#">Classic Bed Room</a></h4>
-                <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-explore">
-              <div class="card-explore__img">
-                <img class="card-img" src="resources/seapalace-master/img/home/explore2.png" alt="">
-              </div>
-              <div class="card-body">
-                <h3 class="card-explore__price">$170.00 <sub>/ Per Night</sub></h3>
-                <h4 class="card-explore__title"><a href="#">Premium Room</a></h4>
-                <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-explore">
-              <div class="card-explore__img">
-                <img class="card-img" src="resources/seapalace-master/img/home/explore3.png" alt="">
-              </div>
-              <div class="card-body">
-                <h3 class="card-explore__price">$190.00 <sub>/ Per Night</sub></h3>
-                <h4 class="card-explore__title"><a href="#">Family Room</a></h4>
-                <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
     <!-- ================ Explore section end ================= --> 
 
 
 
     <!-- ================ video section start ================= --> 
-    <section class="video-area">
-      <div class="container">
-        <div class="row justify-content-center align-items-center flex-column text-center">
-          <a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?v=vParh5wE-tM">
-            <span></span>
-          </a>
-          <h3>Seaplace</h3>
-          <p>View four has said does men saw find dear shy talent</p>
-        </div>
-      </div>  
-    </section>
+    
     <!-- ================ video section end ================= --> 
 
     <!-- ================ special section start ================= -->
-    <section class="section-padding bg-porcelain">
-      <div class="container">
-        <div class="section-intro text-center pb-80px">
-          <div class="section-intro__style">
-            <img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-          </div>
-          <h2>Special Facilities</h2>
-        </div>
-        <div class="special-img mb-30px">
-          <img class="img-fluid" src="resources/seapalace-master/img/home/special.png" alt="">
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-special">
-              <div class="media align-items-center mb-1">
-                <span class="card-special__icon"><i class="ti-home"></i></span>
-                <div class="media-body">
-                  <h4 class="card-special__title">Conference Room</h4>
-                </div>
-              </div>
-              <div class="card-body">
-                <p>Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-special">
-              <div class="media align-items-center mb-1">
-                <span class="card-special__icon"><i class="ti-bell"></i></span>
-                <div class="media-body">
-                  <h4 class="card-special__title">Swimming Pool</h4>
-                </div>
-              </div>
-              <div class="card-body">
-                <p>Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-special">
-              <div class="media align-items-center mb-1">
-                <span class="card-special__icon"><i class="ti-car"></i></span>
-                <div class="media-body">
-                  <h4 class="card-special__title">Sports Culb</h4>
-                </div>
-              </div>
-              <div class="card-body">
-                <p>Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
     <!-- ================ special section end ================= -->
 
     <!-- ================ carousel section start ================= -->
-    <section class="section-margin">
-      <div class="container">
-        <div class="section-intro text-center pb-20px">
-          <div class="section-intro__style">
-            <img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-          </div>
-          <h2>Our Guest Love Us</h2>
-        </div>
-        <div class="owl-carousel owl-theme testi-carousel">
-          <div class="testi-carousel__item">
-            <div class="media">
-              <div class="testi-carousel__img">
-                <img src="resources/seapalace-master/img/home/testimonial1.png" alt="">
-              </div>
-              <div class="media-body">
-                <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                <div class="testi-carousel__intro">
-                  <h3>Robert Mack</h3>
-                  <p>CEO & Founder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-carousel__item">
-            <div class="media">
-              <div class="testi-carousel__img">
-                <img src="resources/seapalace-master/img/home/testimonial2.png" alt="">
-              </div>
-              <div class="media-body">
-                <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                <div class="testi-carousel__intro">
-                  <h3>David Alone</h3>
-                  <p>CEO & Founder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-carousel__item">
-            <div class="media">
-              <div class="testi-carousel__img">
-                <img src="resources/seapalace-master/img/home/testimonial3.png" alt="">
-              </div>
-              <div class="media-body">
-                <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                <div class="testi-carousel__intro">
-                  <h3>Adam Pallin</h3>
-                  <p>CEO & Founder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-carousel__item">
-            <div class="media">
-              <div class="testi-carousel__img">
-                <img src="resources/seapalace-master/img/home/testimonial1.png" alt="">
-              </div>
-              <div class="media-body">
-                <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                <div class="testi-carousel__intro">
-                  <h3>Robert Mack</h3>
-                  <p>CEO & Founder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-carousel__item">
-            <div class="media">
-              <div class="testi-carousel__img">
-                <img src="resources/seapalace-master/img/home/testimonial2.png" alt="">
-              </div>
-              <div class="media-body">
-                <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                <div class="testi-carousel__intro">
-                  <h3>David Alone</h3>
-                  <p>CEO & Founder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-carousel__item">
-            <div class="media">
-              <div class="testi-carousel__img">
-                <img src="resources/seapalace-master/img/home/testimonial3.png" alt="">
-              </div>
-              <div class="media-body">
-                <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                <div class="testi-carousel__intro">
-                  <h3>Adam Pallin</h3>
-                  <p>CEO & Founder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-carousel__item">
-              <div class="media">
-                <div class="testi-carousel__img">
-                  <img src="resources/seapalace-master/img/home/testimonial1.png" alt="">
-                </div>
-                <div class="media-body">
-                  <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                  <div class="testi-carousel__intro">
-                    <h3>Robert Mack</h3>
-                    <p>CEO & Founder</p>
-                  </div>
-                </div>
-              </div>
-            </div>
     
-            <div class="testi-carousel__item">
-              <div class="media">
-                <div class="testi-carousel__img">
-                  <img src="resources/seapalace-master/img/home/testimonial2.png" alt="">
-                </div>
-                <div class="media-body">
-                  <p>Incidunt deleniti blanditiis quas aperiam recusandae consillo ullam quibusdam cum libero illo repell endus!</p>
-                  <div class="testi-carousel__intro">
-                    <h3>David Alone</h3>
-                    <p>CEO & Founder</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-    </section>
     <!-- ================ carousel section end ================= -->
 
 
     <!-- ================ news section start ================= -->
-    <section class="section-margin">
+    <section class="Register">
       <div class="container">
-        <div class="section-intro text-center pb-80px">
-          <div class="section-intro__style">
-            <img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-          </div>
-          <h2>News & Events</h2>
-        </div>
+        <form action="<c:url value="/login"></c:url>" method="post">
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userId">아이디</label>
+				<input class="form-control" type="text" id="id" name="me_id" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userPass">패스워드</label>
+				<input class="form-control" type="password" id="password" name="me_pw" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userPass">이름</label>
+				<input class="form-control" type="password" id="password" name="me_name" />
+			</div>
+	<!-- ================ 회원 생년월일 - API 사용 [Start] ================= -->
 
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card card-news">
-              <div class="card-news__img">
-                <img class="card-img" src="resources/seapalace-master/img/home/explore1.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-news__title"><a href="#">Hotel companies tipped the scales</a></h4>
-                <ul class="card-news__info">
-                  <li><a href="#"><span class="news-icon"><i class="ti-notepad"></i></span> 20th Nov, 2018</a></li>
-                  <li><a href="#"><span class="news-icon"><i class="ti-comment"></i></span> 03 Comments</a></li>
-                </ul>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-news__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
+	<!-- ================ 회원 생년월일 - API 사용 [End] ================= -->
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userPass">전화번호</label>
+				<input class="form-control" type="password" id="password" name="me_phone" />
+			</div>
+			
 
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card card-news">
-              <div class="card-news__img">
-                <img class="card-img" src="resources/seapalace-master/img/home/explore2.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-news__title"><a href="#">Try your hand inaugural industry crossword</a></h4>
-                <ul class="card-news__info">
-                  <li><a href="#"><span class="news-icon"><i class="ti-notepad"></i></span> 20th Nov, 2018</a></li>
-                  <li><a href="#"><span class="news-icon"><i class="ti-comment"></i></span> 03 Comments</a></li>
-                </ul>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-news__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card card-news">
-              <div class="card-news__img">
-                <img class="card-img" src="resources/seapalace-master/img/home/explore3.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-news__title"><a href="#">Hoteliers resolve to invest in guests</a></h4>
-                <ul class="card-news__info">
-                  <li><a href="#"><span class="news-icon"><i class="ti-notepad"></i></span> 20th Nov, 2018</a></li>
-                  <li><a href="#"><span class="news-icon"><i class="ti-comment"></i></span> 03 Comments</a></li>
-                </ul>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-news__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+	<!-- ================ 회원 주소 - API 사용 ================= -->
+			<div class="login_button_wrap">
+				<button class="login_button" type="submit" id="submit">로그인</button>
+			</div>
+		</form>
       </div>
     </section>
     <!-- ================ news section end ================= -->
@@ -774,15 +467,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	});
 		
 	// 모달 on
-	body.style.overflow = 'hidden';
+//	body.style.overflow = 'hidden';
 	// 모달 off
-	body.style.overflow = 'auto';
+//	body.style.overflow = 'auto';
 	//모달 닫는 이벤트
 	function modalClose() {
 		$('#mod').modal('hide'); 
         $('#mod').hide();
 	}
+	
 	//========================= Login 모달창 [End] ===========================
+	//========================= Datepicker 회원가입 (생년월일) [Start] =========================
+
+	//========================= Datepicker 회원가입 (생년월일) [End] =========================
 
 </script>
 
