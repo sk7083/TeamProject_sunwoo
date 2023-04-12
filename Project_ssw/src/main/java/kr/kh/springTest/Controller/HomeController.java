@@ -266,16 +266,4 @@ public class HomeController {
 		return mv;
 	}
 	
-	
-	
-	
-	
-	
-	//API 테스트
-	@RequestMapping(value = "/APItest", method = RequestMethod.GET)
-	public ModelAndView APItest(ModelAndView mv) throws Exception{
-		
-		mv.setViewName("main/APItest");
-		return mv;
-	}
 }

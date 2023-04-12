@@ -6,12 +6,17 @@
 	<title>API 테스트</title>
 </head>
 <body>
+
+
+
 <p style="margin-top:-12px">
     <em class="link">
         <a href="/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
     </em>
 </p>
 <div id="map" style="width:100%;height:350px;"></div>
+
+
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=568cfa878b781bd8bfea9a37e0f0f4f7&libraries=services"></script>
 <script>
