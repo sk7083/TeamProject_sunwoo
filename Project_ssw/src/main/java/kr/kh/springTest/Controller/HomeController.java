@@ -24,7 +24,7 @@ public class HomeController {
 	MemberService memberService;
 
 	//메인 화면
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home(ModelAndView mv) throws Exception{
 //		List <MemberVO> list = memberService.memberLoad();
 //		for(int i = 0; i<list.size(); i++) {
@@ -112,10 +112,10 @@ public class HomeController {
 			System.out.println("user값 : "+user);
 			//세션에 값 저장
 			session.setAttribute("user", user);
-			mv.setViewName("redirect:/index");
+			mv.setViewName("redirect:/");
 		} else {
 			System.out.println("실패");
-			mv.setViewName("redirect:/index");
+			mv.setViewName("redirect:/");
 		}
 
 		return mv;
@@ -239,7 +239,7 @@ public class HomeController {
 //	}
 	
 	//로그인 (GET)
-		@RequestMapping(value = "/index", method = RequestMethod.GET)
+		@RequestMapping(value = "/", method = RequestMethod.GET)
 		public ModelAndView indexLogin(ModelAndView mv) throws Exception{
 			mv.setViewName("mainPage/index");
 			return mv;
@@ -263,6 +263,19 @@ public class HomeController {
 	public ModelAndView MainRegister(ModelAndView mv) throws Exception{
 		
 		mv.setViewName("mainPage/MainRegister");
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	//API 테스트
+	@RequestMapping(value = "/APItest", method = RequestMethod.GET)
+	public ModelAndView APItest(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("main/APItest");
 		return mv;
 	}
 }

@@ -74,7 +74,7 @@
       <div class="container">
         <div class="d-flex align-items-center">
           <div id="logo">
-            <a href="<c:url value="/index"></c:url>"><img src="resources/seapalace-master/img/Logo.png" alt="" title="" /></a>
+            <a href="<c:url value="/"></c:url>"><img src="resources/seapalace-master/img/Logo.png" alt="" title="" /></a>
           </div>
           <div class="ml-auto d-none d-md-block d-md-flex">
             <div class="media header-top-info">
@@ -111,18 +111,19 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
-              <li class="nav-item active"><a class="nav-link" href="<c:url value="/index"></c:url>">Home</a></li>
+              <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Product</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">Motel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
+                </ul>
+              </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/about"></c:url>">About</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Blog Details</a></li>
-                </ul>
-              </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
             </ul>
           </div>
@@ -162,6 +163,9 @@
             <h1>Luxury <em>is</em> personal</h1>
            	<c:if test="${user.me_id == null}">
 	            <a id="loginBtn" class="button home-banner-btn" href="#" style="width: 180px;">로그인</a>
+           	</c:if>
+			<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
+	            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
            	</c:if>
             <div> <c:url value=""></c:url>
           	  <a class="button home-banner-btn" href="#" style="width: 180px; margin-top: 10px">예약하기</a>
@@ -708,7 +712,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <form action="<c:url value="/login"></c:url>" method="post">
 	<div id="mod" class="modal">
 		<div class="modal_body">
-				<button class="close-btn" onclick="modalClose()" style="float: right; display: flex; background-color: white; border: 0px solid; font-weight: bold; font-size: 26px; position: absolute; right: 6%; top: 2%">X</button><br>
+			<button class="close-btn" onclick="modalClose()" style="float: right; display: flex; background-color: white; border: 0px solid; font-weight: bold; font-size: 26px; position: absolute; right: 6%; top: 2%">X</button><br>
 			<div class="container">
 			  <h2 style="text-align: center; margin-left: 10px; margin-bottom: 30px">SunMall</h2>
 			  <!-- 
@@ -738,7 +742,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			      </label>
 			    </div>
 			    -->
-			    <button type="button" id="login-btn" class="btn btn-outline-light text-dark">로그인</button>
+			    <button type="submit" id="Modal-login-btn" class="btn btn-outline-light text-dark">로그인</button>
+			    
 			  <!-- 
 			  </form>
 			   -->
