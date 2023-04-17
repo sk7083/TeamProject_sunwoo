@@ -6,12 +6,12 @@
 	
 	<!-- 회원 전체 정보 불러오는 쿼리문 -->
   <select id="selectList" resultType="kr.kh.springTest.vo.MemberVO">
-    select me_id, me_pw, me_email, me_birth, me_auth, me_name, me_phone, me_address from member
+    select me_id, me_pw, me_email, me_birth, me_auth, me_name, me_phone, me_address1, me_address2, me_address3 from member
   </select>
   	<!-- 회원가입 쿼리문 -->
   <insert id="insertMember">
-  	insert into member(me_id, me_pw, me_email, me_birth, me_name, me_phone, me_address)
-  	 values(#{me_id}, #{me_pw}, #{me_email}, #{me_birth}, #{me_name}, #{me_phone}, #{me_address}) 
+  	insert into member(me_id, me_pw, me_email, me_birth, me_name, me_phone, me_address1, me_address2, me_address3)
+  	 values(#{me_id}, #{me_pw}, #{me_email}, #{me_birth}, #{me_name}, #{me_phone}, #{me_address1}, #{me_address2}, #{me_address3}) 
   </insert>
   	<!-- 로그인 쿼리문 -->
   <select id="login" resultType="kr.kh.springTest.vo.MemberVO">
@@ -34,14 +34,16 @@
   					me_auth = #{me_auth},
   					me_name = #{me_name},
   					me_phone = #{me_phone},
-  					me_address = #{me_address}
+  					me_address = #{me_address1},
+  					me_address = #{me_address2},
+  					me_address = #{me_address3}
   				where
   					me_id = #{me_id}
   </update>
   
   	<!-- 회원 상세 페이지 -->
 	<select id="MemberSelect" resultType="kr.kh.springTest.vo.MemberVO">
-		select me_id, me_pw, me_email, me_birth, me_auth, me_name, me_phone, me_address from member
+		select me_id, me_pw, me_email, me_birth, me_auth, me_name, me_phone, me_address1, me_address2, me_address3 from member
 			where me_id = #{me_id}
 	</select>
 	

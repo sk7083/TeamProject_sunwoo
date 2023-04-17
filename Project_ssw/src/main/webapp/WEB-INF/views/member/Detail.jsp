@@ -156,12 +156,31 @@ input[type=submit]:hover {
 		  
   		  <div class="row">
 		    <div class="col-25">
+		      <label for="fname">우편번호</label>
+		    </div>
+		    <div class="col-75">
+		      <input type="text" name="me_address1" value="${Detail.me_address1}" class="wer" disabled>
+		    </div>
+		  </div>
+		  
+   		  <div class="row">
+		    <div class="col-25">
 		      <label for="fname">주소</label>
 		    </div>
 		    <div class="col-75">
-		      <input type="text" name="me_address" value="${Detail.me_address}" class="wer" disabled> 
+		      <input type="text" name="me_address2" value="${Detail.me_address2}" class="wer" disabled>
 		    </div>
 		  </div>
+		  
+   		  <div class="row">
+		    <div class="col-25">
+		      <label for="fname">상세 주소</label>
+		    </div>
+		    <div class="col-75">
+		      <input type="text" name="me_address1" value="${Detail.me_address3}" class="wer" disabled>
+		    </div>
+		  </div>
+
 		  
   		  <div class="row">
 		    <div class="col-25">

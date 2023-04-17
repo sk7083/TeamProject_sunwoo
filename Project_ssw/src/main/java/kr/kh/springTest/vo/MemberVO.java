@@ -18,7 +18,9 @@ public class MemberVO {
 	private int me_auth;
 	private String me_name;
 	private String me_phone;
-	private String me_address;
+	private String me_address1;
+	private String me_address2;
+	private String me_address3;
 
 	
 	public String getMe_id() {
@@ -66,21 +68,29 @@ public class MemberVO {
 	public void setMe_phone(String me_phone) {
 		this.me_phone = me_phone;
 	}
-	public String getMe_address() {
-		return me_address;
+	public String getMe_address1() {
+		return me_address1;
 	}
-	public void setMe_address(String me_address) {
-		this.me_address = me_address;
+	public void setMe_address1(String me_address1) {
+		this.me_address1 = me_address1;
 	}
-	
+	public String getMe_address2() {
+		return me_address2;
+	}
+	public void setMe_address2(String me_address2) {
+		this.me_address2 = me_address2;
+	}
+	public String getMe_address3() {
+		return me_address3;
+	}
+	public void setMe_address3(String me_address3) {
+		this.me_address3 = me_address3;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [me_id=" + me_id + ", me_pw=" + me_pw + ", me_email=" + me_email + ", me_birth=" + me_birth
-				+ ", me_auth=" + me_auth + ", me_name=" + me_name + ", me_phone=" + me_phone + ", me_address="
-				+ me_address + "]";
+				+ ", me_auth=" + me_auth + ", me_name=" + me_name + ", me_phone=" + me_phone + ", me_address1="
+				+ me_address1 + ", me_address2=" + me_address2 + ", me_address3=" + me_address3 + "]";
 	}
-	
-
-
 
 }

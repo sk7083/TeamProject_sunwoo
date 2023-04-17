@@ -1,20 +1,23 @@
 package kr.kh.springTest.service;
 
+import java.util.List;
+
+import kr.kh.springTest.vo.ProductVO;
 
 public interface ProductService {
 
-//	//게시판 전체 리스트
-//	public List<BoardVO> boardLoad(BoardVO board);
-//
-//	//게시판 글쓰기
-//	public int boardWriter(BoardVO board);
-//	
-//	//게시판 수정
-//	public int boardUpdate(BoardVO board);
-//	
-//	//게시판 상세 페이지
-//	public BoardVO boardDetail(int bo_pid);
-//	
-//	//게시판 삭제
-//	public int boardDelete(int bo_pid);
+	//상품 전체 리스트
+	public List<ProductVO> productList(ProductVO product);
+
+	//상품 생성(추가)
+	public int productAdd(ProductVO product);
+	
+	//상품 수정
+	public int productUpdate(ProductVO product);
+	
+	//상품 상세 페이지
+	public ProductVO productDetail(int pr_pid);
+	
+	//상품 삭제
+	public int productDelete(int pr_pid);
 }

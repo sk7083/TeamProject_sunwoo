@@ -75,137 +75,113 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
-
-.btn-delete{
-
-    width: 90px;
-    background: white;
-    padding: 7px;
-    text-align: center;
-    border-radius: 5px;
-    color: red;
-    border: 1px solid red;
-    line-height: auto;
-    text-decoration: none;
- }
- 
- .btn-delete:hover{
-   	color: white;
-   	background: red;
- }
 </style>
 </head>
 <body>
 
 <div class="container">
-	<form action="<c:url value="/Update?me_id=${Detail.me_id}"></c:url>" method="post">
-	
+	<form action="<c:url value="/productUpdate?pr_pid=${Detail.pr_pid}"></c:url>" method="post">
+		<div class="row">
+		   <div class="col-25">
+		      <label for="fname">상품 번호</label>
+		    </div>
+		    <div class="col-75">
+		      <input type="text" name="pr_pid" value="${Detail.pr_pid}" disabled> 
+		    </div>
+		</div>
+		  
 		  <div class="row">
 		    <div class="col-25">
-		      <label for="fname">아이디</label>
+		      <label for="subject">카테고리</label>
 		    </div>
 		    <div class="col-75">
-		      <input type="text" name="me_id" value="${Detail.me_id}" class="wer" disabled> 
+				<input type="text" name="pr_ca_pid" value="${Detail.pr_ca_pid}"> 
 		    </div>
 		  </div>
-		  
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">비밀번호</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_pw" value="${Detail.me_pw}" class="wer"> 
-		    </div>
-		  </div>
-		  
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">이름</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_name" value="${Detail.me_name}" class="wer"> 
-		    </div>
-		  </div>
-		  
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">이메일</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_email" value="${Detail.me_email}" class="wer"> 
-		    </div>
-		  </div>
-		  
-		<c:if test="${Detail.me_auth == 2}">
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">권한</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_auth" value="${Detail.me_auth}" class="wer"> 
-		    </div>
-		  </div>
-		</c:if>
-		  
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">번호</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_phone" value="${Detail.me_phone}" class="wer" placeholder="010-1234-5678"> 
-		    </div>
-		  </div>
-		  
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">우편번호</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_address1" value="${Detail.me_address1}" class="wer">
-		    </div>
-		  </div>
-		  
-   		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">주소</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_address2" value="${Detail.me_address2}" class="wer">
-		    </div>
-		  </div>
-		  
-   		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">상세 주소</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_address1" value="${Detail.me_address3}" class="wer">
-		    </div>
-		  </div>
-		  
-  		  <div class="row">
-		    <div class="col-25">
-		      <label for="fname">생년월일</label>
-		    </div>
-		    <div class="col-75">
-		      <input type="text" name="me_birth" value="${Detail.me_birth}" class="wer" placeholder="2000-01-01"> 
-		    </div>
-		  </div>
-		<button type="submit" class="btn btn-outline-primary" style="margin-top: 36px; display: block; float: left; margin-right: 15px; margin-bottom: 15px">수정완료</button>
 
+		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">이름</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="pr_name" value="${Detail.pr_name}"> 
+		    </div>
+		  </div>
+
+		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">내용</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="pr_content" value="${Detail.pr_content}"> 
+		    </div>
+		  </div>
+		  
+		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">주소</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="pr_address" value="${Detail.pr_address}"> 
+		    </div>
+		  </div>
+		  
+		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">상세 주소</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="pr_det_address" value="${Detail.pr_det_address}"> 
+		    </div>
+		  </div>		  		  
+		  
+  		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">입실 시간</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="pr_in_time" value="${Detail.pr_in_time}"> 
+		    </div>
+		  </div>
+		  
+   		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">퇴실 시간</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="pr_out_time" value="${Detail.pr_out_time}"> 
+		    </div>
+		  </div>
+	  
+   		  <div class="row">
+		    <div class="col-25">
+		      <label for="subject">댓글</label>
+		    </div>
+		    <div class="col-75">
+				<input type="text" name="re_pid" value="${Detail.re_pid}" disabled> 
+		    </div>
+		  </div>
+
+		<div class="form-group mt-3">
+			<label>첨부파일:</label>
+			<input type="file" class="form-control" name="fi_pid">
+			<input type="file" class="form-control" name="fi_pid">
+			<input type="file" class="form-control" name="fi_pid">
+		</div>
+		
+		<c:if test="${user.me_auth == 2 || user.me_auth == 1}">
+			<button type="submit" class="btn btn-outline-primary" style="float: left; margin-top : 20px">수정완료</button>
+		</c:if>
 	</form>
-	<div style="padding-top: 20px">
-		<a href="<c:url value="/Delete/${Detail.me_id}"></c:url>" class="btn-delete" style="text-decoration:none; display: block; float: left">회원탈퇴</a>
-		<button class="btn btn-outline-danger" name="cancle" onclick="cancle();" style="margin-left : 15px;">뒤로가기</button>
-	</div>
+			<button class="btn btn-outline-danger" name="cancle"
+					onclick="cancle();" style="margin-left : 20px; margin-top : 20px">취소</button>
 </div>
 </body>
 </html>
 
 <script type="text/javascript">
-
 function cancle(){
-    location.href = "/springTest";
+    location.href = "productList";
 }
 </script>
 

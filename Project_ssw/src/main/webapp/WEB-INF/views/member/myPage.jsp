@@ -64,7 +64,7 @@
 					<td>${l.me_auth}</td>
 					<td>${l.me_name}</td>
 					<td>${l.me_phone}</td>
-					<td>${l.me_address}</td>
+					<td>${l.me_address1} ${l.me_address2} ${l.me_address3}</td>
 				</tr>
 			</c:forEach>
 		</c:if>

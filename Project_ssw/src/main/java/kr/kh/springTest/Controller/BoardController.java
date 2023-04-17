@@ -40,7 +40,7 @@ public class BoardController {
 		return mv;
 	}	
 	
-	//게시판 글쓰기
+	//게시판 글쓰기(GET)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
 	public ModelAndView boardInsert(ModelAndView mv, HttpServletRequest request, MemberVO member) throws Exception{
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
@@ -51,7 +51,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	//게시판 글쓰기
+	//게시판 글쓰기(POST)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.POST)
 	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board) throws Exception{
 		int ins = boardService.boardWriter(board);

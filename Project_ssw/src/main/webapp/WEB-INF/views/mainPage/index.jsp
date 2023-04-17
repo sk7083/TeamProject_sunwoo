@@ -164,9 +164,11 @@
            	<c:if test="${user.me_id == null}">
 	            <a id="loginBtn" class="button home-banner-btn" href="#" style="width: 180px;">로그인</a>
            	</c:if>
-			<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-	            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
-           	</c:if>
+           	<div>
+				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
+		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
+	           	</c:if>
+           	</div>
             <div> <c:url value=""></c:url>
           	  <a class="button home-banner-btn" href="#" style="width: 180px; margin-top: 10px">예약하기</a>
             </div>

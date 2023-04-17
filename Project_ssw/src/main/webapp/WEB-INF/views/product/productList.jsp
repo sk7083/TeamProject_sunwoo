@@ -8,8 +8,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
-<title>회원 정보</title>
 <style>
  .btn-update{
  	display: block;
@@ -45,55 +43,57 @@
     text-decoration: none;
  }
 </style>
+<title>상품 현황</title>
+<body>
 <div class="container">
-<h1>회원 정보</h1>
+  <h4>상품</h4>
 	<button type="button" class="btn btn-outline-primary" name="btn-Main"
-		onclick="Update();">정보수정</button>
-	<button type="button" class="btn btn-outline-danger" name="btn-Writing"
-		onclick="Writing();">회원탈퇴</button>
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>아이디</th>
-				<th>비밀번호</th>
-				<th>이메일</th>
-				<th>생년월일</th>
-				<th>권한</th>
-				<th>이름</th>
-				<th>핸드폰 번호</th>
-				<th>주소</th>
-				<th><c:if test="${user.me_auth == 2}"></c:if></th>
-			<tr>
-		</thead>
-			<c:forEach items ="${list}" var="m">
-			
-			<tr><!-- 첫번째 줄 시작 -->
-				<td>${m.me_id}</td>
-				<td>${m.me_pw}</td>
-				<td>${m.me_email}</td>
-				<td>${m.me_birth}</td>
-				<td>${m.me_auth}</td>
-				<td>${m.me_name}</td>
-				<td>${m.me_phone}</td>
-				<td>${m.me_address2} ${m.me_address3} (${m.me_address1})</td>
-				<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/Detail?me_id=${m.me_id}"></c:url>" class="btn-update" style="text-decoration:none">
+		onclick="Main();">메인화면</button>
+		
+	<c:if test="${user.me_auth == 2}">
+		<button type="button" class="btn btn-outline-success" name="btn-Writing"
+			onclick="Writing();">상품 추가</button>
+	</c:if>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+		<th>상품 번호</th>
+		<th>카테고리</th>
+		<th>제목</th>
+		<th>주소</th>
+		<th>입실</th>
+		<th>퇴실</th>
+		<th><c:if test="${user.me_auth == 2}"></c:if></th>
+      </tr>
+    </thead>
+    <tbody>
+			<c:forEach items ="${list}" var="p">	
+				<tr><!-- 첫번째 줄 시작 -->
+					<td>${p.pr_pid}</td>
+					<td>${p.pr_ca_pid}</td>
+						<td><a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" >
+						<c:out value="${p.pr_name}" /></a></td>
+					<td>${p.pr_address}</td>
+					<td>${p.pr_in_time}</td>
+					<td>${p.pr_out_time}
+					<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/productUpdate?pr_pid=${p.pr_pid}"></c:url>" class="btn-update" style="text-decoration:none">
 						<c:out value="수정" /></a></c:if></td>
-				<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/Delete/${m.me_id}"></c:url>" class="btn-delete" style="text-decoration:none">
+					<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/productDelete/${p.pr_pid}"></c:url>" class="btn-delete" style="text-decoration:none">
 						<c:out value="삭제" /></a></c:if></td>
-			</tr>
+				</tr>
 			</c:forEach>
-
-	</table>
-
+    </tbody>
+  </table>
 </div>
+</body>
 
 
 <script type="text/javaScript">
 function Writing(){
-     location.href = "boardInsert";
+     location.href = "productInsert";
 }
 
-function Update(){
-    location.href = "Update";
+function Main(){
+    location.href = "/springTest";
 }
 </script>
