@@ -80,7 +80,7 @@ input[type=submit]:hover {
 <body>
 
 <div class="container">
-	<form action="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}"></c:url>" method="post">
+	<form action="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}"></c:url>" method="post" enctype="multipart/form-date">
 		<div class="row">
 		   <div class="col-25">
 		      <label for="fname">게시글 번호</label>
@@ -132,8 +132,7 @@ input[type=submit]:hover {
 		<div class="form-group mt-3">
 			<label>첨부파일:</label>
 			<input type="file" class="form-control" name="files">
-			<input type="file" class="form-control" name="files">
-			<input type="file" class="form-control" name="files">
+			<input type="file" name="fi_pid"/>
 		</div>
 		
 		<c:if test="${user.me_auth == 2 || user.me_auth == 1}">

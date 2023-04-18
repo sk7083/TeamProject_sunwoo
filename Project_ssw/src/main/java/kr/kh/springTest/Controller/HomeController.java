@@ -9,12 +9,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.springTest.service.MemberService;
+import kr.kh.springTest.service.MemberServiceImp;
 import kr.kh.springTest.vo.MemberVO;
 
 
@@ -239,11 +242,38 @@ public class HomeController {
 //	}
 	
 	//로그인 (GET)
-		@RequestMapping(value = "/", method = RequestMethod.GET)
-		public ModelAndView indexLogin(ModelAndView mv) throws Exception{
-			mv.setViewName("mainPage/index");
-			return mv;
-		}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView indexLogin(ModelAndView mv) throws Exception{
+		mv.setViewName("mainPage/index");
+		return mv;
+	}
+
+//	//아이디 중복체크
+//	@PostMapping("/idCheck")
+//	@ResponseBody
+//	public int idCheck(@RequestParam("me_id") String me_id) {
+//		
+//		int cnt = memberService.idCheck(me_id);
+//		return cnt;
+//		
+//	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+	public int idCheck(String me_id) throws Exception {
+		int cnt = memberService.idCheck(me_id);
+		System.out.println("me_id값 알려줘"+me_id);
+		return cnt;
+	}
+	
+	
+	
+	//로그인 (GET)
+	@RequestMapping(value = "/reg", method = RequestMethod.GET)
+	public ModelAndView reg(ModelAndView mv) throws Exception{
+		mv.setViewName("member/reg");
+		return mv;
+	}
 
 
 		
@@ -259,7 +289,7 @@ public class HomeController {
 	}
 	
 	//메인화면_회원가입 (MainRegister)
-	@RequestMapping(value = "/MainRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "/MainRegister", method = RequestMethod.POST)
 	public ModelAndView MainRegister(ModelAndView mv) throws Exception{
 		
 		mv.setViewName("mainPage/MainRegister");

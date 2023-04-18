@@ -84,4 +84,12 @@ public class MemberServiceImp implements MemberService{
 	
 		return memberDao.MemberDelete(me_id);
 	}
+	
+	//아이디 중복체크
+	@Override
+	public int idCheck(String me_id) {
+		int cnt = memberDao.idCheck(me_id);
+		System.out.println("cnt: " + cnt);
+		return cnt;
+	}
 }

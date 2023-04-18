@@ -12,7 +12,10 @@
 		<form action="<c:url value="/register"></c:url>" method="post">
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userId">아이디</label>
-				<input class="form-control" type="text" id="id" name="me_id" />
+				<input class="form-control" type="text" id="me_id" name="me_id" oninput = "checkId()" />
+				<!-- id ajax 중복체크 -->
+				<span class="id_ok" style="display: none">사용 가능한 아이디입니다.</span>
+				<span class="id_already" style="display: none">누군가 이 아이디를 사용하고 있어요.</span>
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userPass">패스워드</label>
@@ -42,10 +45,11 @@
 				<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
 			</div>
 
+
 			
 			<div class="form-group has-feedback">
-				<button class="btn btn-success" type="submit" id="submit">회원가입</button>
-				<button class="cencle btn btn-danger" type="button">취소</button>
+				<button class="btn btn-success" type="submit" id="signup">회원가입</button>
+				<button class="cencle btn btn-danger" type="reset">취소</button>
 			</div>
 		</form>
 	</section>
@@ -54,6 +58,8 @@
 <script src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
 <script src="<c:url value='/resources/js/jquery-ui.min.js'></c:url>"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- 제이쿼리 -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
 <script type="text/javascript">
 	// ===================================== 카카오 주소창 api 사용 =====================================
@@ -105,4 +111,28 @@
 	    }).open();
 	}
 	// ===================================== 카카오 주소창 api 사용 =====================================
+	function checkId(){
+        var id = $('#me_id').val(); //id값이 "id"인 입력란의 값을 저장
+        $.ajax({
+            url:'./idCheck', //Controller에서 요청 받을 주소
+            type:'post', //POST 방식으로 전달
+            data:{"me_id":"me_id"},
+            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                    $('.id_ok').css("display","inline-block"); 
+                    $('.id_already').css("display", "none");
+                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                    $('.id_already').css("display","inline-block");
+                    $('.id_ok').css("display", "none");
+                    alert("아이디를 다시 입력해주세요");
+                    $('#me_id').val('');
+                }
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        });
+        };
+	 
+ 
 </script>

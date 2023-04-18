@@ -27,10 +27,10 @@
 	<resources mapping="/scss/**" location="/resources/seapalace-master/scss" />
 	<resources mapping="/vendors/**" location="/resources/seapalace-master/vendors" />
 	<!-- datepicker 리소스 연결 23-04-11 -->
-	<resources mapping="/datepicker/**" location="/resources/datepicker" />
+	<resources mapping="/datepicker/**" location="/resources/datepicker"/>
 	<resources mapping="/jquery/**" location="/resources/datepicker/external/jquery" />
 	<resources mapping="/images/**" location="/resources/datepicker/images" />
-	
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -49,6 +49,8 @@
 	        </beans:list>
 	    </beans:property>
 	</beans:bean>
+	
+
 	
 
 		

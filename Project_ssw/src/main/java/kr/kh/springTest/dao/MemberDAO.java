@@ -26,4 +26,6 @@ public interface MemberDAO {
 	//회원 삭제
 	public int MemberDelete(String me_id);
 	
+	//아이디 중복체크
+	public int idCheck(String me_id);
 }

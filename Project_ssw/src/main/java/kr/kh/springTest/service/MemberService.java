@@ -24,4 +24,7 @@ public interface MemberService {
 	
 	//회원 삭제
 	public int memberDelete(String me_id);
+	
+	//아이디 중복체크
+	public int idCheck(String me_id);
 }

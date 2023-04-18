@@ -146,8 +146,7 @@ input[type=submit]:hover {
 		<div class="form-group mt-3">
 			<label>첨부파일:</label>
 			<input type="file" class="form-control" name="files">
-			<input type="file" class="form-control" name="files">
-			<input type="file" class="form-control" name="files">
+			<input type="file" name="fi_pid"/>
 		</div>
 		
 		<c:if test="${user.me_auth == 2}">
