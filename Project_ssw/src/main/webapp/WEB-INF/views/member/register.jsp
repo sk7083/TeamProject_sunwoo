@@ -11,23 +11,41 @@
 	<section id="container">
 		<form action="<c:url value="/register"></c:url>" method="post">
 			<div class="form-group has-feedback">
+			<!--
 				<label class="control-label" for="userId">아이디</label>
 				<input class="form-control" type="text" id="me_id" name="me_id" oninput = "checkId()" />
-				<!-- id ajax 중복체크 -->
+			 id ajax 중복체크 
 				<span class="id_ok" style="display: none">사용 가능한 아이디입니다.</span>
 				<span class="id_already" style="display: none">누군가 이 아이디를 사용하고 있어요.</span>
-			</div>
-			<div class="form-group has-feedback">
-				<label class="control-label" for="userPass">패스워드</label>
-				<input class="form-control" type="password" id="password" name="me_pw" />
-			</div>
+			-->
+			
+			<!-- 아이디 -->
+		<div class="form-group">
+			<label for="user_id">아이디</label>
+				<input type="text" class="form-control" id="user_id" name="me_id" placeholder="ID" required maxlength="16">
+		<div class="check_font" id="id_check"></div>
+		</div>
+		
+		<div class="form-group">
+			<label for="user_id">비밀번호</label>
+				<input type="password" name="me_pw" id="password" placeholder="PW" maxlength="16">
+		<div id="pwdcheck_blank1"></div>
+		</div>
+		
+				<div class="form-group">
+			<label for="user_id">비밀번호 재확인</label>
+				<input type="password" name="password_check" id="password_check" placeholder="PW" maxlength="16">
+		<div id="pwdcheck_blank2"></div>
+		</div>
+			
+		
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userEmail">이메일</label>
 				<input class="form-control" type="text" id="email" name="me_email" />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userBirth">생년월일</label>
-				<input class="form-control" type="text" id="birth" name="me_birth" placeholder="1999-01-01" />
+				<input class="form-control" type="text" id="datepicker" name="me_birth" placeholder="2000-01-01" />
 			</div>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="userName">이름</label>
@@ -46,7 +64,8 @@
 			</div>
 
 
-			
+
+
 			<div class="form-group has-feedback">
 				<button class="btn btn-success" type="submit" id="signup">회원가입</button>
 				<button class="cencle btn btn-danger" type="reset">취소</button>
@@ -60,9 +79,15 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 제이쿼리 -->
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<!-- datepicker 달력 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-	// ===================================== 카카오 주소창 api 사용 =====================================
+
+// ===================================== 카카오 주소창 api 사용 =====================================
 	function sample6_execDaumPostcode() {
 	    new daum.Postcode({
 	        oncomplete: function(data) {
@@ -110,29 +135,109 @@
 	        }
 	    }).open();
 	}
-	// ===================================== 카카오 주소창 api 사용 =====================================
-	function checkId(){
-        var id = $('#me_id').val(); //id값이 "id"인 입력란의 값을 저장
-        $.ajax({
-            url:'./idCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{"me_id":"me_id"},
-            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
-                if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                    $('.id_ok').css("display","inline-block"); 
-                    $('.id_already').css("display", "none");
-                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                    $('.id_already').css("display","inline-block");
-                    $('.id_ok').css("display", "none");
-                    alert("아이디를 다시 입력해주세요");
-                    $('#me_id').val('');
-                }
-            },
-            error:function(){
-                alert("에러입니다");
-            }
-        });
-        };
-	 
- 
+// ===================================== 카카오 주소창 api 사용 =====================================      
+        
+// ===================================== 아이디 유효성 및 중복 체크 =====================================
+    	$("#user_id").blur(function() {
+    		let memberCheck = /^[a-zA-Z0-9]{8,16}$/;
+    		// id = "id_reg" / name = "userId"
+    		var me_id = $('#user_id').val();
+    		$.ajax({
+    			url : '${pageContext.request.contextPath}/idCheck?meId='+ me_id,
+    			type : 'get',
+    			success : function(data) {
+    				console.log("1 = 중복o / 0 = 중복x : "+ data);							
+    				
+    				if (data == 1) {
+    						// 1 : 아이디가 중복되는 문구
+    						$("#id_check").text("사용중인 아이디입니다.");
+    						$("#id_check").css("color", "red");
+    						$("#signup").attr("disabled", true);
+    					} else  {
+    						if(me_id == ""){
+    							$('#id_check').text('아이디는 필수 항목입니다.');
+    							$('#id_check').css('color', 'red');
+    							$("#signup").attr("disabled", true);				
+    							
+    						} else if(!memberCheck.test($('#user_id').val())){
+    							// 정규식 체크 / 조건 : 영문과 숫자 조합하여 8~16자만 가능
+    							$("#id_check").text("아이디는 영문 + 숫자인 8 ~ 16자만 가능합니다.");
+    							$("#id_check").css("color", "red");
+    							$("#signup").attr("disabled", true);
+    							
+    							
+    						} else {
+    							
+    							$('#id_check').text("사용 가능한 아이디입니다.");
+    							$('#id_check').css('color', 'green');
+    							$("#signup").attr("disabled", false);
+    						}
+    						
+    					}
+    				}, error : function() {
+    						console.log("실패");
+    				}
+    			});
+    		});
+// ===================================== 아이디 유효성 및 중복 체크 =====================================        
+      
+// ===================================== 비밀번호 유효성 및 비밀번호 확인 체크 =====================================
+        
+        $("#password").blur(function() {
+        	//비밀번호 유효성 / 조건 : 영문 + 숫자(특문) 8~16자리
+        	let pwCheck= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+        	if ($("#password").val() == "") {
+   	         $("#pwdcheck_blank1").text("비밀번호는 필수 항목입니다.");
+   	         $("#pwdcheck_blank1").css("color", "red");
+			 $("#signup").attr("disabled", true);
+			 
+   	      }	 else if (!pwCheck.test($("#password").val())) {
+   	    	 $("#pwdcheck_blank1").text("");
+   		  	 $("#pwdcheck_blank1").css("color", "red");
+   		     $("#pwdcheck_blank1").text("비밀번호는 영문+숫자(특문)인 8~16자만 가능합니다.");
+   			 $("#signup").attr("disabled", true);
+   	      }else {
+   	    	  $("#pwdcheck_blank1").css('color', 'green');
+   			  $("#pwdcheck_blank1").text("사용 가능한 비밀번호입니다.");
+   			  $("#signup").attr("disabled", true);
+   	      }
+   	 });
+   	
+	   	//======================= 비밀번호 재확인 =======================
+	   		
+	   	$("#password_check").blur(function() {
+	   		if($("#password_check").val() == "") {
+	   			$("#pwdcheck_blank2").css("color", "red");
+	   	        $("#pwdcheck_blank2").text("비밀번호 재확인은 필수 항목입니다.");
+	   	    	$("#signup").attr("disabled", true);
+	   		}
+	   		else if($("#password").val() == $("#password_check").val()) {
+	   			$("#pwdcheck_blank2").css("color", "green");
+	   			$("#pwdcheck_blank2").text("비밀번호가 일치합니다");
+	   			$("#signup").attr("disabled", false);
+	   		}else {
+	   			$("#pwdcheck_blank2").css("color", "red");
+	   			$("#pwdcheck_blank2").text("비밀번호와 일치하지 않습니다.");
+	   			$("#password_check").val("");
+	   			$("#signup").attr("disabled", true);
+	   		}
+	   	});
+	   	
+// ===================================== 비밀번호 유효성 및 비밀번호 확인 체크 =====================================		
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  
+  $.datepicker.setDefaults({
+      dateFormat: 'yy-mm-dd',
+      prevText: '이전 달',
+      nextText: '다음 달',
+      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+      showMonthAfterYear: true,
+      yearSuffix: '년'
+  });
 </script>

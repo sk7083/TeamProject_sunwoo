@@ -258,12 +258,21 @@ public class HomeController {
 //		
 //	}
 	
+	//이전에 사용하던 ajax 코드
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+//	public int idCheck(String me_id) throws Exception {
+//		int cnt = memberService.idCheck(me_id);
+//		System.out.println("me_id값 알려줘"+me_id);
+//		return cnt;
+//	}
+	
+	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
 	@ResponseBody
-	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
-	public int idCheck(String me_id) throws Exception {
-		int cnt = memberService.idCheck(me_id);
-		System.out.println("me_id값 알려줘"+me_id);
-		return cnt;
+	public int idCheck(@RequestParam("meId") String me_id) {
+
+		return memberService.idCheck(me_id);
 	}
 	
 	
