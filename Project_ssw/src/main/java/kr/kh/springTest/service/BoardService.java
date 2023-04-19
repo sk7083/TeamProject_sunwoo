@@ -2,8 +2,11 @@ package kr.kh.springTest.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import kr.kh.springTest.vo.BoardVO;
-import kr.kh.springTest.vo.MemberVO;
+import kr.kh.springTest.vo.FileVO;
 
 public interface BoardService {
 
@@ -11,7 +14,7 @@ public interface BoardService {
 	public List<BoardVO> boardLoad(BoardVO board);
 
 	//게시판 글쓰기
-	public int boardWriter(BoardVO board);
+	public int boardWriter(BoardVO board, MultipartFile file);
 	
 	//게시판 수정
 	public int boardUpdate(BoardVO board);
@@ -21,4 +24,7 @@ public interface BoardService {
 	
 	//게시판 삭제
 	public int boardDelete(int bo_pid);
+
+	//파일 업로드(추가)
+	public void fileUpload(FileVO file);
 }

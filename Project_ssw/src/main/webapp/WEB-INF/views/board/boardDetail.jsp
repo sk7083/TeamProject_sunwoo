@@ -119,6 +119,8 @@ input[type=submit]:hover {
 </head>
 <body>
 
+
+
 <div class="container">
 		  <div class="row">
 		    <div class="col-25">
@@ -138,16 +140,18 @@ input[type=submit]:hover {
 		    </div>
 		  </div>
 	  
+${downloadFile}
 
-	  
 		<input type="text" id="fname" name="bo_created" value="${Detail.bo_created}"  class="wer" style="display:none">
 		<input type="text" id="fname" name="bo_pid" value="${Detail.bo_pid}"  class="wer" style="display:none">
 		
-		<div class="form-group mt-3">
-			<label>첨부파일:</label>
-			<input type="file" class="form-control" name="files">
-			<input type="file" name="fi_pid"/>
-		</div>
+
+				<div class="form-group mt-3">
+					<label>첨부파일:</label>
+
+						<a class="form-control" href="<c:url value='/download${downloadFile.fi_name}'></c:url>" download="${downloadFile.fi_name}">${downloadFile.fi_name}</a>
+				</div>
+
 		
 		<c:if test="${user.me_auth == 2}">
 			<div class="row" style="float: left;">	

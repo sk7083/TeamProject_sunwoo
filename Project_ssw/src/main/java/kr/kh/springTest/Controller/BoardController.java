@@ -1,20 +1,25 @@
 package kr.kh.springTest.Controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.springTest.service.BoardService;
 import kr.kh.springTest.service.MemberService;
+import kr.kh.springTest.utils.UploadFileUtils;
 import kr.kh.springTest.vo.BoardVO;
 import kr.kh.springTest.vo.MemberVO;
 
@@ -53,17 +58,29 @@ public class BoardController {
 	
 	//게시판 글쓰기(POST)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.POST)
-	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board) throws Exception{
-		int ins = boardService.boardWriter(board);
+	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, MultipartFile file) throws Exception{
+		int ins = boardService.boardWriter(board, file);
 		if(ins != 0) {
 			System.out.println("게시글 등록 완료");
 			System.out.println("등록된 게시글 : "+ board);
+			UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
 			mv.setViewName("redirect:/");
 		} else {
 			System.out.println("게시글 등록 실패");
 			mv.setViewName("redirect:/boardInsert");
 		}
 		return mv;
+	}
+	
+	/* 서버에 저장 */
+	private String uploadFile(String name, byte[] data)
+		throws Exception{
+	    /* 고유한 파일명을 위해 UUID를 이용 */
+		UUID uid = UUID.randomUUID();
+		String savaName = uid.toString() + "_" + name;
+		File target = new File(uploadPath, savaName);
+		FileCopyUtils.copy(data, target);
+		return savaName;
 	}
 	
 	//게시판 상세 페이지

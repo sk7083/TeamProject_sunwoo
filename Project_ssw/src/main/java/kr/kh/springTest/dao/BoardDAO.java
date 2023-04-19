@@ -3,6 +3,7 @@ package kr.kh.springTest.dao;
 import java.util.List;
 
 import kr.kh.springTest.vo.BoardVO;
+import kr.kh.springTest.vo.FileVO;
 
 
 public interface BoardDAO {
@@ -21,4 +22,7 @@ public interface BoardDAO {
 
 	//게시판 삭제
 	public int BoardDelete(int bo_pid);
+	
+	//파일 업로드(추가)
+	public void FileInsert(FileVO file);
 }

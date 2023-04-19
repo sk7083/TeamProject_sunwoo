@@ -31,11 +31,17 @@
 		 		where
 		 			bo_pid = #{bo_pid}
 	</update>
-	
+
 	<!-- 게시판 삭제 -->
   	<delete id="BoardDelete">
   		delete from board
   			where bo_pid = #{bo_pid}
   	</delete>
+  	
+  	 <!-- 파일 업로드(추가) -->
+	 <insert id="FileInsert">
+	 	insert into file (fi_pid, fi_name)
+	 	 values(#{fi_pid}, #{fi_name})
+	 </insert>
 </mapper>
 

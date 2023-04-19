@@ -23,7 +23,7 @@
 <div class="container">
 <h1>글쓰기</h1>
 
-	<form action="<c:url value="/boardInsert"></c:url>" method="post" enctype="multipart/form-date">
+	<form action="<c:url value="/boardInsert"></c:url>" method="post" enctype="multipart/form-data">
 	
 		<div class="form-group">
 			<input type="text" class="form-control" id="title" name="bo_title" placeholder="제목을 입력하세요.">
@@ -36,12 +36,9 @@
 		<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
 
 			<div class="form-group mt-3">
-				<label for="subject">첨부파일:</label>
-				<input type="file" class="form-control" name="fi_pid" multiple="multiple">
-	
-				<!-- 파일 업로드 테스트 중 (2023-04-18) -->
-				<input type="file" name="fi_pid"/>
-             	<input class="btn btn-primary btn-sm"  type="submit" value="업로드"/>
+				<label>파일</label>
+        		<input type="file" class="form-control" name="file"/>
+
 				
 			</div>
 		</div>
