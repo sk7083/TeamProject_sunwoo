@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.springTest.service.ProductService;
-import kr.kh.springTest.vo.BoardVO;
 import kr.kh.springTest.vo.MemberVO;
 import kr.kh.springTest.vo.ProductVO;
 
@@ -84,7 +83,7 @@ public class ProductController {
 		ProductVO Detail = productService.productDetail(pr_pid);
 
 		mv.addObject("Detail", Detail);
-		System.out.println("productDetail 값 : "+Detail);
+		System.out.println("boardDetail 값 : "+Detail);
 		mv.setViewName("product/productDetail");
 		return mv;
 	}

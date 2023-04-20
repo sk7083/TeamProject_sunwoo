@@ -88,8 +88,8 @@ public class MemberServiceImp implements MemberService{
 	//아이디 중복체크
 	@Override
 	public int idCheck(String me_id) {
-		int cnt = memberDao.idCheck(me_id);
-		System.out.println("cnt: " + cnt);
-		return cnt;
+		
+		int result = memberDao.idCheck(me_id);
+		return result;
 	}
 }

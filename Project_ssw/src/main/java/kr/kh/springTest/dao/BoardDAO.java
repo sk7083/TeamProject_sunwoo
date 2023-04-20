@@ -24,5 +24,5 @@ public interface BoardDAO {
 	public int BoardDelete(int bo_pid);
 	
 	//파일 업로드(추가)
-	public void FileInsert(FileVO file);
+	public int FileInsert(FileVO file);
 }

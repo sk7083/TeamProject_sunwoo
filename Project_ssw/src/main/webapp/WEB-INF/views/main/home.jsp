@@ -10,7 +10,7 @@
 
 
 <c:if test="${user.me_id == null}">
-<a href="<c:url value="/login"></c:url>">로그인</a><br>
+<a href="<c:url value="/"></c:url>">로그인</a><br>
 <a href="<c:url value="/register"></c:url>">회원가입</a><br>
 </c:if>
 

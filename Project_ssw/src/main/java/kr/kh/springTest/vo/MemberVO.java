@@ -92,5 +92,4 @@ public class MemberVO {
 				+ ", me_auth=" + me_auth + ", me_name=" + me_name + ", me_phone=" + me_phone + ", me_address1="
 				+ me_address1 + ", me_address2=" + me_address2 + ", me_address3=" + me_address3 + "]";
 	}
-
 }

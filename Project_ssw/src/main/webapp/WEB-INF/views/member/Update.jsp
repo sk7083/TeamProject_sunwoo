@@ -179,7 +179,7 @@ input[type=submit]:hover {
 		      <label for="fname">상세 주소</label>
 		    </div>
 		    <div class="col-75">
-		      <input type="text" name="me_address1" value="${Detail.me_address3}" class="wer">
+		      <input type="text" name="me_address3" value="${Detail.me_address3}" class="wer">
 		    </div>
 		  </div>
 		  

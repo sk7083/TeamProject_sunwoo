@@ -151,6 +151,7 @@ public class HomeController {
 			@RequestParam("me_id") String me_id) throws Exception{
 		MemberVO Detail = memberService.memberDetail(me_id);
 		System.out.println("update에서의 detail 값 : "+Detail);
+		System.out.println("me_id값 출력 : "+me_id);
 		mv.addObject("Detail", Detail);
 		session.setAttribute("Detail", Detail);
 		mv.setViewName("member/Update");
@@ -160,13 +161,15 @@ public class HomeController {
 	
 	//회원정보 수정 (POST)
 	@RequestMapping(value = "/Update", method = RequestMethod.POST)
-	public ModelAndView memberUpdatePOST(ModelAndView mv, MemberVO member) throws Exception{		
+	public ModelAndView memberUpdatePOST(ModelAndView mv, MemberVO member, 
+			@RequestParam("me_id") String me_id) throws Exception{		
+		MemberVO Detail = memberService.memberDetail(me_id);
 		System.out.println("=======================================");
 		int res = memberService.memberUpdate(member);
 		System.out.println("res값 확인 : "+res);
 		if(res != 0) {
 			System.out.println("회원정보 수정 완료");
-			mv.setViewName("redirect:/Detail");
+			mv.setViewName("redirect:/Detail?me_id="+me_id);
 		} else {
 			System.out.println("회원정보 수정 실패");
 			mv.setViewName("redirect:/information");
@@ -177,11 +180,12 @@ public class HomeController {
 	//회원 삭제
 	@RequestMapping(value = "/Delete/{me_id}", method = RequestMethod.GET)
 	public ModelAndView boardDelete(ModelAndView mv, @PathVariable("me_id")String me_id, MemberVO member) throws Exception{
-		
+		MemberVO user = memberService.memberLogin(member);
 		int res = memberService.memberDelete(me_id);
 		if(res != 0) {
 			System.out.println("회원 삭제 완료");
-			mv.setViewName("redirect:/");
+			mv.addObject("user", user);
+			mv.setViewName("redirect:/detail");
 		} else {
 			System.out.println("회원 삭제 실패");
 			mv.setViewName("redirect:/information");
@@ -268,7 +272,7 @@ public class HomeController {
 //		return cnt;
 //	}
 	
-	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/idCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("meId") String me_id) {
 

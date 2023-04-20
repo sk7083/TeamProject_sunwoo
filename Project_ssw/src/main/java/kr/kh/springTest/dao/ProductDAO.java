@@ -13,7 +13,7 @@ public interface ProductDAO {
 	public int ProductInsert(ProductVO product);
 	
 	//상품 수정
-	public int ProductUpdate(ProductVO product);
+	public int ProductUpdate(ProductVO board);
 	
 	//상품 상세 페이지
 	public ProductVO ProductSelect(int pr_pid);
