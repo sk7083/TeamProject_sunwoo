@@ -36,8 +36,8 @@
 		<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
 
 			<div class="form-group mt-3">
-				<label>파일</label>
-        		<input type="file" class="form-control" name="file"/>
+				<label>업로드</label>
+        		<input type="file" class="form-control" name="uploadFile"/>
 
 				
 			</div>

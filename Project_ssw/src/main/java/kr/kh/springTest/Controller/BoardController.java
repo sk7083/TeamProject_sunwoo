@@ -1,20 +1,21 @@
 package kr.kh.springTest.Controller;
 
 
+import java.io.File;
 import java.util.List;
-
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.springTest.service.BoardService;
@@ -46,13 +47,25 @@ public class BoardController {
 	
 	//게시판 글쓰기(GET)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
-	public ModelAndView boardInsert(ModelAndView mv, HttpServletRequest request, MemberVO member) throws Exception{
+	public ModelAndView boardInsert(ModelAndView mv, HttpServletRequest request, MemberVO member, BoardVO board) throws Exception{
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-
-		mv.addObject("user", user);
-		System.out.println("보낸 user 정보 : " + user);
-		mv.setViewName("board/boardInsert");
-		return mv;
+		//여기서부터 파일 업로드 관련 코드
+		String fi_pid = null;
+		MultipartFile uploadFile = board.getBo_uploadFile();
+			if(!uploadFile.isEmpty()) {
+				String originalFileName = uploadFile.getOriginalFilename();
+				String ext = FilenameUtils.getExtension(originalFileName);
+				
+				UUID uuid = UUID.randomUUID();
+				fi_pid = uuid+ "." + ext;
+				uploadFile.transferTo(new File("D:\\upload\\" + fi_pid));
+			}
+			board.setFi_pid(fi_pid);
+			boardService.boardWriter(board);
+			
+			mv.addObject("user", user);
+			mv.setViewName("board/boardInsert");
+			return mv;
 	}
 	
 	//게시판 글쓰기(POST)

@@ -9,8 +9,7 @@
 		<h3>폴더 내의 모든 파일 목록 출력</h3>
 		
 		<c:forEach var="file" items="${fileList}">
-			<a href="<c:url value='/fileDownload/${file}'/>">${file} 파일 다운로드</a><br><br>
+			<a href="<c:url value='/fileDownload/${file}'></c:url>">${file} 파일 다운로드</a><br><br>
 		</c:forEach>
-		
 	</body>
 </html>

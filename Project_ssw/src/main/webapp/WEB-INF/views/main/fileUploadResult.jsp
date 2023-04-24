@@ -7,6 +7,6 @@
 	</head>
 	<body>
 		${originalFileName } 파일을 업로드 하였습니다.<br>
-		/Library/springWorkspace/upload 폴더에서 확인하세요.
+		D://git//upload/ 폴더에서 확인하세요.
 	</body>
 </html>

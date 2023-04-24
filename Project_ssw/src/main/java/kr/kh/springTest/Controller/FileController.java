@@ -28,7 +28,7 @@ public class FileController {
 			
 			
 			// 1. 파일 저장 경로 설정 : 실제 서비스되는 위치(프로젝트 외부에 저장)
-			String uploadPath = "D:\\git\\upload\\save";
+			String uploadPath = "D:\\git\\upload\\save/";
 			// 마지막에 / 있어야함
 			
 			// 2. 원본 파일 이름 알아오기

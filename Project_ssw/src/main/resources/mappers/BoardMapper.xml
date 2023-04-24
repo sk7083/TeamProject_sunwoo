@@ -11,8 +11,8 @@
   
   	<!-- 게시판 글쓰기 -->
 	 <insert id="BoardInsert" useGeneratedKeys="true" keyProperty="bo_pid">
-	 	insert into board (bo_pid, bo_content, bo_title, bo_writer, bo_modified)
-	 	 values(#{bo_pid}, #{bo_content}, #{bo_title}, #{bo_writer}, #{bo_modified})
+	 	insert into board (bo_pid, bo_content, bo_title, bo_writer, bo_modified, fi_pid)
+	 	 values(#{bo_pid}, #{bo_content}, #{bo_title}, #{bo_writer}, #{bo_modified}, #{fi_pid})
 	 </insert>
   
   	<!-- 게시판 상세 페이지 -->

@@ -31,10 +31,11 @@ public class FileDownloadController {
 	
 	// 파일 다운로드 
 	@RequestMapping("/fileDownload/{file}")
-	public void ModelAndView(@PathVariable String file, 
-								HttpServletResponse response) throws IOException {
+	public void ModelAndView(@PathVariable String file, HttpServletResponse response) throws IOException {
 		System.out.println("들어왔습니다!");
-		File f = new File("D:/git/upload", file);
+		System.out.println("file에 대해서 : "+file);
+		File f = new File("D:\\git\\upload", file);
+		System.out.println("f에 대해서2 : "+f);
 
 		System.out.println("들어왔습니다222");
 		// file 다운로드 설정
@@ -45,7 +46,8 @@ public class FileDownloadController {
 		// 다운로드 시 저장되는 이름은 Response Header의 "Content-Disposition"에 명시
 		OutputStream os = response.getOutputStream();
 		System.out.println("들어왔습니다444444444444");
-		System.out.println("파일 상태 체크 : "+file);
+		System.out.println("파일 상태 체크 file : "+file);
+		System.out.println("파일 상태 체크 f : "+f);
 		FileInputStream fis = new FileInputStream(f);
 		System.out.println("파일 상태 비교 : "+fis);
 		System.out.println("들어왔습니다5555");
