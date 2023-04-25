@@ -2,13 +2,13 @@ package kr.kh.springTest.Controller;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.kh.springTest.service.BoardService;
 import kr.kh.springTest.service.MemberService;
 import kr.kh.springTest.vo.BoardVO;
+import kr.kh.springTest.vo.FileVO;
 import kr.kh.springTest.vo.MemberVO;
 
 
@@ -49,19 +50,6 @@ public class BoardController {
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
 	public ModelAndView boardInsert(ModelAndView mv, HttpServletRequest request, MemberVO member, BoardVO board) throws Exception{
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		//여기서부터 파일 업로드 관련 코드
-		String fi_pid = null;
-		MultipartFile uploadFile = board.getBo_uploadFile();
-			if(!uploadFile.isEmpty()) {
-				String originalFileName = uploadFile.getOriginalFilename();
-				String ext = FilenameUtils.getExtension(originalFileName);
-				
-				UUID uuid = UUID.randomUUID();
-				fi_pid = uuid+ "." + ext;
-				uploadFile.transferTo(new File("D:\\upload\\" + fi_pid));
-			}
-			board.setFi_pid(fi_pid);
-			boardService.boardWriter(board);
 			
 			mv.addObject("user", user);
 			mv.setViewName("board/boardInsert");
@@ -69,19 +57,20 @@ public class BoardController {
 	}
 	
 	//게시판 글쓰기(POST)
-	@RequestMapping(value = "/boardInsert", method = RequestMethod.POST)
-	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board) throws Exception{
-		int ins = boardService.boardWriter(board);
-		if(ins != 0) {
-			System.out.println("게시글 등록 완료");
-			System.out.println("등록된 게시글 : "+ board);
-			mv.setViewName("redirect:/");
-		} else {
-			System.out.println("게시글 등록 실패");
-			mv.setViewName("redirect:/boardInsert");
-		}
-		return mv;
-	}
+//	@RequestMapping(value = "/boardInsert", method = RequestMethod.POST)
+//	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, @RequestParam("file") MultipartFile file, @RequestParam("bo_pid") int bo_pid) throws Exception{
+//		int ins = boardService.boardWriter(board);	
+//		
+//		if(ins != 0) {
+//			System.out.println("게시글 등록 완료");
+//			System.out.println("등록된 게시글 : "+ board);
+//			mv.setViewName("redirect:/");
+//		} else {
+//			System.out.println("게시글 등록 실패");
+//			mv.setViewName("redirect:/boardInsert");
+//		}
+//		return mv;
+//	}
 	
 
 	

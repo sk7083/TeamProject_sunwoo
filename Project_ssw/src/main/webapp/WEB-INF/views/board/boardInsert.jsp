@@ -22,9 +22,7 @@
 
 <div class="container">
 <h1>글쓰기</h1>
-
-	<form action="<c:url value="/boardInsert"></c:url>" method="post" enctype="multipart/form-data">
-	
+	<form action='<c:url value="/boardInsert"></c:url>' method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<input type="text" class="form-control" id="title" name="bo_title" placeholder="제목을 입력하세요.">
 		</div>
@@ -33,21 +31,21 @@
 			<textarea class="summernote" name="bo_content" placeholder="내용을 입력하세요.">
 			</textarea>
 			
-		<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
-
-			<div class="form-group mt-3">
-				<label>업로드</label>
-        		<input type="file" class="form-control" name="uploadFile"/>
-
-				
-			</div>
-		</div>
+			<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
+	
+		    <div class="form-group" id="file-list">
+		        <a href="#this" onclick="addFile()">파일추가</a>
+		        <div class="file-group">
+		            <input type="file" name="file"><a href='#this' name='file-delete'>삭제</a>
+		        </div>
+		    </div>
+	    </div>
+	    
 		<button class="btn btn-outline-success" style="float: left; margin-right : 20px; margin-top : 20px">게시글 작성</button>
-
 	</form>
+	
 	<button class="btn btn-outline-danger" name="BoardWriting"
 		onclick="BoardWriting();" style="margin-top : 20px">취소</button>
-		
 </div>
 
 <script type="text/javaScript">
@@ -59,6 +57,28 @@ $('.summernote').summernote({
 
 function BoardWriting(){
     location.href = "/springTest";
+}
+
+//파일 추가/삭제 버튼
+
+$(document).ready(function() {
+    $("a[name='file-delete']").on("click", function(e) {
+        e.preventDefault();
+        deleteFile($(this));
+    });
+})
+
+function addFile() {
+    var str = "<div class='file-group'><input type='file' name='file'><a href='#this' name='file-delete'>삭제</a></div>";
+    $("#file-list").append(str);
+    $("a[name='file-delete']").on("click", function(e) {
+        e.preventDefault();
+        deleteFile($(this));
+    });
+}
+
+function deleteFile(obj) {
+    obj.parent().remove();
 }
 </script>
 </body>

@@ -20,7 +20,7 @@ public class FileDownloadController {
 	// 파일 목록 보여주기
 	@RequestMapping("/fileDownloadList")
 	public ModelAndView fileDownloadList(ModelAndView mv) {
-		File path = new File("D:/git/upload");
+		File path = new File("C:/test/upload");
 		String[] fileList = path.list();
 		
 		mv.addObject("fileList", fileList);
@@ -34,7 +34,7 @@ public class FileDownloadController {
 	public void ModelAndView(@PathVariable String file, HttpServletResponse response) throws IOException {
 		System.out.println("들어왔습니다!");
 		System.out.println("file에 대해서 : "+file);
-		File f = new File("D:\\git\\upload", file);
+		File f = new File("C:/test/upload", file);
 		System.out.println("f에 대해서2 : "+f);
 
 		System.out.println("들어왔습니다222");

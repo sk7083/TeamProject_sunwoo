@@ -1,22 +1,22 @@
 package kr.kh.springTest.service; 
  
-import java.util.List; 
- 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.context.annotation.ImportResource; 
-import org.springframework.stereotype.Service; 
-import org.springframework.web.multipart.MultipartFile; 
-import org.springframework.web.multipart.MultipartHttpServletRequest; 
- 
-import kr.kh.springTest.dao.BoardDAO; 
-import kr.kh.springTest.vo.BoardVO; 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import Utils.FileUtils;
+import kr.kh.springTest.dao.BoardDAO;
+import kr.kh.springTest.vo.BoardVO;
 import kr.kh.springTest.vo.FileVO; 
  
 @Service 
 public class BoardServiceImp implements BoardService{ 
 	@Autowired 
 	BoardDAO boardDao; 
-	 
+	FileUtils fileUtils;
  
 	//게시판 전체 리스트 
 	@Override 
@@ -25,14 +25,15 @@ public class BoardServiceImp implements BoardService{
 	} 
 	 
 	//게시판 글쓰기 
-	@Override 
-	public int boardWriter(BoardVO board){ 
-		if(board == null) { 
-			return 0; 
-		} 
- 
-		return boardDao.BoardInsert(board); 
-	} 
+	@Override
+	@Override
+	public void insertBoard(BoardVO board, MultipartFile[] file) throws Exception{
+	    boardDao.BoardInsert(board);
+	    List<Map<String, Object>> fileList = fileUtils.parseFileInfo(board.getBo_pid(), file);
+	    for(int i=0; i<fileList.size(); i++) {
+	        boardDao.insertFile(fileList.get(i));
+	    }
+	}
 	 
 	//게시판 수정 
 	@Override 
@@ -64,11 +65,11 @@ public class BoardServiceImp implements BoardService{
 	 
 	//파일 업로드(추가) 
 	@Override 
-	public void fileUpload(FileVO file){ 
+	public int fileInsert(FileVO file){ 
 		if(file == null) { 
-			return; 
+			return 0; 
 		} 
-		return; 
+		return boardDao.FileInsert(file);
 	} 
 	 
  

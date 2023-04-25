@@ -9,9 +9,11 @@
 		<h3>파일 업로드</h3>
 		
 		<form action="<c:url value="/fileUploadForm"></c:url>" method="post" enctype="multipart/form-data">
-			파일 : <input type="file" id="uploadFile" name="uploadFile">		
+			파일 : <input type="file" id="uploadFile" name="file">		
 			<input type="submit" value="업로드">
 		</form>
+		
+		<!-- 
 		
 		<h3>여러 개의 파일 업로드</h3>
 		<form id="fileUploadFormMulti" method="post" 
@@ -28,6 +30,8 @@
 			파일 : <input type="file" id="uploadFile" name="uploadFile">		
 			<input type="submit" value="업로드">
 		</form>
+		
+		 -->
 
 	</body>
 </html>

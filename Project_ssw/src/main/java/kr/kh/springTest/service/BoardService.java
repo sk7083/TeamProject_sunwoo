@@ -26,5 +26,5 @@ public interface BoardService {
 	public int boardDelete(int bo_pid);
 
 	//파일 업로드(추가)
-	public void fileUpload(FileVO file);
+	public void insertBoard(CommandMap commandMap, MultipartFile[] file) throws Exception;
 }

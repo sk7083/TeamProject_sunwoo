@@ -140,7 +140,6 @@ input[type=submit]:hover {
 		    </div>
 		  </div>
 	  
-${downloadFile}
 
 		<input type="text" id="fname" name="bo_created" value="${Detail.bo_created}"  class="wer" style="display:none">
 		<input type="text" id="fname" name="bo_pid" value="${Detail.bo_pid}"  class="wer" style="display:none">
@@ -148,8 +147,7 @@ ${downloadFile}
 
 				<div class="form-group mt-3">
 					<label>첨부파일:</label>
-
-						<a class="form-control" href="<c:url value='/download${downloadFile.fi_name}'></c:url>" download="${downloadFile.fi_name}">${downloadFile.fi_name}</a>
+					<input type="text" name="file" value="${Detail.fi_pid}" class="wer"> 			
 				</div>
 
 		

@@ -1,9 +1,9 @@
 package kr.kh.springTest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.kh.springTest.vo.BoardVO;
-import kr.kh.springTest.vo.FileVO;
 
 
 public interface BoardDAO {
@@ -24,5 +24,6 @@ public interface BoardDAO {
 	public int BoardDelete(int bo_pid);
 	
 	//파일 업로드(추가)
-	public int FileInsert(FileVO file);
+	public void insertFile(Map<String, Object> map);
+
 }

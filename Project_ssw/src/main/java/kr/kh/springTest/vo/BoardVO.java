@@ -17,8 +17,8 @@ public class BoardVO {
 	private String bo_title; 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") 
 	private String bo_modified; 
-	private String fi_pid; 
-	private MultipartFile bo_uploadFile;
+	private MultipartFile fi_pid; 
+
  
 	 
 	public String getBo_pid() { 
@@ -27,12 +27,6 @@ public class BoardVO {
 	public void setBo_pid(String bo_pid) { 
 		this.bo_pid = bo_pid; 
 	} 
-	public MultipartFile getBo_uploadFile() {
-		return bo_uploadFile;
-	}
-	public void setBo_uploadFile(MultipartFile bo_uploadFile) {
-		this.bo_uploadFile = bo_uploadFile;
-	}
 	public String getBo_writer() { 
 		return bo_writer; 
 	} 
@@ -64,17 +58,17 @@ public class BoardVO {
 	public void setBo_modified(String bo_modified) { 
 		this.bo_modified = bo_modified; 
 	} 
-	public String getFi_pid() { 
+	public MultipartFile getFi_pid() { 
 		return fi_pid; 
 	} 
-	public void setFi_pid(String fi_pid) { 
+	public void setFi_pid(MultipartFile fi_pid) { 
 		this.fi_pid = fi_pid; 
 	}
 	@Override
 	public String toString() {
 		return "BoardVO [bo_pid=" + bo_pid + ", bo_writer=" + bo_writer + ", bo_created=" + bo_created + ", bo_content="
 				+ bo_content + ", bo_title=" + bo_title + ", bo_modified=" + bo_modified + ", fi_pid=" + fi_pid
-				+ ", bo_uploadFile=" + bo_uploadFile + "]";
+				+ ", bo_uploadFile="+ "]";
 	} 
 	 
 	
