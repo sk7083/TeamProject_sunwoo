@@ -128,12 +128,9 @@
             </ul>
           </div>
 
-          <ul class="social-icons ml-auto">
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-            <li><a href="#"><i class="fas fa-rss"></i></a></li>
+          <ul class="social-icons ml-auto" style="padding-top: 14px;">
+            <li><a href="#"  style="font-size: 16px; font-weight: bold;">로그인</a></li>
+            <li><a href="#"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
           </ul>
         </div>
       </nav>

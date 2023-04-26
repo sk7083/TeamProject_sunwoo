@@ -57,20 +57,43 @@ public class BoardController {
 	}
 	
 	//게시판 글쓰기(POST)
-//	@RequestMapping(value = "/boardInsert", method = RequestMethod.POST)
-//	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, @RequestParam("file") MultipartFile file, @RequestParam("bo_pid") int bo_pid) throws Exception{
-//		int ins = boardService.boardWriter(board);	
-//		
-//		if(ins != 0) {
-//			System.out.println("게시글 등록 완료");
-//			System.out.println("등록된 게시글 : "+ board);
-//			mv.setViewName("redirect:/");
-//		} else {
-//			System.out.println("게시글 등록 실패");
-//			mv.setViewName("redirect:/boardInsert");
-//		}
-//		return mv;
-//	}
+	@RequestMapping(value = "/boardInsert", method = RequestMethod.POST)
+	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, MultipartFile[] file) throws Exception{
+		
+		int bes = boardService.boardInsert(board);
+		
+//	 String filePath  = "D:\\upload\\";	
+//	 int bo_pid = board.getBo_pid();
+//	 String fi_crea_id = board.getBo_writer();
+//	 
+//	 for(int i=0; i<file.length; i++) {		 
+//		 String fi_ori_name = file[i].getOriginalFilename();
+//		 long fi_size = file[i].getSize();
+//		 System.out.println("fi_ori_name 값 : " + fi_ori_name);
+//		 System.out.println("fi_size 값 : " + fi_size);
+//	 }
+//	 
+//	 
+//	 System.out.println("filePath 값 : " + filePath);
+//	 System.out.println("bo_pid 값 : " + bo_pid);
+//	 System.out.println("fi_crea_id 값 : " + fi_crea_id);
+//	 System.out.println("최종 board 값 : "+board);
+//	 System.out.println("최종 file 값 : "+file);
+	
+
+	 System.out.println("board값 체크 : [boardController] : " + board);
+	 System.out.println("file값 체크 : [boardController] : " + file);
+
+		if(bes != 0) {
+			System.out.println("게시글 등록 완료");
+			System.out.println("등록된 게시글 : "+ board);
+			mv.setViewName("redirect:/");
+		} else {
+			System.out.println("게시글 등록 실패");
+			mv.setViewName("redirect:/boardInsert");
+		}
+		return mv;
+	}
 	
 
 	

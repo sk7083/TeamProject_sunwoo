@@ -33,7 +33,7 @@ public class FileController {
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
 		String uploadFolder = "C:\\test\\upload";
 		
-		
+
 		/*
 		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
 		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
@@ -49,8 +49,6 @@ public class FileController {
 		System.out.println("생성된 고유문자열" + uniqueName);
 		System.out.println("확장자명" + fileExtension);
 		
-		
-		
 		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
 		
 		File saveFile = new File(uploadFolder+"\\"+uniqueName + fileExtension);  // 적용 후
@@ -61,7 +59,14 @@ public class FileController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "main/fileUploadResult";
+		String fi_ori_name = fileExtension;
+		String fi_name = fileRealName;
+		long fi_size = size;
+		
+		System.out.println("fi_ori_name 값" + fi_ori_name);
+		System.out.println("fi_name 값" + fi_name);
+		System.out.println("fi_size 값" + fi_size);
+		return "/";
 	}
 	
 	
@@ -99,6 +104,7 @@ public class FileController {
 		//메인 화면
 		@RequestMapping(value = "/fileUploadResult", method = RequestMethod.GET)
 		public ModelAndView fileUploadResult(ModelAndView mv) throws Exception{
+			
 			mv.setViewName("main/fileUploadResult");
 			
 			return mv;

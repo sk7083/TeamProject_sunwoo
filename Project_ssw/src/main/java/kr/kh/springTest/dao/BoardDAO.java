@@ -3,6 +3,8 @@ package kr.kh.springTest.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.kh.springTest.vo.BoardVO;
 
 
@@ -24,6 +26,6 @@ public interface BoardDAO {
 	public int BoardDelete(int bo_pid);
 	
 	//파일 업로드(추가)
-	public void insertFile(Map<String, Object> map);
+	public void insertFile(MultipartFile[] file);
 
 }

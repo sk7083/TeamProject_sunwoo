@@ -3,90 +3,86 @@
     pageEncoding="UTF-8"%>
     
 
-<title>테스트</title>
+<title>회원가입</title>
 
 
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-
-          
 <div class="container">
-	<form action="<c:url value="/register"></c:url>" method="post">
+<h1>회원가입</h1>
+	<section id="container">
+		<form action="<c:url value="/register"></c:url>" method="post">
+			<div class="form-group has-feedback">
+			<!--
+				<label class="control-label" for="userId">아이디</label>
+				<input class="form-control" type="text" id="me_id" name="me_id" oninput = "checkId()" />
+			 id ajax 중복체크 
+				<span class="id_ok" style="display: none">사용 가능한 아이디입니다.</span>
+				<span class="id_already" style="display: none">누군가 이 아이디를 사용하고 있어요.</span>
+			-->
+			
+			<!-- 아이디 -->
 		<div class="form-group">
 			<label for="user_id">아이디</label>
 				<input type="text" class="form-control" id="user_id" name="me_id" placeholder="ID" required maxlength="16">
 		<div class="check_font" id="id_check"></div>
 		</div>
-	    
-   		<div class="form-group">
-			<label class="control-label" for="userEmail">비밀번호</label>
-				<input class="form-control" type="password" name="me_pw" id="password" placeholder="PW" maxlength="16">
+		
+		<div class="form-group">
+			<label for="user_id">비밀번호</label>
+				<input type="password" name="me_pw" id="password" placeholder="PW" maxlength="16">
 		<div id="pwdcheck_blank1"></div>
 		</div>
 		
-		<div class="form-group">
-			<label class="control-label" for="userEmail">비밀번호 재확인</label>
-				<input class="form-control" type="password" name="password_check" id="password_check" placeholder="PW" maxlength="16">
+				<div class="form-group">
+			<label for="user_id">비밀번호 재확인</label>
+				<input type="password" name="password_check" id="password_check" placeholder="PW" maxlength="16">
 		<div id="pwdcheck_blank2"></div>
 		</div>
-	   
-	    <div class="form-group has-feedback">
-			<label class="control-label" for="userEmail">이메일</label>
-			<input class="form-control" type="text" id="email" name="me_email" />
-		</div>
-		<div class="form-group has-feedback">
-			<label class="control-label" for="userBirth">생년월일</label>
-			<input class="form-control" type="text" id="datepicker" name="me_birth" placeholder="2000-01-01" />
-		</div>
-		<div class="form-group has-feedback">
-			<label class="control-label" for="userName">이름</label>
-			<input class="form-control" type="text" id="name" name="me_name" />
-		</div>
-		<div class="form-group has-feedback">
-			<label class="control-label" for="userPhone">핸드폰 번호</label>
-			<input class="form-control" type="text" id="phone" name="me_phone" />
-		</div>
-		<div class="form-group has-feedback" style="padding-top : 20px">
+			
 		
-			<input type="text" id="sample6_postcode" placeholder="우편번호" name="me_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem;"><br><br>
-			<input type="text" id="sample6_address" placeholder="주소" name="me_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
-			<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="me_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
-			<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
-		</div>
-		<div class="form-group has-feedback">
-			<button class="btn btn-success" type="submit" id="signup">회원가입</button>
-			<button class="cencle btn btn-danger" type="reset">취소</button>
-		</div>
-	</form>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userEmail">이메일</label>
+				<input class="form-control" type="text" id="email" name="me_email" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userBirth">생년월일</label>
+				<input class="form-control" type="text" id="datepicker" name="me_birth" placeholder="2000-01-01" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userName">이름</label>
+				<input class="form-control" type="text" id="name" name="me_name" />
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label" for="userPhone">핸드폰 번호</label>
+				<input class="form-control" type="text" id="phone" name="me_phone" />
+			</div>
+			<div class="form-group has-feedback">
+				<input type="text" id="sample6_postcode" placeholder="우편번호" name="me_address1">
+				<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				<input type="text" id="sample6_address" placeholder="주소" name="me_address2" ><br>
+				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="me_address3" >
+				<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
+			</div>
+
+
+
+
+			<div class="form-group has-feedback">
+				<button class="btn btn-success" type="submit" id="signup">회원가입</button>
+				<button class="cencle btn btn-danger" type="reset">취소</button>
+				
+				<input type="text" class="form-control" id="user_id" name="me_id" placeholder="ID" required maxlength="16">
+				<p class="ssw">
+	알림창버튼
+			</div>
+		</form>
+	</section>
 </div>
-
-</body>
-
-<!-- 제이쿼리 -->
-
-<!-- sunwooTest 23-04-18 -->
-<!-- 
-<script src="<c:url value='/resources/sunwooTest/jquery-1.12.4.js'></c:url>"></script>
-<script src="<c:url value='/resources/sunwooTest/jquery-ui.css'></c:url>"></script>
-<script src="<c:url value='/resources/sunwooTest/jquery-ui.js'></c:url>"></script>
- -->
- 
- <!-- 테스트용  -->
- <script src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
+<script src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
 <script src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
 <script src="<c:url value='/resources/js/jquery-ui.min.js'></c:url>"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 제이쿼리 -->
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
 <!-- datepicker 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -96,6 +92,10 @@
 <script type="text/javascript">
 
 // ===================================== 카카오 주소창 api 사용 =====================================
+		$(".ssw").click(function(){		  
+		alert("알림창입니다.");
+	 });
+	
 	function sample6_execDaumPostcode() {
 	    new daum.Postcode({
 	        oncomplete: function(data) {

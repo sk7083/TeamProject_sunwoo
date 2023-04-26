@@ -26,13 +26,13 @@ public class BoardServiceImp implements BoardService{
 	 
 	//게시판 글쓰기 
 	@Override
-	@Override
-	public void insertBoard(BoardVO board, MultipartFile[] file) throws Exception{
-	    boardDao.BoardInsert(board);
-	    List<Map<String, Object>> fileList = fileUtils.parseFileInfo(board.getBo_pid(), file);
-	    for(int i=0; i<fileList.size(); i++) {
-	        boardDao.insertFile(fileList.get(i));
-	    }
+	public int boardInsert(BoardVO board){
+	    
+		if(board == null) {
+			return 0;
+		}
+		boardDao.BoardInsert(board);
+			return 1;
 	}
 	 
 	//게시판 수정 
@@ -65,11 +65,12 @@ public class BoardServiceImp implements BoardService{
 	 
 	//파일 업로드(추가) 
 	@Override 
-	public int fileInsert(FileVO file){ 
+	public int fileInsert(MultipartFile[] file){ 
 		if(file == null) { 
 			return 0; 
-		} 
-		return boardDao.FileInsert(file);
+		}
+		boardDao.insertFile(file);
+		return 1;
 	} 
 	 
  

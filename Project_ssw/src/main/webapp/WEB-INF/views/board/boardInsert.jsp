@@ -32,20 +32,20 @@
 			</textarea>
 			
 			<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
-	
-		    <div class="form-group" id="file-list">
-		        <a href="#this" onclick="addFile()">파일추가</a>
-		        <div class="file-group">
-		            <input type="file" name="file"><a href='#this' name='file-delete'>삭제</a>
-		        </div>
-		    </div>
 	    </div>
 	    
-		<button class="btn btn-outline-success" style="float: left; margin-right : 20px; margin-top : 20px">게시글 작성</button>
+	    <div class="form-group" id="file-list">
+	        <a href="#this" onclick="addFile()">파일추가</a>
+	        <div class="file-group">
+	            <input type="file" name="fi_pid"><a href='#this' name='file-delete'>삭제</a>
+	        </div>
+	    </div>
+
+    
+	<button class="btn btn-outline-success" style="float: left; margin-right : 20px; margin-top : 20px">게시글 작성</button>
 	</form>
 	
-	<button class="btn btn-outline-danger" name="BoardWriting"
-		onclick="BoardWriting();" style="margin-top : 20px">취소</button>
+	<button class="btn btn-outline-danger" name="BoardWriting" onclick="BoardWriting();" style="margin-top : 20px">취소</button>
 </div>
 
 <script type="text/javaScript">

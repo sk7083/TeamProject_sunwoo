@@ -69,6 +69,7 @@ public class HomeController {
 		return mv;
 	}
 	
+	
 	//회원가입 (POST)
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerMemberPost(ModelAndView mv, MemberVO member) throws Exception{
@@ -309,4 +310,20 @@ public class HomeController {
 		return mv;
 	}
 	
+	
+	//아래 지울것 테스트용
+	//회원가입 (GET)
+	@RequestMapping(value = "/register2", method = RequestMethod.GET)
+	public ModelAndView registerMember2(ModelAndView mv) throws Exception{
+		mv.setViewName("member/register2");
+		return mv;
+	}
+	
+	//아래 지울것 테스트용
+	//회원가입 (GET)
+	@RequestMapping(value = "/Binindex", method = RequestMethod.GET)
+	public ModelAndView Binindex(ModelAndView mv) throws Exception{
+		mv.setViewName("mainPage/Binindex");
+		return mv;
+	}
 }

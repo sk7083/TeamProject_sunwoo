@@ -14,7 +14,7 @@ public interface BoardService {
 	public List<BoardVO> boardLoad(BoardVO board);
 
 	//게시판 글쓰기
-	public int boardWriter(BoardVO board);
+	public int boardInsert(BoardVO board);
 	
 	//게시판 수정
 	public int boardUpdate(BoardVO board);
@@ -26,5 +26,5 @@ public interface BoardService {
 	public int boardDelete(int bo_pid);
 
 	//파일 업로드(추가)
-	public void insertBoard(CommandMap commandMap, MultipartFile[] file) throws Exception;
+	public int fileInsert(MultipartFile[] file) throws Exception;
 }
