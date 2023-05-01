@@ -254,7 +254,7 @@ public class HomeController {
 	}
 
 //	//아이디 중복체크
-//	@PostMapping("/idCheck")
+//	@RequestMapping("/idCheck/{me_id}")
 //	@ResponseBody
 //	public int idCheck(@RequestParam("me_id") String me_id) {
 //		
@@ -272,8 +272,9 @@ public class HomeController {
 //		System.out.println("me_id값 알려줘"+me_id);
 //		return cnt;
 //	}
+	//================================================================================
 	
-	@RequestMapping(value = "/user/idCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("meId") String me_id) {
 
@@ -311,19 +312,12 @@ public class HomeController {
 	}
 	
 	
-	//아래 지울것 테스트용
-	//회원가입 (GET)
-	@RequestMapping(value = "/register2", method = RequestMethod.GET)
-	public ModelAndView registerMember2(ModelAndView mv) throws Exception{
-		mv.setViewName("member/register2");
+	//myPage2
+	//삭제할 항목
+	@RequestMapping(value = "/myPage2", method = RequestMethod.GET)
+	public ModelAndView myPage2(ModelAndView mv) throws Exception{
+		mv.setViewName("member/myPage2");
 		return mv;
 	}
 	
-	//아래 지울것 테스트용
-	//회원가입 (GET)
-	@RequestMapping(value = "/Binindex", method = RequestMethod.GET)
-	public ModelAndView Binindex(ModelAndView mv) throws Exception{
-		mv.setViewName("mainPage/Binindex");
-		return mv;
-	}
 }

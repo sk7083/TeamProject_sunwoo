@@ -128,9 +128,21 @@
             </ul>
           </div>
 
+	<!-- 우측 상단 로그인 / 회원가입 버튼 -->
           <ul class="social-icons ml-auto" style="padding-top: 14px;">
-            <li><a href="#"  style="font-size: 16px; font-weight: bold;">로그인</a></li>
-            <li><a href="#"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
+			<c:if test="${user.me_id == null}">
+				<li><a id="loginBtn2" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
+			</c:if>
+			<c:if test="${user.me_id != null}">
+				<li><a href="<c:url value="/myPage"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
+			</c:if>
+        	<c:if test="${user.me_id == null}">
+				<li><a href="<c:url value="/register"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
+			</c:if>
+			<c:if test="${user.me_id != null}">
+				<li><a href="<c:url value="/logout"></c:url>"  style="font-size: 16px; font-weight: bold;">로그아웃</a></li>
+			</c:if>
+            
           </ul>
         </div>
       </nav>
@@ -159,7 +171,7 @@
             <h4>See What a Difference a stay makes</h4>
             <h1>Luxury <em>is</em> personal</h1>
            	<c:if test="${user.me_id == null}">
-	            <a id="loginBtn" class="button home-banner-btn" href="#" style="width: 180px;">로그인</a>
+	            <a id="loginBtn1" class="button home-banner-btn" href="#" style="width: 180px;">로그인</a>
            	</c:if>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
@@ -713,7 +725,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<div class="modal_body">
 			<button class="close-btn" onclick="modalClose()" style="float: right; display: flex; background-color: white; border: 0px solid; font-weight: bold; font-size: 26px; position: absolute; right: 6%; top: 2%">X</button><br>
 			<div class="container">
-			  <h2 style="text-align: center; margin-left: 10px; margin-bottom: 30px">SunMall</h2>
+			  <h2 style="text-align: center; margin-left: 10px; margin-bottom: 30px">SEAPLACE</h2>
 			  <!-- 
 			  <form action="/action_page.php" class="was-validated">
 			   -->
@@ -771,9 +783,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script type="text/javascript">
 	//========================= Login 모달창 [Start] =========================
 	const modal = document.querySelector('.modal');
-	const loginBtn = document.querySelector('#loginBtn');
+	const loginBtn1 = document.querySelector('#loginBtn1');
+	const loginBtn2 = document.querySelector('#loginBtn2');
 	
-	loginBtn.addEventListener('click', () => {
+	loginBtn1.addEventListener('click', () => {
+	modal.style.display = 'block';
+	});
+	
+	loginBtn2.addEventListener('click', () => {
 	modal.style.display = 'block';
 	});
 		
@@ -786,6 +803,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$('#mod').modal('hide'); 
         $('#mod').hide();
 	}
+
+	
 	//========================= Login 모달창 [End] ===========================
 
 </script>

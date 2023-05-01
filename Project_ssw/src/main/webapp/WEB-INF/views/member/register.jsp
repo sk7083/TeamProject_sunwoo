@@ -54,10 +54,7 @@
 
 </style>
 	<!-- ================ Style End ================= -->	
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>Seaplace Hotel</title>
 	
 	<!-- 메인화면 필수 link -->
@@ -81,11 +78,11 @@
 
 
 
-</head>
 
 
 
-<body>
+
+
 	<!-- ================ header section start ================= -->	
 	<header class="header_area">
     <div class="header-top">
@@ -147,29 +144,29 @@
             </ul>
           </div>
 
+         <!-- 우측 상단 로그인 / 회원가입 버튼 -->
           <ul class="social-icons ml-auto" style="padding-top: 14px;">
-            <li><a href="#"  style="font-size: 16px; font-weight: bold;">로그인</a></li>
-            <li><a href="#"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
+			<c:if test="${user.me_id == null}">
+				<li><a id="loginBtn" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
+			</c:if>
+			<c:if test="${user.me_id != null}">
+				<li><a href="<c:url value="/myPage"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
+			</c:if>
+        	<c:if test="${user.me_id == null}">
+				<li><a href="<c:url value="/register"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
+			</c:if>
+			<c:if test="${user.me_id != null}">
+				<li><a href="<c:url value="/logout"></c:url>"  style="font-size: 16px; font-weight: bold;">로그아웃</a></li>
+			</c:if>
+            
           </ul>
         </div>
       </nav>
-      
-      <!-- <div class="search_input" id="search_input_box">
-        <div class="container">
-          <form class="d-flex justify-content-between">
-            <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-            <button type="submit" class="btn"></button>
-            <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-          </form>
-        </div>
-      </div> -->
     </div>
 	</header>
 	<!-- ================ header section end ================= -->	
 
   <main class="site-main">
-    
-
     <!-- ================ start banner area ================= --> 
     <section class="home-banner-area" id="home">
       <div class="container h-100">
@@ -177,9 +174,7 @@
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
             <h2 style="color: white; margin-bottom: 30px;">Register</h2>
-           	<c:if test="${user.me_id == null}">
-	            <a id="loginBtn" class="button home-banner-btn" href="#" style="width: 180px;">로그인</a>
-           	</c:if>
+	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
 		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
@@ -197,7 +192,7 @@
     text-align: center;
     margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-	<h2>Register</h2>
+	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
 	
   <div class="container">
@@ -205,27 +200,24 @@
 		<div class="form-group">
 			<label for="user_id">아이디</label>
 				<input type="text" class="form-control" id="user_id" name="me_id" placeholder="ID" required maxlength="16">
-				<p class="ssw">
-	알림창버튼
-</p>
 		<div class="check_font" id="id_check"></div>
 		</div>
 	    
    		<div class="form-group">
-			<label class="control-label" for="user_id">비밀번호</label>
+			<label class="control-label" for="user_pw">비밀번호</label>
 				<input class="form-control" type="password" name="me_pw" id="password" placeholder="PW" maxlength="16">
 		<div id="pwdcheck_blank1"></div>
 		</div>
 		
 		<div class="form-group">
-			<label class="control-label" for="user_id">비밀번호 재확인</label>
+			<label class="control-label" for="user_pw2">비밀번호 재확인</label>
 				<input class="form-control" type="password" name="password_check" id="password_check" placeholder="PW" maxlength="16">
 		<div id="pwdcheck_blank2"></div>
 		</div>
 	   
 	    <div class="form-group has-feedback">
 			<label class="control-label" for="userEmail">이메일</label>
-			<input class="form-control" type="text" id="email" name="me_email" />
+			<input class="form-control" type="text" id="email" name="me_email" placeholder="email@naver.com"/>
 		</div>
 		<div class="form-group has-feedback">
 			<label class="control-label" for="userBirth">생년월일</label>
@@ -233,115 +225,28 @@
 		</div>
 		<div class="form-group has-feedback">
 			<label class="control-label" for="userName">이름</label>
-			<input class="form-control" type="text" id="name" name="me_name" />
+			<input class="form-control" type="text" id="name" name="me_name" placeholder="홍길동"/>
 		</div>
 		<div class="form-group has-feedback">
 			<label class="control-label" for="userPhone">핸드폰 번호</label>
-			<input class="form-control" type="text" id="phone" name="me_phone" />
+			<input class="form-control" type="text" id="phone" name="me_phone" oninput="autoHyphen2(this)" maxlength="13" placeholder="010-0000-0000"/>
 		</div>
 		<div class="form-group has-feedback">
 		<label class="control-label" for="userPhone">우편 번호</label><br>
-			<input type="text" id="sample6_postcode" placeholder="우편번호" name="me_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 250px">
+			<input type="text" id="sample6_postcode" placeholder="우편번호" name="me_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
 			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-			<input type="text" id="sample6_address" placeholder="주소" name="me_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 250px">
-			<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="me_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 250px"">
+			<input type="text" id="sample6_address" placeholder="주소" name="me_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+			<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="me_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
 			<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
 		</div>
 		<div class="form-group has-feedback">
 		
-			<button type="submit" class="btn btn-light" style="margin-top : 20px">회원가입</button>
+			<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">회원가입</button>
 			<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
 		</div>
 	</form>
 </div>
-
-    <!-- ================ start banner form ================= --> 
-    <!-- 사용할 예정 없음 (임시 주석)
-    <form class="form-search form-search-position">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gutters-19">
-            <div class="form-group">
-              <input class="form-control" type="text" placeholder="Enter your keywords.." required>
-            </div>
-          </div>
-          <div class="col-lg-6 gutters-19">
-            <div class="row">
-              <div class="col-sm">
-                <div class="form-group">
-                  <div class="form-select-custom">
-                    <select name="" id="">
-                      <option value="" disabled selected>Arrival</option>
-                      <option value="8 AM">8 AM</option>
-                      <option value="12 PM">12 PM</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm gutters-19">
-                <div class="form-group">
-                  <div class="form-select-custom">
-                    <select name="" id="">
-                      <option value="" disabled selected>Number of room</option>
-                      <option value="8 AM">8 AM</option>
-                      <option value="12 PM">12 PM</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm gutters-19">
-            <div class="form-group">
-              <div class="form-select-custom">
-                <select name="" id="">
-                  <option value="" disabled selected>Departure</option>
-                  <option value="8 AM">8 AM</option>
-                  <option value="12 PM">12 PM</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm gutters-19">
-            <div class="form-group">
-              <div class="form-select-custom">
-                <select name="" id="">
-                  <option value="" disabled selected>Adult</option>
-                  <option value="8 AM">8 AM</option>
-                  <option value="12 PM">12 PM</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm gutters-19">
-            <div class="form-group">
-              <div class="form-select-custom">
-                <select name="" id="">
-                  <option value="" disabled selected>Child</option>
-                  <option value="8 AM">8 AM</option>
-                  <option value="12 PM">12 PM</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 gutters-19">
-            <div class="form-group">
-              <button class="button button-form" type="submit">Check Availability</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-     -->
-    <!-- ================ end banner form ================= --> 
-
-   
-
-    
-
-  </main>
+</main>
 
 
 
@@ -392,7 +297,7 @@
 						<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
 						 method="get" class="form-inline">
 							<input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
-							 required="" type="email">
+							  type="email">
 							<button class="click-btn btn btn-default text-uppercase">subscribe</button>
 							<div style="position: absolute; left: -5000px;">
 								<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
@@ -468,7 +373,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
   <script src="resources/seapalace-master/vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="resources/seapalace-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="resources/seapalace-master/vendors/magnefic-popup/.magnific-popup.min.js"></script>
+  <script src="resources/seapalace-master/vendors/magnefic-popup/jquery.magnific-popup.min.js"></script>
   <script src="resources/seapalace-master/vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="resources/seapalace-master/vendors/easing.min.js"></script>
   <script src="resources/seapalace-master/vendors/superfish.min.js"></script>
@@ -476,22 +381,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="resources/seapalace-master/vendors/jquery.ajaxchimp.min.js"></script>
   <script src="resources/seapalace-master/vendors/mail-script.js"></script>
   <script src="resources/seapalace-master/js/main.js"></script>
-</body>
+
 
 	<!-- ================ Script Start ================= -->
-<script src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
-<script src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
-<script src="<c:url value='/resources/js/jquery-ui.min.js'></c:url>"></script>
+<script src="resources/js/jquery.validate.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <!-- datepicker 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	//========================= Login 모달창 [Start] =========================
+/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
 	const modal = document.querySelector('.modal');
 	const loginBtn = document.querySelector('#loginBtn');
 	
@@ -508,6 +412,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$('#mod').modal('hide'); 
         $('#mod').hide();
 	}
+*/
 	//========================= Login 모달창 [End] ===========================
 
 // ===================================== 카카오 주소창 api 사용 =====================================
@@ -561,9 +466,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 // ===================================== 카카오 주소창 api 사용 =====================================      
         
 // ===================================== 아이디 유효성 및 중복 체크 =====================================
-	$(".ssw").click(function(){		  
-		alert("알림창입니다.");
-	 });	
 
 	$("#user_id").blur(function() {
     		
@@ -668,4 +570,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       showMonthAfterYear: true,
       yearSuffix: '년'
   });
+//===================================== 전화번호 유효성 [010-0000-0000] =====================================
+  const autoHyphen2 = (target) => {
+	  target.value = target.value
+	    .replace(/[^0-9]/g, '')
+	   .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+	 }
 </script>

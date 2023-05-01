@@ -36,7 +36,7 @@
 				<td>${user.me_auth}</td>
 				<td>${user.me_name}</td>
 				<td>${user.me_phone}</td>
-				<td>${user.me_address}</td>
+				<td>${user.me_address1} ${user.me_address2} ${user.me_address3}</td>
 			</tr>
 		</c:if>
 	</table>
