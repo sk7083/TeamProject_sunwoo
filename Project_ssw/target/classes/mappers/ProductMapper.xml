@@ -6,18 +6,18 @@
 
 	<!-- 게시판 리스트 -->
 	<select id="ProductList" resultType="kr.kh.springTest.vo.ProductVO">
-		select pr_pid, pr_ca_pid, pr_name, pr_address, pr_in_time, pr_out_time from product
+		select pr_pid, pr_ca_pid, pr_name, pr_address1, pr_address2, pr_address3, pr_in_time, pr_out_time from product
   	</select>
   	
 	<!-- 상품 생성(추가) -->
 	 <insert id="ProductInsert">
-	 	insert into product (pr_pid, pr_ca_pid, pr_name, pr_content, pr_address, pr_det_address, fi_pid, re_pid, pr_in_time, pr_out_time)
-	 	 values(#{pr_pid}, #{pr_ca_pid}, #{pr_name}, #{pr_content}, #{pr_address}, #{pr_det_address}, #{fi_pid}, #{re_pid}, #{pr_in_time}, #{pr_out_time})
+	 	insert into product (pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3, fi_pid, re_pid, pr_in_time, pr_out_time)
+	 	 values(#{pr_pid}, #{pr_ca_pid}, #{pr_name}, #{pr_content}, #{pr_address1}, #{pr_address2}, #{pr_address3}, #{fi_pid}, #{re_pid}, #{pr_in_time}, #{pr_out_time})
 	 </insert>
 
 	<!-- 상품 상세 페이지 -->
 	<select id="ProductSelect" resultType="kr.kh.springTest.vo.ProductVO">
-		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address, pr_det_address, fi_pid, re_pid, pr_in_time, pr_out_time from product
+		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3, fi_pid, re_pid, pr_in_time, pr_out_time from product
 			where pr_pid = #{pr_pid}
 	</select>
   
@@ -28,8 +28,9 @@
 		 			pr_ca_pid = #{pr_ca_pid},
 		 			pr_name = #{pr_name},
 		 			pr_content = #{pr_content},
-		 			pr_address = #{pr_address},
-		 			pr_det_address = #{pr_det_address},
+		 			pr_address = #{pr_address1},
+		 			pr_address = #{pr_address2},
+		 			pr_address = #{pr_address3},
 		 			fi_pid = #{fi_pid},
 		 			pr_in_time = #{pr_in_time},
 		 			pr_out_time = #{pr_out_time}

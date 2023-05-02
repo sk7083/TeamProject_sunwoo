@@ -56,7 +56,7 @@
 	<!-- ================ Style End ================= -->	
 
   <title>Seaplace Hotel</title>
-
+	
 	<!-- 메인화면 필수 link -->
 	<link rel="icon" href="resources/seapalace-master/img/favicon.png" type="image/png">
   <link rel="stylesheet" href="resources/seapalace-master/vendors/bootstrap/bootstrap.min.css">
@@ -76,11 +76,8 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- timepicker 사용 (입실 시간 / 퇴실 시간) -->
-<script src="resources/jquery/jquery.min2.js"></script>
-<link rel="stylesheet" href="resources/css/jquery.timepicker.min.css">
-<script src="resources/jquery/jquery.timepicker.min.js"></script>
- 
+
+
 
 
 
@@ -176,21 +173,21 @@
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">Register</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Motel</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
 		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
 	           	</c:if>
            	</div>
+            <div> <c:url value=""></c:url>
+          	  <a class="button home-banner-btn" href="#" style="width: 180px; margin-top: 10px">예약하기</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ===================================== 시작 지점 [Start] ===================================== -->
-
-
-
+    <!-- =================================== 시작 지점 [start] =================================== -->
     <div class="section-intro__style" style="margin-bottom: 40px;
     text-align: center;
     margin-top: 40px;">
@@ -198,41 +195,8 @@
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
 	
-  <div class="container">
-	<form action="<c:url value="/productInsert"></c:url>" method="post">
-		<div class="form-group">
-			<label for="pr_name">상품명</label>
-				<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20">
-		</div>
-	    
-   		<div class="form-group">
-			<label class="control-label" for="pr_content">상품 설명</label>
-				<input class="form-control" type="text" name="pr_content" id="pr_content" placeholder="상품 설명" maxlength="16">
-		</div>
-		
-		<div class="form-group has-feedback">
-		<label class="control-label" for="userPhone">우편 번호</label><br>
-			<input type="text" id="sample6_postcode" placeholder="우편번호" name="pr_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-			<input type="text" id="sample6_address" placeholder="주소" name="pr_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-			<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="pr_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-			<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
-		</div>
-
-		<div class="form-group has-feedback">
-			<label class="control-label" for="pr_in_time">입실 시간 ~ 퇴실 시간</label>
-			<input type="text" id="time1" name="pr_in_time" class="form-control" style="width:200px;">
-			<input type="text" id="time2" name="pr_out_time" class="form-control" style="width:200px;">
-		</div>
-
-		<div class="form-group has-feedback">
-		
-			<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
-			<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
-		</div>
-	</form>
-</div>
-    <!-- ======================================= 끝 지점 [End] ======================================= -->
+    <!-- ===================================== 끝 지점 [End] ===================================== -->
+  
 </main>
 
 
@@ -358,6 +322,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     
 
 
+  <script src="resources/seapalace-master/vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="resources/seapalace-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="resources/seapalace-master/vendors/magnefic-popup/jquery.magnific-popup.min.js"></script>
   <script src="resources/seapalace-master/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -374,39 +339,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="resources/js/jquery-ui.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
+<!-- datepicker 달력 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
-//========================= timepicker [Start] =========================
-$(function() {
-    $("#time1").timepicker({
-        timeFormat: 'h:mm p',
-        interval: 60,
-        minTime: '10',
-        maxTime: '6:00pm',
-        defaultTime: '11',
-        startTime: '10:00',
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true        
-    });
-});
-
-$(function() {
-    $("#time2").timepicker({
-        timeFormat: 'h:mm p',
-        interval: 60,
-        minTime: '10',
-        maxTime: '6:00pm',
-        defaultTime: '11',
-        startTime: '10:00',
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true        
-    });
-});
-//========================= timepicker [End] =========================
-	
 	//========================= Login 모달창 [Start] =========================
 /* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
 	const modal = document.querySelector('.modal');

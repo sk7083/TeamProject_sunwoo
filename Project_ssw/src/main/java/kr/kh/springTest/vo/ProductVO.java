@@ -12,9 +12,9 @@ public class ProductVO {
 	//상품 내용
 	private String pr_content;
 	//상품 주소
-	private String pr_address;
-	//상품 상세 주소
-	private String pr_det_address;
+	private String pr_address1;
+	private String pr_address2;
+	private String pr_address3;
 	// 상품 내 파일
 	private String fi_pid;
 	// 해당 상품 리뷰
@@ -25,6 +25,7 @@ public class ProductVO {
 	//퇴실
 	@DateTimeFormat(pattern = "HH:mm")
 	private String pr_out_time;
+	
 	
 	public String getPr_pid() {
 		return pr_pid;
@@ -50,17 +51,23 @@ public class ProductVO {
 	public void setPr_content(String pr_content) {
 		this.pr_content = pr_content;
 	}
-	public String getPr_address() {
-		return pr_address;
+	public String getPr_address1() {
+		return pr_address1;
 	}
-	public void setPr_address(String pr_address) {
-		this.pr_address = pr_address;
+	public void setPr_address1(String pr_address1) {
+		this.pr_address1 = pr_address1;
 	}
-	public String getPr_det_address() {
-		return pr_det_address;
+	public String getPr_address2() {
+		return pr_address2;
 	}
-	public void setPr_det_address(String pr_det_address) {
-		this.pr_det_address = pr_det_address;
+	public void setPr_address2(String pr_address2) {
+		this.pr_address2 = pr_address2;
+	}
+	public String getPr_address3() {
+		return pr_address3;
+	}
+	public void setPr_address3(String pr_address3) {
+		this.pr_address3 = pr_address3;
 	}
 	public String getFi_pid() {
 		return fi_pid;
@@ -87,10 +94,12 @@ public class ProductVO {
 		this.pr_out_time = pr_out_time;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "ProductVO [pr_pid=" + pr_pid + ", pr_ca_pid=" + pr_ca_pid + ", pr_name=" + pr_name + ", pr_content="
-				+ pr_content + ", pr_address=" + pr_address + ", pr_det_address=" + pr_det_address + ", fi_pid="
-				+ fi_pid + ", re_pid=" + re_pid + ", pr_in_time=" + pr_in_time + ", pr_out_time=" + pr_out_time + "]";
+				+ pr_content + ", pr_address1=" + pr_address1 + ", pr_address2=" + pr_address2 + ", pr_address3="
+				+ pr_address3 + ", fi_pid=" + fi_pid + ", re_pid=" + re_pid + ", pr_in_time=" + pr_in_time
+				+ ", pr_out_time=" + pr_out_time + "]";
 	}
 }

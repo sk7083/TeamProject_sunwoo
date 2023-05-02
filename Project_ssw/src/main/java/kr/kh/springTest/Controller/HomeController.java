@@ -40,17 +40,17 @@ public class HomeController {
 	
 	
 
-	//회원 정보 전체 불러오기
-	@RequestMapping(value = "/information", method = RequestMethod.GET)
-	public ModelAndView information(ModelAndView mv, MemberVO member, HttpServletRequest request) throws Exception{
-		List<MemberVO> list = memberService.memberLoad(member);
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-
-		mv.addObject("user", user);
-		mv.addObject("list", list);
-		mv.setViewName("member/information");
-		return mv;
-	}	
+//	//회원 정보 전체 불러오기
+//	@RequestMapping(value = "/information", method = RequestMethod.GET)
+//	public ModelAndView information(ModelAndView mv, MemberVO member, HttpServletRequest request) throws Exception{
+//		List<MemberVO> list = memberService.memberLoad(member);
+//		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+//
+//		mv.addObject("user", user);
+//		mv.addObject("list", list);
+//		mv.setViewName("member/information");
+//		return mv;
+//	}	
 	
 	//회원 상세 페이지
 		@RequestMapping(value = "/Detail", method = RequestMethod.GET)
@@ -173,7 +173,7 @@ public class HomeController {
 			mv.setViewName("redirect:/Detail?me_id="+me_id);
 		} else {
 			System.out.println("회원정보 수정 실패");
-			mv.setViewName("redirect:/information");
+			mv.setViewName("redirect:/");
 		}
 		return mv;
 	}
@@ -186,10 +186,10 @@ public class HomeController {
 		if(res != 0) {
 			System.out.println("회원 삭제 완료");
 			mv.addObject("user", user);
-			mv.setViewName("redirect:/detail");
+			mv.setViewName("redirect:/logout");
 		} else {
 			System.out.println("회원 삭제 실패");
-			mv.setViewName("redirect:/information");
+			mv.setViewName("redirect:/");
 		}
 		return mv;
 	}
@@ -282,14 +282,6 @@ public class HomeController {
 	}
 	
 	
-	
-	//로그인 (GET)
-	@RequestMapping(value = "/reg", method = RequestMethod.GET)
-	public ModelAndView reg(ModelAndView mv) throws Exception{
-		mv.setViewName("member/reg");
-		return mv;
-	}
-
 
 		
 //		========================================================================================
@@ -303,21 +295,27 @@ public class HomeController {
 		return mv;
 	}
 	
-	//메인화면_회원가입 (MainRegister)
-	@RequestMapping(value = "/MainRegister", method = RequestMethod.POST)
-	public ModelAndView MainRegister(ModelAndView mv) throws Exception{
-		
-		mv.setViewName("mainPage/MainRegister");
+	
+	//회원관리 [관리자 전용]
+	@RequestMapping(value = "/memberManager", method = RequestMethod.GET)
+	public ModelAndView memberManager(ModelAndView mv, MemberVO member, HttpServletRequest request) throws Exception{
+		List<MemberVO> list = memberService.memberLoad(member);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+
+		mv.addObject("user", user);
+		mv.addObject("list", list);
+		mv.setViewName("member/memberManager");
 		return mv;
 	}
 	
-	
-	//myPage2
+	//test
 	//삭제할 항목
-	@RequestMapping(value = "/myPage2", method = RequestMethod.GET)
-	public ModelAndView myPage2(ModelAndView mv) throws Exception{
-		mv.setViewName("member/myPage2");
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ModelAndView test(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("member/test");
 		return mv;
 	}
+
 	
 }

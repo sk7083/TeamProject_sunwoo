@@ -5,7 +5,31 @@
 
 	<!-- ================ Style Start ================= -->	
 <style>
-
+.btn-updateLink{
+display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	text-decoration: none;
+	
+}
+.btn-updateLink:hover{
+    color: #212529;
+    background-color: #e6e8ea;
+    border-color: #e6e8ea;
+}
 .success1{
 	border: 2px solid #cca772;
 	background: #cca772;
@@ -189,72 +213,47 @@
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
 	
-	<!-- ================ 마이페이지 부분 ================ -->
-	<div>
-		<div class="container">
-		
-		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">ID</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_id}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">이름</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_name}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">PW</label>
-			  <input type="password" class="form-control mb-2 mr-sm-2" value="${user.me_pw}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">이메일</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_email}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">생년월일</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_birth}" disabled style="background: white;">
-		  </form>
-		  
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">전화번호</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_phone}" disabled style="background: white;">
-		</form>
-		  
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">우편번호</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_address1}" disabled style="background: white;">
-		</form>
-		  
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px"">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">주소</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_address2}" disabled style="background: white;">
-		</form>
-		
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px"">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">상세주소</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_address3}" disabled style="background: white;">
-		</form>
-		
-		<c:if test="${user.me_auth == 2}">
-			<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px"">
-				  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">권한</label>
-				  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_auth}" disabled style="background: white;">
-			</form>
-		</c:if>
-		</div>
+    <!-- ===================================== 시작 지점 [Start] ===================================== -->
+
+
+	<div class="container" style="position: relative;">
+	  <h2>Member List</h2>
+	  <p>SEAPALACE의 가입된 전체 회원정보 입니다. [관리자 전용]</p>            
+	  <table class="table table-bordered"  style="width: 116%; margin-top: 50px; margin-bottom: 50px">
+	    <thead>
+	      <tr>
+	        <th>ID</th>
+	        <th>회원</th>
+	        <th>PW</th>
+	        <th>E-mail</th>
+	        <th>생년월일</th>
+	        <th>전화번호</th>
+	        <th>주소</th>
+	        <th style="width: 57px">권한</th>
+	        <th>비고</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+			<c:if test="${user.me_auth == 2}">
+				<c:forEach items ="${list}" var="l">
+					<tr><!-- 첫번째 줄 시작 -->
+						<td>${l.me_id}</td>
+						<td>${l.me_name}</td>
+						<td>${l.me_pw}</td>
+						<td>${l.me_email}</td>
+						<td>${l.me_birth}</td>
+						<td>${l.me_phone}</td>
+						<td>${l.me_address2} ${l.me_address3} (${l.me_address1})</td>
+						<td>${l.me_auth}</td>
+						<td>	<a href="<c:url value="/Update?me_id=${l.me_id}"></c:url>" class="btn-updateLink" style="text-decoration:none; margin-top : -10px; width: 60px;">수정</a></td>
+					</tr>
+				</c:forEach>
+			</c:if>
+	    </tbody>
+	  </table>
 	</div>
-	
-	<button type="submit" class="btn btn-light" style="margin-top : 50px; margin-left:250px " id="signup">수정</button>
-	<button class="btn btn-light" type="reset" style="margin-top : 50px; margin-left: 20px">취소</button>
+    <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
-
-
-
-
-
 
 
 
@@ -377,6 +376,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
+//========================= [수정] 버튼 클릭 시 [Update.jsp]로 이동 =========================
 
 </script>
 

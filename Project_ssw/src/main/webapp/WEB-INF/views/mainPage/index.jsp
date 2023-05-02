@@ -108,7 +108,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
+          <!-- 상단 메뉴들 -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
               <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
@@ -116,7 +116,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">Motel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel"></c:url>">Motel</a></li>
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
                 </ul>
@@ -125,6 +125,19 @@
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+              
+              <!-- 관리자 전용 메뉴 -->
+				<c:if test="${user.me_auth == 2}">
+				<li class="nav-item submenu dropdown">
+				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+				  aria-expanded="false">Manager</a>
+			  	<ul class="dropdown-menu">
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">회원관리</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert"></c:url>">Product Add</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">공지사항 추가</a></li>
+				</ul>
+				</li>
+				</c:if>
             </ul>
           </div>
 
@@ -134,7 +147,7 @@
 				<li><a id="loginBtn2" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
 			</c:if>
 			<c:if test="${user.me_id != null}">
-				<li><a href="<c:url value="/myPage"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
+				<li><a href="<c:url value="/myPage#location123"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
 			</c:if>
         	<c:if test="${user.me_id == null}">
 				<li><a href="<c:url value="/register"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
@@ -175,7 +188,7 @@
            	</c:if>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
+		            <a class="button home-banner-btn" href="<c:url value="/myPage#location123"></c:url>" style="width: 180px;">내 정보</a>
 	           	</c:if>
            	</div>
             <div> <c:url value=""></c:url>

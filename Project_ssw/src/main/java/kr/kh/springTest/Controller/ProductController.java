@@ -130,4 +130,12 @@ public class ProductController {
 		}
 		return mv;
 	}
+	// ==================================== [상품 페이지] ====================================
+	//motel 상품
+	@RequestMapping(value = "/motel", method = RequestMethod.GET)
+	public ModelAndView motel(ModelAndView mv) throws Exception{
+		
+		mv.setViewName("product/motel");
+		return mv;
+	}
 }
