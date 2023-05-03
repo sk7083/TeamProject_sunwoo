@@ -36,9 +36,11 @@ public class ProductController {
 
 	//상품 생성(추가) (GET)
 	@RequestMapping(value = "/productInsert", method = RequestMethod.GET)
-	public ModelAndView ProductInsert(ModelAndView mv, HttpServletRequest request, MemberVO member) throws Exception{
+	public ModelAndView ProductInsert(ModelAndView mv, HttpServletRequest request, MemberVO member, ProductVO product) throws Exception{
+		//저장된 카테고리 보여주기 위함
+		List<ProductVO> list = productService.CategoryList(product);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-
+		mv.addObject("list",list);
 		mv.addObject("user", user);
 		System.out.println("보낸 user 정보 : " + user);
 		mv.setViewName("product/productInsert");
@@ -48,6 +50,7 @@ public class ProductController {
 	//상품 생성(추가) (POST)
 	@RequestMapping(value = "/productInsert", method = RequestMethod.POST)
 	public ModelAndView ProductInsertPost(ModelAndView mv, ProductVO product) throws Exception{
+
 		System.out.println("접속은 했음");
 		int pns = productService.productAdd(product);
 		System.out.println("pns 값 : " + pns);

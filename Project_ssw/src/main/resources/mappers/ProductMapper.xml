@@ -44,4 +44,9 @@
   			where pr_pid = #{pr_pid}
   	</delete>
   	
+	<!-- 카테고리 리스트 -->
+	<select id="CategoryList" resultType="kr.kh.springTest.vo.ProductVO">
+		select ca_pid from category
+  	</select>
+  	
 </mapper>

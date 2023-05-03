@@ -20,4 +20,7 @@ public interface ProductService {
 	
 	//상품 삭제
 	public int productDelete(int pr_pid);
+	
+	//카테고리 전체 리스트
+	public List<ProductVO> CategoryList(ProductVO product);
 }

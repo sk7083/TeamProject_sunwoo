@@ -57,4 +57,10 @@ public class ProductServiceImp implements ProductService{
 	
 		return productDao.ProductDelete(pr_pid);
 	}
+	
+	//카테고리 전체 리스트
+	@Override
+	public List<ProductVO> CategoryList(ProductVO board){
+		return productDao.CategoryList();
+	}
 }

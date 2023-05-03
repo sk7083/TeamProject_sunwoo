@@ -26,7 +26,16 @@ public class ProductVO {
 	@DateTimeFormat(pattern = "HH:mm")
 	private String pr_out_time;
 	
+	//=========== 카테고리 VO =========
+	private String ca_pid;
 	
+	
+	public String getCa_pid() {
+		return ca_pid;
+	}
+	public void setCa_pid(String ca_pid) {
+		this.ca_pid = ca_pid;
+	}
 	public String getPr_pid() {
 		return pr_pid;
 	}
@@ -94,12 +103,12 @@ public class ProductVO {
 		this.pr_out_time = pr_out_time;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "ProductVO [pr_pid=" + pr_pid + ", pr_ca_pid=" + pr_ca_pid + ", pr_name=" + pr_name + ", pr_content="
 				+ pr_content + ", pr_address1=" + pr_address1 + ", pr_address2=" + pr_address2 + ", pr_address3="
 				+ pr_address3 + ", fi_pid=" + fi_pid + ", re_pid=" + re_pid + ", pr_in_time=" + pr_in_time
-				+ ", pr_out_time=" + pr_out_time + "]";
+				+ ", pr_out_time=" + pr_out_time + ", ca_pid=" + ca_pid + "]";
 	}
+
 }

@@ -144,6 +144,20 @@
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+<!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
+			
+			<c:if test="${user.me_auth == 2}">
+				<li class="nav-item submenu dropdown">
+				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+				  aria-expanded="false">Manager</a>
+			  	<ul class="dropdown-menu">
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert"></c:url>">Product Add</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
+				</ul>
+				</li>
+			</c:if>
+<!-- ================================= 관리자 전용 메뉴 [End] ================================= -->
             </ul>
           </div>
 
@@ -180,14 +194,13 @@
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
+		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px; margin-top: 10px">내 정보</a>
 	           	</c:if>
            	</div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ===================================== 시작 지점 [Start] ===================================== -->
 
 
 
@@ -197,41 +210,63 @@
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
+    <!-- ===================================== 시작 지점 [Start] ===================================== -->
+    <form action="<c:url value="/productInsert"></c:url>" method="post" enctype="multipart/form-data">
+		<div style="margin-left: 25%; margin-right: 25%">
+		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품 등록</p>
+		  <div class="container">
+		  
+		  
+  			<div class="form-group">
+				<label for="pr_name">상품 선택</label>
+				 <select id="lstFavorites">
+				 <option>상품을 선택해주세요</option>
+				<c:forEach items="${list}" var="v">
+				    <option>${v.ca_pid}</option>
+				</c:forEach>
+				</select>
+			</div>
+				<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none"/>
+ 
+			<div class="form-group">
+				<label for="pr_name">상품명</label>
+					<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20>
+			</div>
+		    
+	   		<div class="form-group">
+				<label class="control-label" for="pr_content">상품 설명</label>
+					<input class="form-control" type="text" name="pr_content" id="pr_content" placeholder="상품 설명" maxlength="16">
+			</div>
+			
+			<div class="form-group has-feedback">
+			<label class="control-label" for="userPhone">주소</label><br>
+				<input type="text" id="sample6_postcode" placeholder="우편번호" name="pr_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+				<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
+				<input type="text" id="sample6_address" placeholder="주소" name="pr_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="pr_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+				<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
+			</div>
 	
-  <div class="container">
-	<form action="<c:url value="/productInsert"></c:url>" method="post">
-		<div class="form-group">
-			<label for="pr_name">상품명</label>
-				<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20">
-		</div>
-	    
-   		<div class="form-group">
-			<label class="control-label" for="pr_content">상품 설명</label>
-				<input class="form-control" type="text" name="pr_content" id="pr_content" placeholder="상품 설명" maxlength="16">
-		</div>
-		
-		<div class="form-group has-feedback">
-		<label class="control-label" for="userPhone">우편 번호</label><br>
-			<input type="text" id="sample6_postcode" placeholder="우편번호" name="pr_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-			<input type="text" id="sample6_address" placeholder="주소" name="pr_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-			<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="pr_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-			<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
-		</div>
-
-		<div class="form-group has-feedback">
 			<label class="control-label" for="pr_in_time">입실 시간 ~ 퇴실 시간</label>
-			<input type="text" id="time1" name="pr_in_time" class="form-control" style="width:200px;">
-			<input type="text" id="time2" name="pr_out_time" class="form-control" style="width:200px;">
+			<div class="form-group has-feedback" style="display: flex;">
+				<input type="text" id="time1" name="pr_in_time" class="form-control" style="width:130px; margin-right: 15px" placeholder="15:00 PM"><p style="font-size: 22px; font-weight: bold;">~</p>
+				<input type="text" id="time2" name="pr_out_time" class="form-control" style="width:130px; margin-left: 15px">
+			</div>
+			
+			<!-- ==================================================== 사진 첨부 부분 ==================================================== -->
+			<div class="form-group">
+				<label class="control-label" for="fi-Pid">사진 첨부 [미구현]</label>
+					
+			</div>
+	
+			<div class="form-group has-feedback">
+			
+				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
+				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
+			</div>
 		</div>
-
-		<div class="form-group has-feedback">
-		
-			<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
-			<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
-		</div>
-	</form>
-</div>
+	</div>
+</form>
     <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
 
@@ -377,32 +412,58 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
+// 테스트
+ $(document).ready(function() {
+
+            // 콤보박스가 변경될 때
+
+            $('#lstFavorites').change(function () {
+
+                // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
+
+                var selectedText = // $("#lstFavorites option:selected").text();
+
+                    // $("option:selected").text();
+
+                    $(":selected").text();
+
+                $('#txtFavorite').val(selectedText);
+
+            });
+
+        });
+//
+
+
 //========================= timepicker [Start] =========================
 $(function() {
     $("#time1").timepicker({
-        timeFormat: 'h:mm p',
+        timeFormat: 'HH:mm',
         interval: 60,
-        minTime: '10',
+        minTime: '9',
         maxTime: '6:00pm',
-        defaultTime: '11',
-        startTime: '10:00',
+        defaultTime: '9',
+        startTime: '09:00',
         dynamic: false,
         dropdown: true,
-        scrollbar: true        
+        scrollbar: true       
+        
     });
 });
 
+
 $(function() {
     $("#time2").timepicker({
-        timeFormat: 'h:mm p',
+        timeFormat: 'HH:mm',
         interval: 60,
-        minTime: '10',
+        minTime: '9',
         maxTime: '6:00pm',
-        defaultTime: '11',
-        startTime: '10:00',
+        defaultTime: '12',
+        startTime: '12:00',
         dynamic: false,
         dropdown: true,
-        scrollbar: true        
+        scrollbar: true       
+        
     });
 });
 //========================= timepicker [End] =========================

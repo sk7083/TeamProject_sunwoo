@@ -162,6 +162,20 @@ display: inline-block;
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+<!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
+			
+			<c:if test="${user.me_auth == 2}">
+				<li class="nav-item submenu dropdown">
+				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+				  aria-expanded="false">Manager</a>
+			  	<ul class="dropdown-menu">
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert"></c:url>">Product Add</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
+				</ul>
+				</li>
+			</c:if>
+<!-- ================================= 관리자 전용 메뉴 [End] ================================= -->
             </ul>
           </div>
 
@@ -194,7 +208,7 @@ display: inline-block;
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">MyPage</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Management</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
            	</div>
@@ -245,7 +259,7 @@ display: inline-block;
 						<td>${l.me_phone}</td>
 						<td>${l.me_address2} ${l.me_address3} (${l.me_address1})</td>
 						<td>${l.me_auth}</td>
-						<td>	<a href="<c:url value="/Update?me_id=${l.me_id}"></c:url>" class="btn-updateLink" style="text-decoration:none; margin-top : -10px; width: 60px;">수정</a></td>
+						<td>	<a href="<c:url value="/Update?me_id=${l.me_id}"></c:url>" class="btn-updateLink" style="text-decoration:none; width: 60px;">수정</a></td>
 					</tr>
 				</c:forEach>
 			</c:if>
