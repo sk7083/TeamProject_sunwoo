@@ -15,6 +15,7 @@ public interface MemberService {
 	public boolean registerMember(MemberVO member);
 	//회원 로그인
 	public MemberVO memberLogin(MemberVO member);
+	
 
 	//회원 정보 수정
 	public int memberUpdate(MemberVO member);

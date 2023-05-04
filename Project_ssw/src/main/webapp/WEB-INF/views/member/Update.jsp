@@ -215,7 +215,6 @@ display: inline-block;
     </div>
 	</header>
 	<!-- ================ header section end ================= -->	
-
   <main class="site-main">
     <!-- ================ start banner area ================= --> 
     <section class="home-banner-area" id="home">
@@ -236,7 +235,7 @@ display: inline-block;
     </section>
     <!-- ================ end banner area ================= -->
     <!-- 이동할 위치 지정 -->
-    <span id="location123"></span>
+    <span id="tel123"></span>
     <!-- 이동할 위치 지정 -->
     <div class="section-intro__style" style="margin-bottom: 40px;
     text-align: center;

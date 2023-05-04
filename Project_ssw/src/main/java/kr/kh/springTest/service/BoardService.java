@@ -27,4 +27,7 @@ public interface BoardService {
 
 	//파일 업로드(추가)
 	public int fileInsert(MultipartFile[] file) throws Exception;
+	
+	//게시판 카테고리 전체 리스트
+	public List<BoardVO> boardCategoryList(BoardVO board);
 }

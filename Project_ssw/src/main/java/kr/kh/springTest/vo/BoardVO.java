@@ -18,9 +18,15 @@ public class BoardVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") 
 	private String bo_modified; 
 	private MultipartFile fi_pid; 
-
+	private String bo_ca_pid;
  
 	 
+	public String getBo_ca_pid() {
+		return bo_ca_pid;
+	}
+	public void setBo_ca_pid(String bo_ca_pid) {
+		this.bo_ca_pid = bo_ca_pid;
+	}
 	public int getBo_pid() { 
 		return bo_pid; 
 	} 
@@ -64,12 +70,11 @@ public class BoardVO {
 	public void setFi_pid(MultipartFile fi_pid) { 
 		this.fi_pid = fi_pid; 
 	}
+	
 	@Override
 	public String toString() {
 		return "BoardVO [bo_pid=" + bo_pid + ", bo_writer=" + bo_writer + ", bo_created=" + bo_created + ", bo_content="
 				+ bo_content + ", bo_title=" + bo_title + ", bo_modified=" + bo_modified + ", fi_pid=" + fi_pid
-				+ ", bo_uploadFile="+ "]";
-	} 
-	 
-	
+				+ ", bo_ca_pid=" + bo_ca_pid + "]";
+	}
 } 

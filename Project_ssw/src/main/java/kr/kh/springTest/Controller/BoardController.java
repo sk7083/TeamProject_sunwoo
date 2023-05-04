@@ -49,8 +49,11 @@ public class BoardController {
 	//게시판 글쓰기(GET)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
 	public ModelAndView boardInsert(ModelAndView mv, HttpServletRequest request, MemberVO member, BoardVO board) throws Exception{
+		//게시판 카테고리 불러오기
+		List<BoardVO> boCate = boardService.boardCategoryList(board);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 			
+		mv.addObject("boCate", boCate);
 			mv.addObject("user", user);
 			mv.setViewName("board/boardInsert");
 			return mv;
@@ -150,7 +153,19 @@ public class BoardController {
 		return mv;
 	}
 	
-
+	//지울 코드
+	//임시 게시판 글쓰기2
+	@RequestMapping(value = "/boardInsert2", method = RequestMethod.GET)
+	public ModelAndView boardInsert2(ModelAndView mv, HttpServletRequest request, MemberVO member, BoardVO board) throws Exception{
+		//게시판 카테고리 불러오기
+		List<BoardVO> boCate = boardService.boardCategoryList(board);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+			
+		mv.addObject("boCate", boCate);
+			mv.addObject("user", user);
+			mv.setViewName("board/boardInsert2");
+			return mv;
+	}
 
 
 }

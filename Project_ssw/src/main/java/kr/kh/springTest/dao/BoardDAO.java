@@ -27,5 +27,8 @@ public interface BoardDAO {
 	
 	//파일 업로드(추가)
 	public void insertFile(MultipartFile[] file);
+	
+	//게시판 카테고리 전체 리스트
+	public List<BoardVO> BoCateList();
 
 }

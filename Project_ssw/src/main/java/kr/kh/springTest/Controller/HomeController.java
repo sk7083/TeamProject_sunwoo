@@ -111,6 +111,7 @@ public class HomeController {
 			} else if(user.getMe_auth() == 2) {
 				user.setMe_auth(2);
 			}
+			
 			mv.addObject("user", user);
 			System.out.println("성공");
 			System.out.println("user값 : "+user);
@@ -119,6 +120,7 @@ public class HomeController {
 			mv.setViewName("redirect:/");
 		} else {
 			System.out.println("실패");
+
 			mv.setViewName("redirect:/");
 		}
 

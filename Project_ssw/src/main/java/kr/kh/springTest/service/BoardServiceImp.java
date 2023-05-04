@@ -72,6 +72,11 @@ public class BoardServiceImp implements BoardService{
 		boardDao.insertFile(file);
 		return 1;
 	} 
-	 
+	
+	//게시판 전체 리스트 
+	@Override 
+	public List<BoardVO> boardCategoryList(BoardVO board){ 
+		return boardDao.BoCateList(); 
+	} 
  
 } 

@@ -6,18 +6,18 @@
 	
 	<!-- 게시판 리스트 -->
 	<select id="BoardList" resultType="kr.kh.springTest.vo.BoardVO">
-		select bo_pid, bo_writer, bo_created, bo_content, bo_title, bo_modified, fi_pid from board
+		select bo_pid, bo_writer, bo_created, bo_content, bo_title, bo_modified, fi_pid, bo_ca_pid from board
   	</select>
   
   	<!-- 게시판 글쓰기 -->
 	 <insert id="BoardInsert" useGeneratedKeys="true" keyProperty="bo_pid">
-	 	insert into board (bo_pid, bo_content, bo_title, bo_writer, bo_modified)
-	 	 values(#{bo_pid}, #{bo_content}, #{bo_title}, #{bo_writer}, #{bo_modified})
+	 	insert into board (bo_pid, bo_content, bo_title, bo_writer, bo_modified, bo_ca_pid)
+	 	 values(#{bo_pid}, #{bo_content}, #{bo_title}, #{bo_writer}, #{bo_modified}, #{bo_ca_pid})
 	 </insert>
   
   	<!-- 게시판 상세 페이지 -->
 	<select id="BoardSelect" resultType="kr.kh.springTest.vo.BoardVO">
-		select bo_pid, bo_writer, bo_created, bo_content, bo_title, bo_modified from board
+		select bo_pid, bo_writer, bo_created, bo_content, bo_title, bo_modified, bo_ca_pid from board
 			where bo_pid =#{bo_pid}
 	</select>
   
@@ -37,11 +37,16 @@
   		delete from board
   			where bo_pid = #{bo_pid}
   	</delete>
-  	
+<!-- =========================================================================================== -->
   	 <!-- 파일 업로드(추가) -->
 	 <insert id="insertFile">
 	 	insert into file (fi_pid, bo_pid ,fi_ori_name, fi_name, fi_size, fi_crea_id)
 	 	 values(#{fi_pid}, #{bo_pid}, #{fi_ori_name}, #{fi_name}, #{fi_size}, #{fi_crea_id})
 	 </insert>
+<!-- =========================================================================================== -->	 
+	 <!-- 게시판 카테고리 리스트 -->
+	<select id="BoCateList" resultType="kr.kh.springTest.vo.BoardVO">
+		select bo_ca_pid from boardcategory
+  	</select>
 </mapper>
 

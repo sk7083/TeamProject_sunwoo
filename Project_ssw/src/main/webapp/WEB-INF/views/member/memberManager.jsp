@@ -232,7 +232,9 @@ display: inline-block;
 
 	<div class="container" style="position: relative;">
 	  <h2>Member List</h2>
-	  <p>SEAPALACE의 가입된 전체 회원정보 입니다. [관리자 전용]</p>            
+	  <div style="display: flex;">
+	  <p>SEAPALACE의 가입된 전체 회원정보 입니다. </p><p style="font-weight: bold; margin-left: 10px">[관리자 전용]</p>
+	  </div>
 	  <table class="table table-bordered"  style="width: 116%; margin-top: 50px; margin-bottom: 50px">
 	    <thead>
 	      <tr>
@@ -259,7 +261,7 @@ display: inline-block;
 						<td>${l.me_phone}</td>
 						<td>${l.me_address2} ${l.me_address3} (${l.me_address1})</td>
 						<td>${l.me_auth}</td>
-						<td>	<a href="<c:url value="/Update?me_id=${l.me_id}"></c:url>" class="btn-updateLink" style="text-decoration:none; width: 60px;">수정</a></td>
+						<td>	<a href="<c:url value="/Update?me_id=${l.me_id}#tel123"></c:url>" class="btn-updateLink" style="text-decoration:none; width: 60px; font-weight: bold;">수정</a></td>
 					</tr>
 				</c:forEach>
 			</c:if>

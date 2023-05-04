@@ -2,34 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 	<!-- ================ Style Start ================= -->	
 <style>
-.btn-updateLink{
-display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	text-decoration: none;
-	
-}
-.btn-updateLink:hover{
-    color: #212529;
-    background-color: #e6e8ea;
-    border-color: #e6e8ea;
-}
+
 .success1{
 	border: 2px solid #cca772;
 	background: #cca772;
@@ -82,7 +57,7 @@ display: inline-block;
 	<!-- ================ Style End ================= -->	
 
   <title>Seaplace Hotel</title>
-	
+
 	<!-- 메인화면 필수 link -->
 	<link rel="icon" href="resources/seapalace-master/img/favicon.png" type="image/png">
   <link rel="stylesheet" href="resources/seapalace-master/vendors/bootstrap/bootstrap.min.css">
@@ -101,6 +76,13 @@ display: inline-block;
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
+
+
 
 
 
@@ -208,89 +190,78 @@ display: inline-block;
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">MyPage</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Product Registration</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
+				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
+		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px; margin-top: 10px">내 정보</a>
+	           	</c:if>
            	</div>
-            <div> <c:url value=""></c:url>
-          	  <a class="button home-banner-btn" href="#" style="width: 180px; margin-top: 10px">예약하기</a>
-            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ================ end banner area ================= -->
-    <!-- 이동할 위치 지정 -->
-    <span id="tel123"></span>
-    <!-- 이동할 위치 지정 -->
+
+
+
     <div class="section-intro__style" style="margin-bottom: 40px;
     text-align: center;
     margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
-	
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
+    <form action="<c:url value="/boardInsert"></c:url>" method="post" enctype="multipart/form-data">
+		<div style="margin-left: 25%; margin-right: 25%">
+		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">게시판 작성</p>
+		  <div class="container">
+		  
+		  
+  			<div class="form-group">
+				<label for="pr_name">게시판 선택</label>
+				 <select id="lstFavorites">
+				 <option>게시판을 선택해주세요</option>
+				<c:forEach items="${boCate}" var="b">
+				    <option>${b.bo_ca_pid}</option>
+				</c:forEach>
+				</select>
+			</div>
+				<input type="text" id="txtFavorite" name="bo_ca_pid" style="display: none"/>
+ 
+			<div class="form-group" style="margin-top: 60px">
+				<label for="bo_title">제목</label>
+					<input type="text" class="form-control" id="pr_name" name="bo_title" placeholder="제목을 입력해주세요" required maxlength=20>
+			</div>
+		    
+	   		<div class="form-group">
+				<label class="control-label" for="bo_content">내용</label>
+				<textarea class="summernote" name="bo_content" placeholder="내용을 입력해주세요."></textarea>
+			</div>
+			<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
 
-	<div style="margin-left: 20%; margin-right: 20%">
-		<p style="font-size: 22px; margin-left: 150px; font-weight: bold; position: relative; margin-bottom: 40px">내 정보</p>
-		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px;">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">ID</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_id}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">이름</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_name}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">PW</label>
-			  <input type="password" class="form-control mb-2 mr-sm-2" value="${user.me_pw}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">이메일</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_email}" disabled style="background: white;">
-		  </form>
-		  
-  		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">생년월일</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_birth}" disabled style="background: white;">
-		  </form>
-		  
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">전화번호</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_phone}" disabled style="background: white;">
-		</form>
-		  
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">우편번호</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_address1}" disabled style="background: white;">
-		</form>
-		  
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px"">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">주소</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_address2}" disabled style="background: white;">
-		</form>
-		
-		<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px"">
-			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">상세주소</label>
-			  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_address3}" disabled style="background: white;">
-		</form>
-		
-		<c:if test="${user.me_auth == 2}">
-			<form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px"">
-				  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">권한</label>
-				  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_auth}" disabled style="background: white;">
-			</form>
-		</c:if>
-		<a href="<c:url value="/Update?me_id=${user.me_id}#location123"></c:url>" class="btn-updateLink" style="text-decoration:none; margin-top : 50px; margin-left: 190px; margin-bottom: 50px;">회원수정</a>
-		<a href="<c:url value="/"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-left: 10px; margin-bottom: 50px">뒤로가기</a>
-		<a href="<c:url value="/Delete/${user.me_id}"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-left: 180px; margin-bottom: 50px;">회원탈퇴</a>
+			
+			<!-- ==================================================== 파일 첨부 부분 ==================================================== -->
+			<div class="form-group">
+			    <div class="form-group" id="file-list">
+			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 첨부 추가 [미구현]</a>
+			        <div class="file-group">
+			            <input type="file" name="fi_pid"><a href='#this' name='file-delete' id="file-delete-Btn"
+			            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none">삭제</a>
+			        </div>
+			    </div>
+			</div>
+	
+			<div class="form-group has-feedback">
+			
+				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
+				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
+			</div>
+		</div>
 	</div>
-	<!-- ======================================= 끝 지점 [End] ======================================= -->
+</form>
+    <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
+
 
 
   <!-- ================ start footer Area ================= -->
@@ -368,12 +339,52 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   
   
 	<!-- ================ Start Login Modal ================= -->
+<form action="<c:url value="/login"></c:url>" method="post">
+	<div id="mod" class="modal">
+		<div class="modal_body">
+			<button class="close-btn" onclick="modalClose()" style="float: right; display: flex; background-color: white; border: 0px solid; font-weight: bold; font-size: 26px; position: absolute; right: 6%; top: 2%">X</button><br>
+			<div class="container">
+			  <h2 style="text-align: center; margin-left: 10px; margin-bottom: 30px">SunMall</h2>
+			  <!-- 
+			  <form action="/action_page.php" class="was-validated">
+			   -->
+			    <div class="form-group">
+			      <label for="uname">UserID:</label>
+			      <input type="text" class="form-control" id="uname" placeholder="UserID" name="me_id" required>
+			      <div class="valid-feedback"></div>
+			      <div class="invalid-feedback">아이디를 입력하세요.</div>
+			    </div>
+			    <div class="form-group">
+			      <label for="pwd">Password:</label>
+			      <input type="password" class="form-control" id="pwd" placeholder="Password" name="me_pw" required>
+			      <div class="valid-feedback"></div>
+			      <div class="invalid-feedback">비밀번호를 입력하세요.</div>
+			    </div>
 
+			    <!-- 모달창에서 또다른 모달창을 띄워서 회원가입 진행 -->
+			    <a href="<c:url value="/register"></c:url>" style="text-decoration: none; color: black;">회원가입</a>
+			    <!-- 체크박스 임시 주석
+			    <div class="form-group form-check">
+			      <label class="form-check-label">
+			        <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
+			        <div class="valid-feedback"></div>
+			        <div class="invalid-feedback">Check this checkbox to continue.</div>
+			      </label>
+			    </div>
+			    -->
+			    <button type="submit" id="Modal-login-btn" class="btn btn-outline-light text-dark">로그인</button>
+			    
+			  <!-- 
+			  </form>
+			   -->
+			</div>
+		</div>
+	</div>
+</form>
 	<!-- ================ End Login Modal ================= -->
     
 
 
-  <script src="resources/seapalace-master/vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="resources/seapalace-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="resources/seapalace-master/vendors/magnefic-popup/jquery.magnific-popup.min.js"></script>
   <script src="resources/seapalace-master/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -390,19 +401,84 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="resources/js/jquery-ui.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<!-- datepicker 달력 -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script type="text/javascript">
-//========================= [수정] 버튼 클릭 시 [Update.jsp]로 이동 =========================
-function Update(){
-     location.href = "Update";
+//========================= 게시판 글쓰기 써머노트 [Start] =========================
+$('.summernote').summernote({
+	  height: 300,
+	  lang: "ko-KR"
+	});
+
+function BoardWriting(){
+    location.href = "/springTest";
+}
+//========================= 게시판 글쓰기 써머노트 [End] =========================
+
+//========================= 게시판 카테고리 선택 드롭박스 [Start] =========================
+ $(document).ready(function() {
+
+            // 콤보박스가 변경될 때
+
+            $('#lstFavorites').change(function () {
+
+                // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
+
+                var selectedText = // $("#lstFavorites option:selected").text();
+
+                    // $("option:selected").text();
+
+                    $(":selected").text();
+
+                $('#txtFavorite').val(selectedText);
+
+            });
+
+        });
+//========================= 게시판 카테고리 선택 드롭박스 [End] =========================
+
+	
+	//========================= Login 모달창 [Start] =========================
+/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
+	const modal = document.querySelector('.modal');
+	const loginBtn = document.querySelector('#loginBtn');
+	
+	loginBtn.addEventListener('click', () => {
+	modal.style.display = 'block';
+	});
+		
+	// 모달 on
+	body.style.overflow = 'hidden';
+	// 모달 off
+	body.style.overflow = 'auto';
+	//모달 닫는 이벤트
+	function modalClose() {
+		$('#mod').modal('hide'); 
+        $('#mod').hide();
+	}
+*/
+	//========================= Login 모달창 [End] ===========================
+//파일 추가/삭제 버튼
+
+$(document).ready(function() {
+    $("a[name='file-delete']").on("click", function(e) {
+        e.preventDefault();
+        deleteFile($(this));
+    });
+})
+
+function addFile() {
+        
+    var str = "<div class='file-group'><input type='file' name='file'><a href='#this' name='file-delete' style='background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none; margin-top : 5px'>삭제</a></div>";
+    $("#file-list").append(str);
+    $("a[name='file-delete']").on("click", function(e) {
+        e.preventDefault();
+        deleteFile($(this));
+    });
+}
+
+function deleteFile(obj) {
+    obj.parent().remove();
 }
 
 </script>
-
-
-
-

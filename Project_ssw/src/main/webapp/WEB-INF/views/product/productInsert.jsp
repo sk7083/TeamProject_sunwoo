@@ -190,7 +190,7 @@
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">Register</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Product Registration</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
@@ -228,7 +228,7 @@
 			</div>
 				<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none"/>
  
-			<div class="form-group">
+			<div class="form-group" style="margin-top: 60px">
 				<label for="pr_name">상품명</label>
 					<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20>
 			</div>
@@ -412,27 +412,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
-// 테스트
- $(document).ready(function() {
+//========================= 게시판 카테고리 선택 드롭박스 [Start] =========================
+$(document).ready(function() {
 
-            // 콤보박스가 변경될 때
+           // 콤보박스가 변경될 때
 
-            $('#lstFavorites').change(function () {
+           $('#lstFavorites').change(function () {
 
-                // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
+               // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
 
-                var selectedText = // $("#lstFavorites option:selected").text();
+               var selectedText = // $("#lstFavorites option:selected").text();
 
-                    // $("option:selected").text();
+                   // $("option:selected").text();
 
-                    $(":selected").text();
+                   $(":selected").text();
 
-                $('#txtFavorite').val(selectedText);
+               $('#txtFavorite').val(selectedText);
 
-            });
+           });
 
-        });
-//
+       });
+//========================= 게시판 카테고리 선택 드롭박스 [End] =========================
 
 
 //========================= timepicker [Start] =========================

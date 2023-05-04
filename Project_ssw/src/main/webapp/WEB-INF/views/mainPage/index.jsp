@@ -5,6 +5,7 @@
 <html lang="en">
 	<!-- ================ Style Start ================= -->	
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Genos&display=swap');
 .modal {
      position: absolute;
      top: 0;
@@ -121,7 +122,15 @@
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/about"></c:url>">About</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Notice</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel"></c:url>" style="font-family: Genos">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">문의사항</a></li>
+                </ul>
+              </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
@@ -149,7 +158,7 @@
 				<li><a id="loginBtn2" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
 			</c:if>
 			<c:if test="${user.me_id != null}">
-				<li><a href="<c:url value="/myPage#location123"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
+				<li><a href="<c:url value="/myPage#tel123"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
 			</c:if>
         	<c:if test="${user.me_id == null}">
 				<li><a href="<c:url value="/register"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
@@ -190,7 +199,7 @@
            	</c:if>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-		            <a class="button home-banner-btn" href="<c:url value="/myPage#location123"></c:url>" style="width: 180px;">내 정보</a>
+		            <a class="button home-banner-btn" href="<c:url value="/myPage#tel123"></c:url>" style="width: 180px;">내 정보</a>
 	           	</c:if>
            	</div>
             <div> <c:url value=""></c:url>
@@ -796,6 +805,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- ================ Script Start ================= -->
 
 <script type="text/javascript">
+
 	//========================= Login 모달창 [Start] =========================
 	const modal = document.querySelector('.modal');
 	const loginBtn1 = document.querySelector('#loginBtn1');

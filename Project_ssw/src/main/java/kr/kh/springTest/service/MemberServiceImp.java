@@ -56,6 +56,8 @@ public class MemberServiceImp implements MemberService{
 		return null;
 	}
 	
+	
+	
 	//회원정보 수정
 	@Override
 	public int memberUpdate(MemberVO member){
