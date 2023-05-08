@@ -31,20 +31,60 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	MemberService memberService;
-	//게시판 조회
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
-	public ModelAndView boardList(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
-
+	
+	//게시판 조회 (공지사항)
+	@RequestMapping(value = "/boardList1", method = RequestMethod.GET)
+	public ModelAndView boardList1(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
+		//게시판 카테고리 불러오기
+		List<BoardVO> boCate = boardService.boardCategoryList(board);
+		//게시판 전체 불러오기
 		List<BoardVO> list = boardService.boardLoad(board);
 		for(BoardVO bor : list) {
 		}
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		System.out.println("123");
+		
+		mv.addObject("boCate", boCate);
 		mv.addObject("user", user);
 		mv.addObject("list", list);
-		mv.setViewName("board/boardList");
+		mv.setViewName("board/boardList1");
 		return mv;
-	}	
+	}
+	
+	//게시판 조회 (문의사항)
+	@RequestMapping(value = "/boardList2", method = RequestMethod.GET)
+	public ModelAndView boardList2(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
+		//게시판 카테고리 불러오기
+		List<BoardVO> boCate = boardService.boardCategoryList(board);
+		//게시판 전체 불러오기
+		List<BoardVO> list = boardService.boardLoad(board);
+		for(BoardVO bor : list) {
+		}
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		mv.addObject("boCate", boCate);
+		mv.addObject("user", user);
+		mv.addObject("list", list);
+		mv.setViewName("board/boardList2");
+		return mv;
+	}
+	
+	//게시판 조회 (이벤트)
+	@RequestMapping(value = "/boardList3", method = RequestMethod.GET)
+	public ModelAndView boardList3(ModelAndView mv, BoardVO board, HttpServletRequest request, MemberVO member) throws Exception{
+		//게시판 카테고리 불러오기
+		List<BoardVO> boCate = boardService.boardCategoryList(board);
+		//게시판 전체 불러오기
+		List<BoardVO> list = boardService.boardLoad(board);
+		for(BoardVO bor : list) {
+		}
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		mv.addObject("boCate", boCate);
+		mv.addObject("user", user);
+		mv.addObject("list", list);
+		mv.setViewName("board/boardList3");
+		return mv;
+	}
 	
 	//게시판 글쓰기(GET)
 	@RequestMapping(value = "/boardInsert", method = RequestMethod.GET)
@@ -53,7 +93,8 @@ public class BoardController {
 		List<BoardVO> boCate = boardService.boardCategoryList(board);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 			
-		mv.addObject("boCate", boCate);
+			System.out.println("넘겨준 boCate값 확인 : "+boCate);
+			mv.addObject("boCate", boCate);
 			mv.addObject("user", user);
 			mv.setViewName("board/boardInsert");
 			return mv;
@@ -152,20 +193,4 @@ public class BoardController {
 		}
 		return mv;
 	}
-	
-	//지울 코드
-	//임시 게시판 글쓰기2
-	@RequestMapping(value = "/boardInsert2", method = RequestMethod.GET)
-	public ModelAndView boardInsert2(ModelAndView mv, HttpServletRequest request, MemberVO member, BoardVO board) throws Exception{
-		//게시판 카테고리 불러오기
-		List<BoardVO> boCate = boardService.boardCategoryList(board);
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-			
-		mv.addObject("boCate", boCate);
-			mv.addObject("user", user);
-			mv.setViewName("board/boardInsert2");
-			return mv;
-	}
-
-
 }

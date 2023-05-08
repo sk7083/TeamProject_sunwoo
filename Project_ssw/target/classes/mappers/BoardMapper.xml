@@ -46,7 +46,7 @@
 <!-- =========================================================================================== -->	 
 	 <!-- 게시판 카테고리 리스트 -->
 	<select id="BoCateList" resultType="kr.kh.springTest.vo.BoardVO">
-		select bo_ca_pid from boardcategory
+		select bo_ca_pid, bo_ca_name from boardcategory
   	</select>
 </mapper>
 

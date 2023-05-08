@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<!-- 게시판 *이벤트 jsp 입니다. -->
+
 	<!-- ================ Style Start ================= -->	
 <style>
 
@@ -190,7 +192,7 @@
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">Product Registration</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Notice</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
@@ -211,58 +213,42 @@
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
-    <form action="<c:url value="/boardInsert"></c:url>" method="post" enctype="multipart/form-data">
-		<div style="margin-left: 25%; margin-right: 25%">
-		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">게시판 작성</p>
-		  <div class="container">
-		  
-		  
-  			<div class="form-group">
-				<label for="pr_name">게시판 선택</label>
-				 <select id="lstFavorites">
-				 <option>게시판을 선택해주세요</option>
-				<c:forEach items="${boCate}" var="b">
-				    <option>${b.bo_ca_pid}</option>
-				</c:forEach>
-				</select>
-			</div>
-				<input type="text" id="txtFavorite" name="bo_ca_pid" style="display: none"/>
- 
-			<div class="form-group" style="margin-top: 60px">
-				<label for="bo_title">제목</label>
-					<input type="text" class="form-control" id="pr_name" name="bo_title" placeholder="제목을 입력해주세요" required maxlength=20>
-			</div>
-		    
-	   		<div class="form-group">
-				<label class="control-label" for="bo_content">내용</label>
-				<textarea class="summernote" name="bo_content" placeholder="내용을 입력해주세요."></textarea>
-			</div>
-			<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
-
-			
-			<!-- ==================================================== 파일 첨부 부분 ==================================================== -->
-			<div class="form-group">
-			    <div class="form-group" id="file-list">
-			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 첨부 추가 [미구현]</a>
-			        <div class="file-group">
-			            <input type="file" name="fi_pid"><a href='#this' name='file-delete' id="file-delete-Btn"
-			            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none">삭제</a>
-			        </div>
-			    </div>
-			</div>
-	
-			<div class="form-group has-feedback">
-			
-				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
-				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
-			</div>
-		</div>
-	</div>
-</form>
+<div style=" margin-left: 15%; margin-right: 15%; margin-top: 100px;">
+<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">이벤트 [미구현]</p>
+<!-- 
+  <table class="table table-hover">
+    <thead style="text-align: center;">
+      <tr>
+        <th>문의사항</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>
+ -->
+    <!-- 공지사항일 경우에만 표기 -->
+    
+<!-- 
+	<c:forEach items ="${list}" var="b">
+		<c:if test="${b.bo_ca_pid eq '문의사항'}">
+			<tbody style="text-align: center;">
+				<tr>
+					<td>${b.bo_pid}</td>
+					<td><a href="<c:url value="/boardDetail?bo_pid=${b.bo_pid}"></c:url>" style="color: black;">
+						<c:out value="${b.bo_title}"/></a></td>
+					<td>${b.bo_writer}</td>
+					<td>${b.bo_created}</td>
+				  </tr>
+	   		</tbody>
+   		</c:if>
+	</c:forEach>
+  </table>
+  --> 
+</div>
+  <p style="margin-bottom: 150px"></p>
     <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
-
-
 
   <!-- ================ start footer Area ================= -->
   <footer class="footer-area section-gap">

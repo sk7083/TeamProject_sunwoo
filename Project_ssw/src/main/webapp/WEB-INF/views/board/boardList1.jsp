@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<!-- 게시판 *공지사항 jsp 입니다. -->
+
 	<!-- ================ Style Start ================= -->	
 <style>
 
@@ -204,65 +206,56 @@
 
 
 
+    <!-- 이동할 위치 지정 -->
+    <span id="tel123"></span>
+    <!-- 이동할 위치 지정 -->
     <div class="section-intro__style" style="margin-bottom: 40px;
     text-align: center;
     margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
+	
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
-    <form action="<c:url value="/boardInsert"></c:url>" method="post" enctype="multipart/form-data">
-		<div style="margin-left: 25%; margin-right: 25%">
-		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">게시판 작성</p>
-		  <div class="container">
-		  
-  			<div class="form-group">
-				<label for="pr_name">게시판 선택</label>
-				 <select id="lstFavorites">
-				 <option>게시판을 선택해주세요</option>
-					<c:forEach items="${boCate}" var="b">
-					    <option>${b.bo_ca_name}</option>
-					</c:forEach>
-				</select>
-			</div>
-			
-				<input type="text" id="txtFavorite" name="bo_ca_pid" style="display: none;"/>
- 
-			<div class="form-group" style="margin-top: 60px">
-				<label for="bo_title">제목</label>
-					<input type="text" class="form-control" id="pr_name" name="bo_title" placeholder="제목을 입력해주세요" required maxlength=20>
-			</div>
-		    
-	   		<div class="form-group">
-				<label class="control-label" for="bo_content">내용</label>
-				<textarea class="summernote" name="bo_content" placeholder="내용을 입력해주세요."></textarea>
-			</div>
-			<input name="bo_writer" value="${bo_writer = user.me_id}" style="display : none;">
-
-			
-			<!-- ==================================================== 파일 첨부 부분 ==================================================== -->
-			<div class="form-group">
-			    <div class="form-group" id="file-list">
-			        <a href="#this" onclick="addFile()" style="text-decoration: none; margin-bottom: 10px; color: black; border: 1px solid #727272; padding: 2px; border-radius: 3px; background: #ededed;">파일 추가 [미구현]</a>
-			        <div class="file-group">
-			            <input type="file" name="fi_pid"><a href='#this' name='file-delete' id="file-delete-Btn"
-			            style="background: #ededed; padding: 5px; border-radius: 5px; color: black; padding-left: 10px; padding-right: 10px; text-decoration: none">삭제</a>
-			        </div>
-			    </div>
-			</div>
-	
-			<div class="form-group has-feedback">
-			
-				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">등록</button>
-				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
-			</div>
-		</div>
-	</div>
-</form>
+<div style=" margin-left: 15%; margin-right: 15%; margin-top: 100px;">
+<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">공지사항</p>
+  <table class="table table-hover">
+    <thead style="text-align: center;">
+      <tr>
+        <th>공지사항</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+        <th><c:if test="${user.me_auth == 2}"></c:if></th>
+        <th><c:if test="${user.me_auth == 2}"></c:if></th>
+      </tr>
+    </thead>
+    
+    <!-- 공지사항일 경우에만 표기 -->
+	<c:forEach items ="${list}" var="b">
+		<c:if test="${b.bo_ca_pid eq '공지사항'}">
+			<tbody style="text-align: center;">
+				<tr>
+					<td>${b.bo_pid}</td>
+					<td><a href="<c:url value="/boardDetail?bo_pid=${b.bo_pid}#tel123"></c:url>" style="color: black;">
+						<c:out value="${b.bo_title}"/></a></td>
+					<td>${b.bo_writer}</td>
+					<td>${b.bo_created}</td>
+					<td>[미구현]</td>
+					<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/boardUpdate?bo_pid=${b.bo_pid}"></c:url>" class="btn-update" style="text-decoration:none; color: black; font-weight: bold;">
+						<c:out value="수정" /></a></c:if></td>
+					<td><c:if test="${user.me_auth == 2}"><a href="<c:url value="/boardDelete/${b.bo_pid}"></c:url>" class="btn-delete" style="text-decoration:none; color: red; font-weight: bold;">
+						<c:out value="삭제" /></a></c:if></td>
+				  </tr>
+	   		</tbody>
+   		</c:if>
+	</c:forEach>
+  </table>
+</div>
+  <p style="margin-bottom: 150px"></p>
     <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
-
-
 
   <!-- ================ start footer Area ================= -->
   <footer class="footer-area section-gap">

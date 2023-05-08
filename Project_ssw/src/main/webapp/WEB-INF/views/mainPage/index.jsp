@@ -5,6 +5,9 @@
 <html lang="en">
 	<!-- ================ Style Start ================= -->	
 <style>
+
+<!-- 추가한 폰트 -->
+
 @import url('https://fonts.googleapis.com/css2?family=Genos&display=swap');
 .modal {
      position: absolute;
@@ -15,7 +18,7 @@
      display: none;
      background-color: rgba(0, 0, 0, 0.4);
 }
-		
+
 .modal.show {
   display: block;
 }
@@ -109,7 +112,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- 상단 메뉴들 -->
+<!-- ===================================== 상단 메뉴 [Start] ===================================== -->
+
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
               <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
@@ -126,15 +130,16 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Notice</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel"></c:url>" style="font-family: Genos">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
-              
+<!-- ===================================== 상단 메뉴 [End] ===================================== -->
+
 <!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
 			
 			<c:if test="${user.me_auth == 2}">
