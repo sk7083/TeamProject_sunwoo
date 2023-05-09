@@ -127,7 +127,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
+          <!-- ===================================== 상단 메뉴 [Start] ===================================== -->
+
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
               <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
@@ -135,15 +136,25 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">Motel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/about"></c:url>">About</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Notice</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                </ul>
+              </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+<!-- ===================================== 상단 메뉴 [End] ===================================== -->
+
 <!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
 			
 			<c:if test="${user.me_auth == 2}">
@@ -151,9 +162,9 @@
 				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 				  aria-expanded="false">Manager</a>
 			  	<ul class="dropdown-menu">
-				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager"></c:url>">Management</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert"></c:url>">Product Add</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert#tel123"></c:url>">Product Add</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
 			</c:if>
@@ -161,16 +172,16 @@
             </ul>
           </div>
 
-         <!-- 우측 상단 로그인 / 회원가입 버튼 -->
+	<!-- 우측 상단 로그인 / 회원가입 버튼 -->
           <ul class="social-icons ml-auto" style="padding-top: 14px;">
 			<c:if test="${user.me_id == null}">
-				<li><a id="loginBtn" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
+				<li><a id="loginBtn2" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
 			</c:if>
 			<c:if test="${user.me_id != null}">
-				<li><a href="<c:url value="/myPage"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
+				<li><a href="<c:url value="/myPage#tel123"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
 			</c:if>
         	<c:if test="${user.me_id == null}">
-				<li><a href="<c:url value="/register"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
+				<li><a href="<c:url value="/register#tel123"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
 			</c:if>
 			<c:if test="${user.me_id != null}">
 				<li><a href="<c:url value="/logout"></c:url>"  style="font-size: 16px; font-weight: bold;">로그아웃</a></li>
@@ -179,6 +190,16 @@
           </ul>
         </div>
       </nav>
+      
+      <!-- <div class="search_input" id="search_input_box">
+        <div class="container">
+          <form class="d-flex justify-content-between">
+            <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+            <button type="submit" class="btn"></button>
+            <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+          </form>
+        </div>
+      </div> -->
     </div>
 	</header>
 	<!-- ================ header section end ================= -->	
@@ -204,9 +225,10 @@
 
 
 
-    <div class="section-intro__style" style="margin-bottom: 40px;
-    text-align: center;
-    margin-top: 40px;">
+		   <!-- 이동할 위치 지정 -->
+		   <span id="tel123"></span>
+		   <!-- 이동할 위치 지정 -->
+    <div class="section-intro__style" style="margin-bottom: 40px; text-align: center; margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>

@@ -204,9 +204,10 @@
 
 
 
-    <div class="section-intro__style" style="margin-bottom: 40px;
-    text-align: center;
-    margin-top: 40px;">
+		   <!-- 이동할 위치 지정 -->
+		   <span id="tel123"></span>
+		   <!-- 이동할 위치 지정 -->
+    <div class="section-intro__style" style="margin-bottom: 40px; text-align: center; margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>

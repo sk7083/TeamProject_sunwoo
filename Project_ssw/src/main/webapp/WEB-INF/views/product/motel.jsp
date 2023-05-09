@@ -4,6 +4,9 @@
 
 	<!-- ================ Style Start ================= -->	
 <style>
+#motel-Btn:hover{
+	background-color: #f8f9fa;
+}
 .success1{
 	border: 2px solid #cca772;
 	background: #cca772;
@@ -76,7 +79,10 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
+	<!-- w3schools 부트스트랩 드롭다운 (지역 선택) -->
+	<script src="resources/W3school/jquery.slim.min.js"></script>
+	<script src="resources/W3school/popper.min.js"></script>
+	<script src="resources/W3school/bootstrap.bundle.min.js"></script>
 
 
 
@@ -187,12 +193,83 @@
         </div>
       </div>
     </section>
+ 	<!-- 이동할 위치 지정 -->	
+	<span id="tel123"></span>
+	<!-- 이동할 위치 지정 -->
     <!-- =================================== 시작 지점 [start] =================================== -->
-    <div class="section-intro__style" style="margin-bottom: 40px;
-    text-align: center;
-    margin-top: 40px;">
+    <div class="section-intro__
+    tyle" style="margin-bottom: 40px; text-align: center; margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-	<h2 style="margin-top: 10px">SEAPALACE</h2>
+		<h2 style="margin-top: 10px; margin-bottom: 50px">SEAPALACE</h2>
+	</div>
+	<div style="margin-left: 20%; margin-right: 20%">
+	<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">모텔</p>
+		<!-- 지역 선택 드롭다운 --> 
+			<div style="display: flex; margin-bottom: 20px;">
+				<div class="dropdown">
+				    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+				     지역선택
+				    </button>
+				    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="#">서울</a>
+				      <a class="dropdown-item" href="#">경기</a>
+				      <a class="dropdown-item" href="#">인천</a>
+				    </div>
+				</div>
+				<a href='<c:url value="/"></c:url>' id="motel-Btn"
+		            style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; margin-left: 10px; text-decoration: none;">메인화면</a>
+			</div>
+		<!-- ============================ [사진 첨부 코드] [Start] ============================ -->
+		<c:forEach items ="${proList}" var="p">
+			<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px">
+				<!-- 사진 담을 박스 -->
+				<div style="width: 400px; height: 450px; border: 1px solid #ced4da; border-radius: 10px; margin-right: 30px">
+					<!-- 메인 사진 -->
+					<div style="width: 360px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+						<img src="https://via.placeholder.com/360x300.jpg" alt="360 * 300 size image">
+					</div>
+					<!-- 작은 사진 -->
+					<div style="display: flex;">
+						<div style="width: 100px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+							<img src="https://via.placeholder.com/100x90.jpg" alt="100 * 90 size image">
+						</div>
+						<div style="width: 100px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+							<img src="https://via.placeholder.com/100x90.jpg" alt="100 * 90 size image">
+						</div>
+						<div style="width: 100px; height: 90px; border-radius: 10px; margin-left: 25px; margin-right: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+							<img src="https://via.placeholder.com/100x90.jpg" alt="100 * 90 size image">
+						</div>
+					</div>
+				</div>
+			<!-- ============================ [사진 첨부 코드] [End] ============================ -->
+			
+			<!-- ============================ [상품 관련 코드] [Start] ============================ -->
+				<div style="width: 100%; height: 450px; border: 1px solid #ced4da; border-radius: 10px;">
+					<!-- 상품 제목 부분 -->
+					<div style="margin-left: 40px; margin-right: 40px; margin-top: 20px">
+						<a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" style="text-decoration: none; color: black; font-weight: bold;"><c:out value="${p.pr_name}" /></a>						
+					</div>
+					<!-- 상품 내용 및 가격 박스 -->
+					<div style="height: 340px; border: 1px solid #ced4da; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px">
+						<!-- 상품 내용 -->
+						<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
+							<input value="${p.pr_content}" name="pr_content" style="width: 100%; height: 100%; text-align: left; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
+						</div>
+						<!-- 상품 가격 -->
+						<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
+							<input value="" placeholder="상품 가격 (ro_price) : ro_pid 1기준 가격" name="pr_content" disabled="disabled" style="width: 100%; height: 100%; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;">
+						</div>
+						<!-- 상품 주소 -->
+						<div style="height: 50px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px; display: flex;">
+							<input value="${p.pr_address2} (${p.pr_address1})" name="pr_address2" style="width: 100%; height: 100%; border: none; background-color: white; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
+							<input value="${p.pr_address1}" name="pr_address1" style="display: none;" disabled="disabled">
+							<input value="${p.pr_address3}" name="pr_address3" style="display: none;" disabled="disabled">
+						</div>
+					</div>
+				</div>
+			<!-- ============================ [상품 관련 코드] [End] ============================ -->
+			</div>
+		</c:forEach>
 	</div>
 	
     <!-- ===================================== 끝 지점 [End] ===================================== -->

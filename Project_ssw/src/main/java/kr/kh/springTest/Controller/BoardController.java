@@ -144,8 +144,12 @@ public class BoardController {
 	//게시판 상세 페이지
 	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
 	public ModelAndView boardDetail(ModelAndView mv, HttpSession session, BoardVO board, @RequestParam("bo_pid") int bo_pid) throws Exception{
+		//게시판 카테고리 불러오기
+		List<BoardVO> boCate = boardService.boardCategoryList(board);
 		BoardVO Detail = boardService.boardDetail(bo_pid);
 		mv.addObject("Detail", Detail);
+		mv.addObject("boCate", boCate);
+		System.out.println("boCate 값 알려줘 : "+boCate);
 		System.out.println("boardDetail 값 : "+Detail);
 		mv.setViewName("board/boardDetail");
 		return mv;
@@ -165,13 +169,13 @@ public class BoardController {
 
 	//게시판 수정
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
-	public ModelAndView boardUpdatePost(ModelAndView mv, BoardVO board) throws Exception{
-		
+	public ModelAndView boardUpdatePost(ModelAndView mv, BoardVO board, @RequestParam("bo_pid") int bo_pid) throws Exception{
+		boardService.boardDetail(bo_pid);
 		int res = boardService.boardUpdate(board);
 		System.out.println("res값 확인 보드 : "+res);
 		if(res != 0) {
 			System.out.println("게시판 수정 완료");
-			mv.setViewName("redirect:/");
+			mv.setViewName("redirect:/boardDetail?bo_pid="+bo_pid+"#tel123");
 		} else {
 			System.out.println("게시판 수정 실패");
 			mv.setViewName("redirect:/boardUpdate");

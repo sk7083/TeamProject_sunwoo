@@ -131,7 +131,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
+         <!-- ===================================== 상단 메뉴 [Start] ===================================== -->
+
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav">
               <li class="nav-item active"><a class="nav-link" href="<c:url value="/"></c:url>">Home</a></li>
@@ -139,15 +140,25 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                 aria-expanded="false">Product</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="<c:url value="/blog"></c:url>">Motel</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/motel#tel123"></c:url>">Motel</a></li>
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Hotel</a></li>
                   <li class="nav-item"><a class="nav-link" href="<c:url value="/blogSingle"></c:url>">Guest House</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="<c:url value="/about"></c:url>">About</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Notice</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList1#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList2#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">문의사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<c:url value="/boardList3#tel123"></c:url>" style="font-family: 'Genos', sans-serif; opacity: 0.8">이벤트</a></li>
+                </ul>
+              </li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+<!-- ===================================== 상단 메뉴 [End] ===================================== -->
+
 <!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
 			
 			<c:if test="${user.me_auth == 2}">
@@ -155,9 +166,9 @@
 				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 				  aria-expanded="false">Manager</a>
 			  	<ul class="dropdown-menu">
-				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager"></c:url>">Management</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert"></c:url>">Product Add</a></li>
-					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager#tel123"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert#tel123"></c:url>">Product Add</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert#tel123"></c:url>">Notice</a></li>
 				</ul>
 				</li>
 			</c:if>
@@ -165,16 +176,16 @@
             </ul>
           </div>
 
-         <!-- 우측 상단 로그인 / 회원가입 버튼 -->
+	<!-- 우측 상단 로그인 / 회원가입 버튼 -->
           <ul class="social-icons ml-auto" style="padding-top: 14px;">
 			<c:if test="${user.me_id == null}">
-				<li><a id="loginBtn" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
+				<li><a id="loginBtn2" class="button-login-right" href="#" style="font-size: 16px; font-weight: bold;">로그인</a></li>
 			</c:if>
 			<c:if test="${user.me_id != null}">
-				<li><a href="<c:url value="/myPage"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
+				<li><a href="<c:url value="/myPage#tel123"></c:url>"  style="font-size: 16px; font-weight: bold;">내 정보</a></li>
 			</c:if>
         	<c:if test="${user.me_id == null}">
-				<li><a href="<c:url value="/register"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
+				<li><a href="<c:url value="/register#tel123"></c:url>"  style="font-size: 16px; font-weight: bold;">회원가입</a></li>
 			</c:if>
 			<c:if test="${user.me_id != null}">
 				<li><a href="<c:url value="/logout"></c:url>"  style="font-size: 16px; font-weight: bold;">로그아웃</a></li>
@@ -183,6 +194,16 @@
           </ul>
         </div>
       </nav>
+      
+      <!-- <div class="search_input" id="search_input_box">
+        <div class="container">
+          <form class="d-flex justify-content-between">
+            <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+            <button type="submit" class="btn"></button>
+            <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+          </form>
+        </div>
+      </div> -->
     </div>
 	</header>
 	<!-- ================ header section end ================= -->	
@@ -217,7 +238,8 @@
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
-<form action="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}"></c:url>" method="post" enctype="multipart/form-date">   
+<form action="<c:url value="/boardUpdate?bo_pid=${Detail.bo_pid}"></c:url>" method="post" enctype="multipart/form-date">
+	<input name="bo_pid" value="${Detail.bo_pid}" style="display: none;">
 	<div style=" margin-left: 20%; margin-right: 20%; margin-top: 100px;"> 
 		<div style="float: right; margin-top: -50px;">
 			<button type="submit" class="btn btn-light" id="signup">등록</button>
@@ -244,12 +266,15 @@
 			        </div>
 			    </div>
 			</div>
-			<!-- ================================ 아래부터 댓글란 ================================ -->
-			<div style="font-size: 17px; font-weight: bold; margin-bottom: 20px">댓글</div>
-			<div style="border: 1px solid #ced4da; border-radius: 5px; padding: 20px; font-size: 14px; font-weight: bold; border-radius: 10px;">${Detail.bo_writer}
-				<div style="display: flex;">
-					<textarea id="textarea" placeholder="댓글을 남겨보세요." style="font-size: 13px; border: none; margin-top: 10px; width: 100%; overflow: hidden; margin-bottom: 10px; overflow-wrap: break-word; resize: none; outline:none; "></textarea>
-					<button type="submit" class="btn btn-light" style="float: right; margin-left: 100px">등록</button>
+			<!-- ================================ 아래부터 댓글란 [업데이트에선 사용 안함] ================================ -->
+			<!-- 현재 display : none 으로 설정됨 -> 지울 경우 써머노트가 동작하지 않음 -->
+			<div style="display: none">
+				<div style="font-size: 17px; font-weight: bold; margin-bottom: 20px">댓글</div>
+				<div style="border: 1px solid #ced4da; border-radius: 5px; padding: 20px; font-size: 14px; font-weight: bold; border-radius: 10px;">${Detail.bo_writer}
+					<div style="display: flex;">
+						<textarea id="textarea" placeholder="댓글을 남겨보세요." style="font-size: 13px; border: none; margin-top: 10px; width: 100%; overflow: hidden; margin-bottom: 10px; overflow-wrap: break-word; resize: none; outline:none; "></textarea>
+						<button type="submit" class="btn btn-light" style="float: right; margin-left: 100px">등록</button>
+					</div>
 				</div>
 			</div>
 		</div>

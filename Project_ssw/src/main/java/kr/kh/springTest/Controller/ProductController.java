@@ -73,12 +73,13 @@ public class ProductController {
 		for(ProductVO bor : list) {
 		}
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		System.out.println("123");
 		mv.addObject("user", user);
 		mv.addObject("list", list);
 		mv.setViewName("product/productList");
 		return mv;
-	}	
+	}
+	
+	
 		
 	//상품 상세 페이지
 	@RequestMapping(value = "/productDetail", method = RequestMethod.GET)
@@ -134,10 +135,17 @@ public class ProductController {
 		return mv;
 	}
 	// ==================================== [상품 페이지] ====================================
-	//motel 상품
+	//상품 현황 [모텔]
 	@RequestMapping(value = "/motel", method = RequestMethod.GET)
-	public ModelAndView motel(ModelAndView mv) throws Exception{
-		
+	public ModelAndView prductListMotel(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
+
+		List<ProductVO> proList = productService.productList(product);
+		for(ProductVO bor : proList) {
+		}
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		mv.addObject("user", user);
+		mv.addObject("proList", proList);
+		System.out.println("proList 정보 : "+proList);
 		mv.setViewName("product/motel");
 		return mv;
 	}

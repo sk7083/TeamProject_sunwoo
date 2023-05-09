@@ -6,7 +6,7 @@
 
 	<!-- 게시판 리스트 -->
 	<select id="ProductList" resultType="kr.kh.springTest.vo.ProductVO">
-		select pr_pid, pr_ca_pid, pr_name, pr_address1, pr_address2, pr_address3, pr_in_time, pr_out_time from product
+		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3, pr_in_time, pr_out_time from product
   	</select>
   	
 	<!-- 상품 생성(추가) -->

@@ -17,7 +17,7 @@ public class BoardVO {
 	private String bo_title; 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") 
 	private String bo_modified; 
-	private MultipartFile fi_pid;
+	private String fi_pid;
 	//=========== 게시판 카테고리 VO =========
 	private String bo_ca_pid;
 	private String bo_ca_name;
@@ -73,10 +73,10 @@ public class BoardVO {
 	public void setBo_modified(String bo_modified) { 
 		this.bo_modified = bo_modified; 
 	} 
-	public MultipartFile getFi_pid() { 
+	public String getFi_pid() { 
 		return fi_pid; 
 	} 
-	public void setFi_pid(MultipartFile fi_pid) { 
+	public void setFi_pid(String fi_pid) { 
 		this.fi_pid = fi_pid; 
 	}
 	
