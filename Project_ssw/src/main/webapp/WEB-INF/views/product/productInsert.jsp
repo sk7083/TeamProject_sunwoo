@@ -213,60 +213,107 @@
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
     <form action="<c:url value="/productInsert"></c:url>" method="post" enctype="multipart/form-data">
-		<div style="margin-left: 25%; margin-right: 25%">
+		<div style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
 		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품 등록</p>
-		  <div class="container">
-		  
-		  
-  			<div class="form-group">
-				<label for="pr_name">상품 선택</label>
-				 <select id="lstFavorites">
-				 <option>상품을 선택해주세요</option>
-				<c:forEach items="${list}" var="v">
-				    <option>${v.ca_pid}</option>
-				</c:forEach>
-				</select>
+			<div class="container">
+	  			<div class="form-group">
+					<label for="pr_name">상품 선택</label>
+					 <select id="lstFavorites">
+					 <option>상품을 선택해주세요</option>
+					<c:forEach items="${list}" var="v">
+					    <option>${v.ca_pid}</option>
+					</c:forEach>
+					</select>
+				</div>
+					<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none"/>
+	 
+				<div class="form-group" style="margin-top: 60px">
+					<label for="pr_name">상품명</label>
+						<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20>
+				</div>
+			    
+		   		<div class="form-group">
+					<label class="control-label" for="pr_content">상품 설명</label>
+						<input class="form-control" type="text" name="pr_content" id="pr_content" placeholder="상품 설명" maxlength="16">
+				</div>
+				
+				<div class="form-group has-feedback">
+				<label class="control-label" for="userPhone">주소</label><br>
+					<input type="text" id="sample6_postcode" placeholder="우편번호" name="pr_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
+					<input type="text" id="sample6_address" placeholder="주소" name="pr_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+					<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="pr_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
+					<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
+				</div>
 			</div>
-				<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none"/>
- 
-			<div class="form-group" style="margin-top: 60px">
-				<label for="pr_name">상품명</label>
-					<input type="text" class="form-control" id="pr_name" name="pr_name" placeholder="상품명" required maxlength=20>
-			</div>
-		    
-	   		<div class="form-group">
-				<label class="control-label" for="pr_content">상품 설명</label>
-					<input class="form-control" type="text" name="pr_content" id="pr_content" placeholder="상품 설명" maxlength="16">
-			</div>
+		</div>
 			
-			<div class="form-group has-feedback">
-			<label class="control-label" for="userPhone">주소</label><br>
-				<input type="text" id="sample6_postcode" placeholder="우편번호" name="pr_address1" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-				<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border: 1px solid #ced4da; border-radius: 0.25rem; margin-bottom: 10px"><br>
-				<input type="text" id="sample6_address" placeholder="주소" name="pr_address2" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="pr_address3" style="border: 1px solid #ced4da; border-radius: 0.25rem; width: 280px">
-				<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="display: none">
+			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
+	<div style=" border-top: 2px solid #ced4da;"></div>
+	<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
+		<!-- 상세 상품 [ROOM] 사진 -->
+		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
+			<div style="">
+				<!-- 메인 사진 -->
+				<div style="width: 550px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+					<img src="https://via.placeholder.com/550x300.jpg" alt="550 * 300 size image">
+				</div>
+				<!-- 작은 사진 -->
+				<div style="display: flex;">
+					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
+					</div>
+					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
+					</div>
+					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-right: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
+					</div>
+				</div>
 			</div>
-	
-			<label class="control-label" for="pr_in_time">입실 시간 ~ 퇴실 시간</label>
-			<div class="form-group has-feedback" style="display: flex;">
-				<input type="text" id="time1" name="pr_in_time" class="form-control" style="width:130px; margin-right: 15px" placeholder="15:00 PM"><p style="font-size: 22px; font-weight: bold;">~</p>
-				<input type="text" id="time2" name="pr_out_time" class="form-control" style="width:130px; margin-left: 15px">
-			</div>
-			
-			<!-- ==================================================== 사진 첨부 부분 ==================================================== -->
-			<div class="form-group">
-				<label class="control-label" for="fi-Pid">사진 첨부 [미구현]</label>
-					
-			</div>
-	
-			<div class="form-group has-feedback">
-			
-				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
-				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
+			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px">
+				<!-- Room 이름 -->
+				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px;">
+					<input type="text" placeholder="Room 이름을 입력해주세요." name="beforeAmt" id="ros_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
+				</div>
+				<input type="text" name="rot_name" id="afterAmt" value="" style="display: none">
+				<!-- 대실 전체 박스 -->
+				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
+					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
+						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">대실</p>
+						<input value="" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px;">
+					</div>
+					<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;">
+					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
+						<input value="" name="rot_in_time" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time1">
+						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
+						<input value="" name="rot_out_time" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time2">
+					</div>
+				</div>	
+				<!-- 숙박 전체 박스 -->
+				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
+					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
+						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">숙박</p>
+						<input value="" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px;">
+					</div>
+					<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;">
+					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
+						<input value="" name="ros_in_time" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time3">
+						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
+						<input value="" name="ros_out_time" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time4">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+		<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [End] ==================================================== -->		
+	
+			<div class="form-group has-feedback">
+				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
+				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
+			</div>
 </form>
     <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
@@ -413,6 +460,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
+//============================== input 동시입력 [Start] ==============================
+function eventKeyup(str){
+	$("#afterAmt").val(str);    // jQuery 이용
+	//document.all.afterAmt.value = str;    // jsp name 이용
+	//document.getElementById("afterAmt").value = str;   // jsp id 이용
+}
+//=============================== input 동시입력 [End] ===============================
 //========================= 게시판 카테고리 선택 드롭박스 [Start] =========================
 $(document).ready(function() {
 
@@ -455,6 +509,36 @@ $(function() {
 
 $(function() {
     $("#time2").timepicker({
+        timeFormat: 'HH:mm',
+        interval: 60,
+        minTime: '9',
+        maxTime: '6:00pm',
+        defaultTime: '12',
+        startTime: '12:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true       
+        
+    });
+});
+
+$(function() {
+    $("#time3").timepicker({
+        timeFormat: 'HH:mm',
+        interval: 60,
+        minTime: '9',
+        maxTime: '6:00pm',
+        defaultTime: '9',
+        startTime: '09:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true       
+        
+    });
+});
+
+$(function() {
+    $("#time4").timepicker({
         timeFormat: 'HH:mm',
         interval: 60,
         minTime: '9',

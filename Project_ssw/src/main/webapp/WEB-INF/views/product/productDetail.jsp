@@ -208,8 +208,8 @@
 			<!-- 사진 담을 박스 -->
 			<div style="width: 600px; height: 450px; border: 1px solid #ced4da; border-radius: 10px; margin-right: 30px">
 				<!-- 메인 사진 -->
-				<div style="width: 560px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-					<img src="https://via.placeholder.com/560x300.jpg" alt="560 * 300 size image">
+				<div style="width: 550px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+					<img src="https://via.placeholder.com/550x300.jpg" alt="550 * 300 size image">
 				</div>
 				<!-- 작은 사진 -->
 				<div style="display: flex;">
@@ -263,50 +263,57 @@
 			<input class="form-control" type="text" id="datepicker2" name="re_str_date" placeholder="2023-01-02" />
 		</div>
 		<!-- 상세 상품 [ROOM] 사진 -->
-		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px">
+		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
 			<div style="width: 300px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
 				<img src="https://via.placeholder.com/300x300.jpg" alt="300 * 300 size image" style="border-right: 1px solid #cbcbcb; padding-right: 50px;">
 			</div>
 			<!-- 상세 상품 [ROOM] 제목 -->
-			<div style="width: 100%; margin-left: 75px; padding: 25px;">
+			<div style="width: 100%; margin-left: 75px; padding: 25px; position: relative;">
 				<div style="border: 1px solid #ced4da; border-radius: 10px; height: 50px; margin-bottom: 20px">
 				</div>
-				<!-- 대실 / 숙박 나눔 -->
+					<!-- ====================================== [대실 / 숙박] [Start] ============================================= -->
 				<div style="display: flex;">
 					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 50%; height: 225px; margin-right: 10px">
+					<!-- ========================== 이 아래부터 대실 ========================== -->
 						<p style="font-size: 18px; position: relative; padding-left: 20px; padding-top: 20px">대실</p>
 						<!-- 대실 가격 박스 -->
 						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-bottom: 5px">
 							<input value="" name="ro_price" placeholder="room 가격 (ro_price)" style="outline: none; width: 100%; height: 100%; border: none;">
 						</div>
 						<!-- 대실 입실 시간 / 퇴실 시간 박스 -->
-						<!-- 
-						
-						
-						
-						이 아래부터 수정 필요
-						
-						
-						
-						
-						
-						 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-bottom: 25px">
-							<div style="display: flex;">
-								<div>마감시간</div>
-								<input value="22시까지" name="re_str_date" style="width: 50%; border: none; outline: none; height: 100%">
-							</div>
-								<input value="" name="re_end_date" style="width: 100%; border: none; outline: none;">
+						<div style="border: 1px solid #ced4da; border-radius: 10px; margin-bottom: 5px; display: flex; width: 100%">
+						<div style="margin-left: 5px; font-weight: bold; font-size: 14px; margin-bottom: 0px; width: 78px;">이용시간</div>
+							<input value="" name="pr_in_time" placeholder="09:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
+							<p style="margin-left: 5px; margin-right: 5px; font-weight: bold; margin-bottom: 0px; height: 25px;">~</p>
+							<input value="" name="pr_out_time" placeholder="12:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
 						</div>
 						<!-- 예약 버튼 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-bottom: 5px">
+						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-top: 20px">
 							<a href='<c:url value="/"></c:url>' id="motel-Btn"
-		            style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; text-decoration: none; width: 100%; height: 100%">예약하기</a>
+		            			style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; text-decoration: none; width: 100%; height: 100%">예약하기</a>
 						</div>
 					</div>
+					<!-- ========================== 이 아래부터 숙박 ========================== -->
 					<div style="border: 1px solid #ced4da; border-radius: 10px; height: 50px; width: 50%; height: 225px; margin-left: 10px">
-						<p style="font-size: 18px; margin-bottom: 40px; position: relative; padding-left: 20px; padding-top: 20px">숙박</p>
+						<p style="font-size: 18px; position: relative; padding-left: 20px; padding-top: 20px">숙박</p>
+						<!-- 숙박 가격 박스 -->
+						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-bottom: 5px">
+							<input value="" name="ro_price" placeholder="room 가격 (ro_price)" style="outline: none; width: 100%; height: 100%; border: none;">
+						</div>
+						<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
+						<div style="border: 1px solid #ced4da; border-radius: 10px; margin-bottom: 5px; display: flex; width: 100%">
+						<p style="margin-left: 5px; font-weight: bold; font-size: 14px; margin-bottom: 0px; width: 78px;">이용시간</p>
+							<input value="" name="pr_in_time" placeholder="09:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
+							<p style="margin-left: 5px; margin-right: 5px; font-weight: bold; margin-bottom: 0px; height: 25px;">~</p>
+							<input value="" name="pr_out_time" placeholder="12:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
+						</div>
+						<!-- 예약 버튼 -->
+						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-top: 20px">
+							<a href='<c:url value="/"></c:url>' id="motel-Btn"
+		            			style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; text-decoration: none; width: 100%; height: 100%">예약하기</a>
+						</div>
 					</div>
+					<!-- ====================================== [대실 / 숙박] [End] ============================================= -->
 				</div>
 			</div>
 		</div>
@@ -464,7 +471,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script type="text/javascript">
 	//========================= Login 모달창 [Start] =========================
-/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
+/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01] 
 	const modal = document.querySelector('.modal');
 	const loginBtn = document.querySelector('#loginBtn');
 	
@@ -481,7 +488,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$('#mod').modal('hide'); 
         $('#mod').hide();
 	}
-*/
+	*/
 	//========================= Login 모달창 [End] ===========================
 
 // ===================================== 카카오 주소창 api 사용 =====================================
