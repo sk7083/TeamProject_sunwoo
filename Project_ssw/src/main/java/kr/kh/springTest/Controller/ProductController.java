@@ -1,5 +1,6 @@
 package kr.kh.springTest.Controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +24,10 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 
+
+	//================================================================================================
+
+	
 //	//메인 화면
 //	@RequestMapping(value = "/pro", method = RequestMethod.GET)
 //	public ModelAndView home(ModelAndView mv) throws Exception{
@@ -139,6 +145,7 @@ public class ProductController {
 	@RequestMapping(value = "/motel", method = RequestMethod.GET)
 	public ModelAndView prductListMotel(ModelAndView mv, ProductVO product, HttpServletRequest request, MemberVO member) throws Exception{
 
+	        
 		List<ProductVO> proList = productService.productList(product);
 		for(ProductVO bor : proList) {
 		}

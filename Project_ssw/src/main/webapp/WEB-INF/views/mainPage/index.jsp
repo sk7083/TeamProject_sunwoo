@@ -836,7 +836,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	
 	//========================= Login 모달창 [End] ===========================
-
+	var api_key = 795744595a736b3739386e45524543;
+	
+	function removeTable() {
+		document.getElementById('demoJSON').removeChild(document.getElementById('demoJSON').childNodes[0]);
+	}
+	
+	function loadDate() {
+		
+	}
 </script>
 
 </html>
