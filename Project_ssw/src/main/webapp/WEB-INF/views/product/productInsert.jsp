@@ -221,7 +221,7 @@
 	  			<div class="form-group">
 					<label for="pr_name">상품 선택</label>
 					 <select id="lstFavorites">
-					 <option>상품을 선택해주세요</option>
+					 <option>상품을 선택해주세요.</option>
 					<c:forEach items="${list}" var="v">
 		  				<c:if test="${v.ca_pid == '모텔' || v.ca_pid == '호텔' || v.ca_pid == '게스트 하우스'}">
 						    <option>${v.ca_pid}</option>
@@ -229,7 +229,7 @@
 					</c:forEach>
 					</select>
 				</div>
-					<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none"/>
+					<input type="text" id="txtFavorite" name="pr_ca_pid" style="display: none;"/>
 	 
 				<div class="form-group" style="margin-top: 60px">
 					<label for="pr_name">상품명</label>
@@ -254,8 +254,10 @@
 			
 			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
 		<div style=" border-top: 2px solid #ced4da;"></div>
-		<p style="font-size: 22px; font-weight: bold; margin-top: 40px; position: relative; margin-left: 25%; margin-right: 25%;">[대실/숙박] 등록</p>
 		<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
+			  			
+	
+					
 		<!-- 상세 상품 [ROOM] 사진 -->
 		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
 			<div>
@@ -279,17 +281,20 @@
 			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px; margin-top: 18px;">
 				<!-- Room 이름 -->
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px;">
-					<input type="text" placeholder="Room 이름을 입력해주세요." name="ros_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
+					<input type="text" placeholder="방 이름을 입력해주세요." name="ro_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
 				</div>
-				<input type="text" name="rot_name" id="afterAmt" value="" style="display: none">
-				<!-- Room 갯 수 -->
+				<!-- Room 개 수 / 최대 최소 인원 박스 -->
 				<div style="display: flex;">
-					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px; margin-right: 5px;">
-						<input type="text" placeholder="Room의 총 개수"  onkeyup="SimultaneousInput(this.value)" name="" value="" style="outline: none; border: none; width: 100%; font-weight: bold;" 
+					<!-- Room 갯 수 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 33%; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; margin-right: 5px;">
+						<input type="text" placeholder="방 개수"  onkeyup="SimultaneousInput(this.value)" name="ro_num" value="" style="outline: none; border: none; width: 100%; font-weight: bold; text-align: center;" 
 								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					</div>
-					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px; margin-left: 5px;">
-						<input type="text" placeholder="최대 인원 수"  onkeyup="SimultaneousInput(this.value)" name="" value="" style="outline: none; border: none; width: 100%; font-weight: bold;" 
+					<!-- 최대/최소 인원 -->
+					<div style="border: none; width: 66%; margin-top: 10px; margin-left: 5px; display: flex;">
+						<input type="text" placeholder="최소 인원"  onkeyup="SimultaneousInput(this.value)" name="ro_min_people" value="" style="outline: none; border: 1px solid #ced4da; border-radius: 10px; width: 50%; font-weight: bold; margin-right: 5px; text-align: center;" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+						<input type="text" placeholder="최대 인원"  onkeyup="SimultaneousInput(this.value)" name="ro_max_people" value="" style="outline: none; border: 1px solid #ced4da; border-radius: 10px; width: 50%; font-weight: bold; margin-left: 5px; text-align: center;" 
 								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					</div>
 				</div>
@@ -297,39 +302,43 @@
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
 					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
 						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">대실</p>
-						<input value="" name="rot_price" id="price" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
+						<input value="" name="ro_t_price" id="t_stop" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
+						<input type='button' value='사용안함'  onclick='btnActive()' style="display: block; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="noneUse">
+						<input type='button' value='사용함'  onclick='btnActive()' style="display: none; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="Use">
 					</div>
-					<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
-					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;">
+					<!-- 대실 입실/퇴실 박스 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;" id="t_time_box">
 					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
-						<input value="" name="rot_in_time" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time1">
+						<input value="" name="ro_t_in_time" id="t_stop" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time1">
 						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
-						<input value="" name="rot_out_time" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time2">
+						<input value="" name="ro_t_out_time" id="t_stop" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time2">
 					</div>
 				</div>	
 				<!-- 숙박 전체 박스 -->
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
 					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
 						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">숙박</p>
-						<input value="" name="ros_price" id="price" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
+						<input value="" name="ro_s_price" id="s_stop" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
+						<input type='button' value='사용안함'  onclick='btnActive2()' style="display: block; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="noneUse2">
+						<input type='button' value='사용함'  onclick='btnActive2()' style="display: none; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="Use2">
 					</div>
-					<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
-					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;">
+					<!-- 숙박 입실/퇴실 박스 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;" id="s_time_box">
 					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
-						<input value="" name="ros_in_time" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time3">
+						<input value="" name="ro_s_in_time" id="s_stop" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time3">
 						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
-						<input value="" name="ros_out_time" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" id="time4">
+						<input value="" name="ro_s_out_time" id="s_stop" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time4">
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 		<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [End] ==================================================== -->		
 	
 			<div class="form-group has-feedback">
 				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
 				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
 			</div>
+	</div>
 </form>
     <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
@@ -476,6 +485,74 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
+//============================= 숙박/대실 [사용함 / 사용안함] [Start] ============================
+function btnActive()  {
+	//대실 전용
+	  const timebox = document.getElementById('t_time_box');
+	  const stop = document.getElementById('t_stop');
+	  
+	  const timebox2 = document.getElementById('s_time_box');
+	// 토글 할 버튼 선택 (noneUse/Use)
+	//대실 전용
+	  const noneUse = document.getElementById('noneUse');
+	  const Use = document.getElementById('Use');
+//================= [대실 사용 금지] =================		  
+	  // noneUse 숨기기 (display: none)
+	  if(noneUse.style.display !== 'none' && timebox2.style.display !== 'none') {
+		 noneUse.style.display = 'none';
+		 Use.style.display = 'block';
+		 //input 비활성
+		 stop.disabled = true;
+		 timebox.style.display = 'none';
+	  } else if(timebox2.style.display == 'none'){
+		  alert('둘 중 하나를 선택해주세요.')
+	  
+	  // btn` 보이기 (display: block)
+	  } else {
+		noneUse.style.display = 'block';
+	    Use.style.display = 'none';
+	  //input 활성
+	    stop.disabled = false;
+	    timebox.style.display = 'flex';
+	  }
+	}
+	
+function btnActive2()  {
+
+	//숙박 전용
+	  const timebox2 = document.getElementById('s_time_box');
+	  const stop2 = document.getElementById('s_stop');
+	  
+	  const timebox3 = document.getElementById('t_time_box');
+	// 토글 할 버튼 선택 (noneUse/Use)
+
+  	//숙박 전용
+	  const noneUse2 = document.getElementById('noneUse2');
+	  const Use2 = document.getElementById('Use2');
+
+//================= [숙박 사용 금지] =================	  
+	// noneUse 숨기기 (display: none)
+	  if(noneUse2.style.display !== 'none' && timebox3.style.display !== 'none') {
+		 noneUse2.style.display = 'none';
+		 Use2.style.display = 'block';
+		 //input 비활성
+		 stop2.disabled = true;
+		 timebox2.style.display = 'none';
+		 
+	  } else if(timebox3.style.display == 'none'){
+		  alert('둘 중 하나를 선택해주세요.')
+		  
+		  // btn` 보이기 (display: block)
+	  } else {
+		noneUse2.style.display = 'block';
+	    Use2.style.display = 'none';
+	  //input 활성
+	    stop2.disabled = false;
+	    timebox2.style.display = 'flex';
+	  }
+	  
+	}
+//============================== 숙박/대실 [사용함 / 사용안함] [End] ==============================
 //============================== 3자리 수 마다 (,) 입력 [Start] ==============================
 function inputNumberFormat(obj) {
     obj.value = comma(uncomma(obj.value));
@@ -509,7 +586,6 @@ function SimultaneousInput(str){
 $(document).ready(function() {
 
            // 콤보박스가 변경될 때
-
            $('#lstFavorites').change(function () {
 
                // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
@@ -525,12 +601,33 @@ $(document).ready(function() {
            });
 
        });
+       
+$(document).ready(function() {
+
+    // 콤보박스가 변경될 때
+    $('#lstFavorites2').change(function () {
+
+        // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
+
+        var selectedText = // $("#lstFavorites option:selected").text();
+
+            // $("option:selected").text();
+
+            $(":selected").text();
+
+        $('#txtFavorite2').val(selectedText);
+
+    });
+
+});
+       
+
 //========================= 게시판 카테고리 선택 드롭박스 [End] =========================
 
 
 //========================= timepicker [Start] =========================
 $(function() {
-    $("#time1").timepicker({
+    $(".time1").timepicker({
         timeFormat: 'HH:mm',
         interval: 60,
         minTime: '9',
@@ -546,7 +643,7 @@ $(function() {
 
 
 $(function() {
-    $("#time2").timepicker({
+    $(".time2").timepicker({
         timeFormat: 'HH:mm',
         interval: 60,
         minTime: '9',
@@ -561,7 +658,7 @@ $(function() {
 });
 
 $(function() {
-    $("#time3").timepicker({
+    $(".time3").timepicker({
         timeFormat: 'HH:mm',
         interval: 60,
         minTime: '9',
@@ -576,7 +673,7 @@ $(function() {
 });
 
 $(function() {
-    $("#time4").timepicker({
+    $(".time4").timepicker({
         timeFormat: 'HH:mm',
         interval: 60,
         minTime: '9',

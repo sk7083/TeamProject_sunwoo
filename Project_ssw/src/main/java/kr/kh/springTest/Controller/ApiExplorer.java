@@ -7,11 +7,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import com.mysql.cj.xdevapi.JsonArray;
+import com.mysql.cj.xdevapi.JsonParser;
 
 public class ApiExplorer {
 	public static void main(String[] args) throws IOException, ParseException {
@@ -51,24 +55,49 @@ public class ApiExplorer {
 		 System.out.println(sb.toString());
 		 System.out.println("=================================");
 		 
-		  JSONParser parser = new JSONParser();
-		  System.out.println("parser 확인 : "+parser);
-	       Object obj = parser.parse(sb.toString()); 
-	       System.out.println("obj 확인 : "+obj);
-	       // obj를 JsonArray로 cast
-	        JSONArray jsonArr = (JSONArray)obj;
-	        System.out.println("jsonArr 확인 : "+jsonArr);
-	        if (jsonArr.size() > 0){
-	            for(int i=0; i<jsonArr.size(); i++){
-	                JSONObject jsonObj = (JSONObject)jsonArr.get(i);
-	                
-	                
-	                System.out.println((String)jsonObj.get("BPLCNM")); 
-	            }
-	            // StudyingAzae, Soodal 출력
-	        }     
-		 JSONObject jsonMain = (JSONObject)obj;
+		 
+		 JSONParser parser = new JSONParser();
+		 
+		 Object obj =  parser.parse(sb.toString());
+
+
+		 
+//		 JSONObject obj = (JSONObject) parser.parse(sb);
+		 
+//		 System.out.println("확인 : "+obj.get("BPLCNM"));
+		 
+//		 JSONArray jsonarray = (JSONArray) parser.parse(rd);
+//		 for(int i =0; i<jsonarray.size(); i++) {
+//			 JSONObject obj = (JSONObject) jsonarray.get(i);
+//			 String BPLCNM = (String) obj.get("BPLCNM");
+//			 sb.append(BPLCNM+"");
+//		 }
+//		 System.out.println(sb.toString());
+		 
+
 		 
 		 
+//		 JsonParser parser = new JsonParser();
+//		 
+//		  JSONParser parser = new JSONParser();
+//		  System.out.println("parser 확인 : "+parser);
+//	       Object obj = parser.parse(sb.toString()); 
+	       
+//	       System.out.println("obj 확인 : "+obj);
+//	       // obj를 JsonArray로 cast
+//	        JSONArray jsonArr = (JSONArray)obj;
+//	        System.out.println("jsonArr 확인 : "+jsonArr);
+//	        if (jsonArr.size() > 0){
+//	            for(int i=0; i<jsonArr.size(); i++){
+//	                JSONObject jsonObj = (JSONObject)jsonArr.get(i);
+//	                
+//	                
+//	                System.out.println((String)jsonObj.get("BPLCNM")); 
+//	            }
+//	            // StudyingAzae, Soodal 출력
+//	        }     
+//		 JSONObject jsonMain = (JSONObject)obj;
+//		 
+//		 System.out.println("확인" + jsonMain.get(jsonMain));
 	}
 }

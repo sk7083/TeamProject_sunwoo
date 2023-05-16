@@ -9,21 +9,22 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.springTest.service.ProductService;
+import kr.kh.springTest.service.RoomService;
 import kr.kh.springTest.vo.MemberVO;
 import kr.kh.springTest.vo.ProductVO;
+import kr.kh.springTest.vo.RoomVO;
 
 @Controller
 public class ProductController {
 	@Autowired
 	ProductService productService;
-
+	RoomService roomService;
 
 	//================================================================================================
 
@@ -55,14 +56,17 @@ public class ProductController {
 	
 	//상품 생성(추가) (POST)
 	@RequestMapping(value = "/productInsert", method = RequestMethod.POST)
-	public ModelAndView ProductInsertPost(ModelAndView mv, ProductVO product) throws Exception{
-
+	public ModelAndView ProductInsertPost(ModelAndView mv, ProductVO product, RoomVO room) throws Exception{
+		int roomInt = roomService.RoomAdd(room);
+		System.out.println("Room int값 : "+ room);
 		System.out.println("접속은 했음");
 		int pns = productService.productAdd(product);
 		System.out.println("pns 값 : " + pns);
-		if(pns != 0) {
+		if(pns != 0 && roomInt != 0) {
 			System.out.println("상품 등록 완료");
 			System.out.println("등록된 상품 : "+ product);
+			System.out.println("============================");
+			System.out.println("등록된 방 정보 : "+ room);
 			mv.setViewName("redirect:/");
 		} else {
 			System.out.println("상품 등록 실패");
