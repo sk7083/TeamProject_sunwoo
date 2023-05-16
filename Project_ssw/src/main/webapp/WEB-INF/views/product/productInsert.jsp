@@ -212,16 +212,20 @@
 	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
+   	<div style=" border-top: 2px solid #ced4da; margin-bottom: 50px"></div>
     <form action="<c:url value="/productInsert"></c:url>" method="post" enctype="multipart/form-data">
 		<div style="margin-left: 25%; margin-right: 25%; margin-bottom: 50px">
 		<p style="font-size: 22px; font-weight: bold; margin-bottom: 40px; position: relative;">상품 등록</p>
+		
 			<div class="container">
 	  			<div class="form-group">
 					<label for="pr_name">상품 선택</label>
 					 <select id="lstFavorites">
 					 <option>상품을 선택해주세요</option>
 					<c:forEach items="${list}" var="v">
-					    <option>${v.ca_pid}</option>
+		  				<c:if test="${v.ca_pid == '모텔' || v.ca_pid == '호텔' || v.ca_pid == '게스트 하우스'}">
+						    <option>${v.ca_pid}</option>
+		  				</c:if>
 					</c:forEach>
 					</select>
 				</div>
@@ -249,18 +253,19 @@
 		</div>
 			
 			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
-	<div style=" border-top: 2px solid #ced4da;"></div>
-	<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
+		<div style=" border-top: 2px solid #ced4da;"></div>
+		<p style="font-size: 22px; font-weight: bold; margin-top: 40px; position: relative; margin-left: 25%; margin-right: 25%;">[대실/숙박] 등록</p>
+		<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
 		<!-- 상세 상품 [ROOM] 사진 -->
 		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
-			<div style="">
+			<div>
 				<!-- 메인 사진 -->
 				<div style="width: 550px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
 					<img src="https://via.placeholder.com/550x300.jpg" alt="550 * 300 size image">
 				</div>
 				<!-- 작은 사진 -->
 				<div style="display: flex;">
-					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
 						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
 					</div>
 					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
@@ -271,17 +276,28 @@
 					</div>
 				</div>
 			</div>
-			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px">
+			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px; margin-top: 18px;">
 				<!-- Room 이름 -->
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px;">
-					<input type="text" placeholder="Room 이름을 입력해주세요." name="beforeAmt" id="ros_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
+					<input type="text" placeholder="Room 이름을 입력해주세요." name="ros_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
 				</div>
 				<input type="text" name="rot_name" id="afterAmt" value="" style="display: none">
+				<!-- Room 갯 수 -->
+				<div style="display: flex;">
+					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px; margin-right: 5px;">
+						<input type="text" placeholder="Room의 총 개수"  onkeyup="SimultaneousInput(this.value)" name="" value="" style="outline: none; border: none; width: 100%; font-weight: bold;" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+					</div>
+					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px; margin-left: 5px;">
+						<input type="text" placeholder="최대 인원 수"  onkeyup="SimultaneousInput(this.value)" name="" value="" style="outline: none; border: none; width: 100%; font-weight: bold;" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+					</div>
+				</div>
 				<!-- 대실 전체 박스 -->
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
 					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
 						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">대실</p>
-						<input value="" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px;">
+						<input value="" name="rot_price" id="price" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
 					</div>
 					<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
 					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;">
@@ -295,7 +311,7 @@
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
 					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
 						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">숙박</p>
-						<input value="" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px;">
+						<input value="" name="ros_price" id="price" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
 					</div>
 					<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
 					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;">
@@ -460,9 +476,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
+//============================== 3자리 수 마다 (,) 입력 [Start] ==============================
+function inputNumberFormat(obj) {
+    obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+//============================== 3자리 수 마다 (,) 입력 [End] ==============================
+	
 //============================== input 동시입력 [Start] ==============================
 function eventKeyup(str){
 	$("#afterAmt").val(str);    // jQuery 이용
+	//document.all.afterAmt.value = str;    // jsp name 이용
+	//document.getElementById("afterAmt").value = str;   // jsp id 이용
+}
+
+function SimultaneousInput(str){
+	$("#RoomState").val(str);    // jQuery 이용
 	//document.all.afterAmt.value = str;    // jsp name 이용
 	//document.getElementById("afterAmt").value = str;   // jsp id 이용
 }
