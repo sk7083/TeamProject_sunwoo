@@ -194,7 +194,7 @@
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px; margin-top: 10px">내 정보</a>
+		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px; margin-top: 10px;">내 정보</a>
 	           	</c:if>
            	</div>
           </div>
@@ -238,7 +238,7 @@
 			    
 		   		<div class="form-group">
 					<label class="control-label" for="pr_content">상품 설명</label>
-						<input class="form-control" type="text" name="pr_content" id="pr_content" placeholder="상품 설명" maxlength="16">
+						<input class="form-control" type="text" name="pr_content" placeholder="상품 설명" maxlength="16">
 				</div>
 				
 				<div class="form-group has-feedback">
@@ -278,6 +278,9 @@
 					</div>
 				</div>
 			</div>
+			
+			<input name="ro_select_s_or_t" value="ST" style="display: none;" id="ro_se">
+			
 			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px; margin-top: 18px;">
 				<!-- Room 이름 -->
 				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px;">
@@ -485,11 +488,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script type="text/javascript">
+var sum = cnt + 1
+var cnt = 0;
+
+
 //============================= 숙박/대실 [사용함 / 사용안함] [Start] ============================
 function btnActive()  {
 	//대실 전용
 	  const timebox = document.getElementById('t_time_box');
 	  const stop = document.getElementById('t_stop');
+	  const rose = document.getElementById('ro_se');
+	  
 	  
 	  const timebox2 = document.getElementById('s_time_box');
 	// 토글 할 버튼 선택 (noneUse/Use)
@@ -502,7 +511,10 @@ function btnActive()  {
 		 noneUse.style.display = 'none';
 		 Use.style.display = 'block';
 		 //input 비활성
+		 rose.value = 'S';
 		 stop.disabled = true;
+		 stop.style.textDecoration = 'line-through';
+		 stop.style.backgroundColor= 'white';
 		 timebox.style.display = 'none';
 	  } else if(timebox2.style.display == 'none'){
 		  alert('둘 중 하나를 선택해주세요.')
@@ -512,6 +524,8 @@ function btnActive()  {
 		noneUse.style.display = 'block';
 	    Use.style.display = 'none';
 	  //input 활성
+	  	rose.value = 'ST';
+	  	stop.style.textDecoration = 'none';
 	    stop.disabled = false;
 	    timebox.style.display = 'flex';
 	  }
@@ -522,6 +536,8 @@ function btnActive2()  {
 	//숙박 전용
 	  const timebox2 = document.getElementById('s_time_box');
 	  const stop2 = document.getElementById('s_stop');
+	  const rose = document.getElementById('ro_se');
+	  
 	  
 	  const timebox3 = document.getElementById('t_time_box');
 	// 토글 할 버튼 선택 (noneUse/Use)
@@ -536,7 +552,11 @@ function btnActive2()  {
 		 noneUse2.style.display = 'none';
 		 Use2.style.display = 'block';
 		 //input 비활성
+ 		 rose.value = 'T';
 		 stop2.disabled = true;
+		 stop2.style.textDecoration = 'line-through';
+		 stop2.style.backgroundColor= 'white';
+		 
 		 timebox2.style.display = 'none';
 		 
 	  } else if(timebox3.style.display == 'none'){
@@ -547,6 +567,8 @@ function btnActive2()  {
 		noneUse2.style.display = 'block';
 	    Use2.style.display = 'none';
 	  //input 활성
+  	  	rose.value = 'ST';
+  	  	stop2.style.textDecoration = 'none';
 	    stop2.disabled = false;
 	    timebox2.style.display = 'flex';
 	  }

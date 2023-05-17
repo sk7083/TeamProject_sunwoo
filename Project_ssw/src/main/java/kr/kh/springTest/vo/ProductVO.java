@@ -1,10 +1,8 @@
 package kr.kh.springTest.vo;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class ProductVO {
 	//상품 번호
-	private String pr_pid;
+	private int pr_pid;
 	//상품 카테고리 번호(모텔, 호텔, 게하 등)
 	private String pr_ca_pid;
 	//상품 이름
@@ -22,11 +20,11 @@ public class ProductVO {
 	//=========== 카테고리 VO =========
 	private String ca_pid;
 
-	public String getPr_pid() {
+	public int getPr_pid() {
 		return pr_pid;
 	}
 
-	public void setPr_pid(String pr_pid) {
+	public void setPr_pid(int pr_pid) {
 		this.pr_pid = pr_pid;
 	}
 

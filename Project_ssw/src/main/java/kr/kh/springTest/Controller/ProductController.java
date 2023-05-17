@@ -1,6 +1,7 @@
 package kr.kh.springTest.Controller;
 
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
+
 import kr.kh.springTest.service.ProductService;
 import kr.kh.springTest.service.RoomService;
 import kr.kh.springTest.vo.MemberVO;
@@ -24,6 +27,7 @@ import kr.kh.springTest.vo.RoomVO;
 public class ProductController {
 	@Autowired
 	ProductService productService;
+	@Autowired
 	RoomService roomService;
 
 	//================================================================================================
@@ -57,16 +61,13 @@ public class ProductController {
 	//상품 생성(추가) (POST)
 	@RequestMapping(value = "/productInsert", method = RequestMethod.POST)
 	public ModelAndView ProductInsertPost(ModelAndView mv, ProductVO product, RoomVO room) throws Exception{
-		int roomInt = roomService.RoomInsert(room);
-		System.out.println("Room int값 : "+ room);
-		System.out.println("접속은 했음");
 		int pns = productService.productAdd(product);
-		System.out.println("pns 값 : " + pns);
-		if(pns != 0 && roomInt != 0) {
+		int ros = roomService.RoomInsert(room);
+		
+		if(pns != 0 && ros != 0) {
 			System.out.println("상품 등록 완료");
 			System.out.println("등록된 상품 : "+ product);
-			System.out.println("============================");
-			System.out.println("등록된 방 정보 : "+ room);
+			System.out.println("등록된 방 : "+room);
 			mv.setViewName("redirect:/");
 		} else {
 			System.out.println("상품 등록 실패");
@@ -74,6 +75,7 @@ public class ProductController {
 		}
 		return mv;
 	}
+	
 	
 	//상품 현황
 	@RequestMapping(value = "/productList", method = RequestMethod.GET)
@@ -93,10 +95,11 @@ public class ProductController {
 		
 	//상품 상세 페이지
 	@RequestMapping(value = "/productDetail", method = RequestMethod.GET)
-	public ModelAndView productDetail(ModelAndView mv, HttpSession session, ProductVO product, @RequestParam("pr_pid") int pr_pid) throws Exception{
+	public ModelAndView productDetail(ModelAndView mv, HttpSession session, ProductVO product, @RequestParam("pr_pid") int pr_pid, @RequestParam("ro_pid") int ro_pid) throws Exception{
 		ProductVO Detail = productService.productDetail(pr_pid);
-
+		RoomVO RDetail = roomService.RoomDetail(ro_pid);
 		mv.addObject("Detail", Detail);
+		mv.addObject("RDetail",RDetail);
 		System.out.println("boardDetail 값 : "+Detail);
 		mv.setViewName("product/productDetail");
 		return mv;

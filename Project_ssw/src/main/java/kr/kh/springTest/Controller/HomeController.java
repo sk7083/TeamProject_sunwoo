@@ -310,14 +310,4 @@ public class HomeController {
 		return mv;
 	}
 	
-	//test
-	//삭제할 항목
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView test(ModelAndView mv) throws Exception{
-		
-		mv.setViewName("member/test");
-		return mv;
-	}
-
-	
 }

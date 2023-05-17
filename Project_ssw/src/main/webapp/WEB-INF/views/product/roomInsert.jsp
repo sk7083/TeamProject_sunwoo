@@ -4,9 +4,6 @@
 
 	<!-- ================ Style Start ================= -->	
 <style>
-#motel-Btn:hover{
-	background-color: #f8f9fa;
-}
 .success1{
 	border: 2px solid #cca772;
 	background: #cca772;
@@ -59,7 +56,7 @@
 	<!-- ================ Style End ================= -->	
 
   <title>Seaplace Hotel</title>
-	
+
 	<!-- 메인화면 필수 link -->
 	<link rel="icon" href="resources/seapalace-master/img/favicon.png" type="image/png">
   <link rel="stylesheet" href="resources/seapalace-master/vendors/bootstrap/bootstrap.min.css">
@@ -79,11 +76,11 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-	<!-- w3schools 부트스트랩 드롭다운 (지역 선택) -->
-	<script src="resources/W3school/jquery.slim.min.js"></script>
-	<script src="resources/W3school/popper.min.js"></script>
-	<script src="resources/W3school/bootstrap.bundle.min.js"></script>
-
+<!-- timepicker 사용 (입실 시간 / 퇴실 시간) -->
+<script src="resources/jquery/jquery.min2.js"></script>
+<link rel="stylesheet" href="resources/css/jquery.timepicker.min.css">
+<script src="resources/jquery/jquery.timepicker.min.js"></script>
+ 
 
 
 
@@ -147,6 +144,20 @@
               <li class="nav-item"><a class="nav-link" href="<c:url value="/properties"></c:url>">Properties</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/gallery"></c:url>">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="<c:url value="/contact"></c:url>">Contact</a></li>
+<!-- ================================= 관리자 전용 메뉴 [Start] ================================= -->
+			
+			<c:if test="${user.me_auth == 2}">
+				<li class="nav-item submenu dropdown">
+				  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+				  aria-expanded="false">Manager</a>
+			  	<ul class="dropdown-menu">
+				    <li class="nav-item"><a class="nav-link" href="<c:url value="/memberManager"></c:url>">Management</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/productInsert"></c:url>">Product Add</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/boardInsert"></c:url>">Notice</a></li>
+				</ul>
+				</li>
+			</c:if>
+<!-- ================================= 관리자 전용 메뉴 [End] ================================= -->
             </ul>
           </div>
 
@@ -179,41 +190,46 @@
         <div class="home-banner">
           <div class="text-center">
             <h4>Welcome <em>to</em> SEAPALACE </h4>
-            <h2 style="color: white; margin-bottom: 30px;">Motel</h2>
+            <h2 style="color: white; margin-bottom: 30px;">Product Registration</h2>
 	            <a class="button home-banner-btn" href="<c:url value="/"></c:url>" style="width: 180px;">HOME</a>
            	<div>
 				<c:if test="${user.me_auth == 1 || user.me_auth == 2}">
-		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px;">내 정보</a>
+		            <a class="button home-banner-btn" href="<c:url value="/myPage"></c:url>" style="width: 180px; margin-top: 10px">내 정보</a>
 	           	</c:if>
            	</div>
-            <div> <c:url value=""></c:url>
-          	  <a class="button home-banner-btn" href="#" style="width: 180px; margin-top: 10px">예약하기</a>
-            </div>
           </div>
         </div>
       </div>
     </section>
- 	<!-- 이동할 위치 지정 -->	
-	<span id="tel123"></span>
-	<!-- 이동할 위치 지정 -->
-    <!-- =================================== 시작 지점 [start] =================================== -->
-    <div class="section-intro__
-    tyle" style="margin-bottom: 40px; text-align: center; margin-top: 40px;">
+
+
+
+		   <!-- 이동할 위치 지정 -->
+		   <span id="tel123"></span>
+		   <!-- 이동할 위치 지정 -->
+    <div class="section-intro__style" style="margin-bottom: 40px; text-align: center; margin-top: 40px;">
 		<img src="resources/seapalace-master/img/home/bed-icon.png" alt="">
-		<h2 style="margin-top: 10px; margin-bottom: 50px">SEAPALACE</h2>
+	<h2 style="margin-top: 10px">SEAPALACE</h2>
 	</div>
-	<div style="margin-left: 15%; margin-right: 15%; border-bottom: 1px solid #cbcbcb; margin-bottom: 30px">
-		<!-- ============================ [사진 첨부 코드] [Start] ============================ -->
-		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px">
-			<!-- 사진 담을 박스 -->
-			<div style="width: 600px; height: 450px; border: 1px solid #ced4da; border-radius: 10px; margin-right: 30px">
+    <!-- ===================================== 시작 지점 [Start] ===================================== -->
+   	<div style=" border-top: 2px solid #ced4da; margin-bottom: 50px"></div>
+    <form action="<c:url value="/roomInsert"></c:url>" method="post" enctype="multipart/form-data">
+			
+			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
+		<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
+			  			
+	
+					
+		<!-- 상세 상품 [ROOM] 사진 -->
+		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
+			<div>
 				<!-- 메인 사진 -->
 				<div style="width: 550px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
 					<img src="https://via.placeholder.com/550x300.jpg" alt="550 * 300 size image">
 				</div>
 				<!-- 작은 사진 -->
 				<div style="display: flex;">
-					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 25px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
 						<img src="https://via.placeholder.com/160x90.jpg" alt="160 * 90 size image">
 					</div>
 					<div style="width: 160px; height: 90px; border-radius: 10px; margin-left: 30px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
@@ -224,105 +240,72 @@
 					</div>
 				</div>
 			</div>
-			<!-- ============================ [사진 첨부 코드] [End] ============================ -->
+			<!-- ro_pid값 임의로 지정 컨트롤러에서 pr_pid에 맞게 수정될 예정 -->
 			
-			<!-- ============================ [상품 관련 코드] [Start] ============================ -->
-			<div style="width: 50%; height: 450px; border: 1px solid #ced4da; border-radius: 10px;">
-				<!-- 상품 제목 부분 -->
-				<div style="margin-left: 40px; margin-right: 40px; margin-top: 20px">
-					<a href="<c:url value="/productDetail?pr_pid=${p.pr_pid}"></c:url>" style="text-decoration: none; color: black; font-weight: bold;"><c:out value="${p.pr_name}" /></a>						
+			<input name="ro_pid" value="" style="display: none;">
+			<div style="border: 1px solid #ced4da; border-radius: 10px; align-items: center; padding: 20px; margin-top: 18px;">
+				<!-- Room 이름 -->
+				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px; padding-left: 35px; padding-top: 10px; padding-bottom: 10px;">
+					<input type="text" placeholder="방 이름을 입력해주세요." name="ro_name" value="" onkeyup="eventKeyup(this.value)"  style="outline: none; border: none; width: 100%; font-weight: bold;">
 				</div>
-				<!-- 상품 내용 및 가격 박스 -->
-				<div style="height: 340px; border: 1px solid #ced4da; border-radius: 10px; margin-left: 20px; margin-right: 20px;">
-					<!-- 상품 제목 -->
-					<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
-						<input value="${Detail.pr_name}" style="width: 100%; height: 100%; text-align: left; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
-					</div>
-					<!-- 상품 내용 -->
-					<div style="height: 100px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px;">
-						<input value="${Detail.pr_content}" style="width: 100%; height: 100%; text-align: left; background-color: white; border: none; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
-					</div>
-					<!-- 상품 주소 -->
-					<div style="height: 50px; border: 1px solid #ced4da; border-radius: 10px; margin: 20px 20px 20px 20px; display: flex;">
-						<input value="${Detail.pr_address2} (${Detail.pr_address1})" name="pr_address2" style="width: 100%; height: 100%; border: none; background-color: white; outline: 1px solid #ced4da; border-radius: 10px;" disabled="disabled">
-						<input value="${Detail.pr_address1}" name="pr_address1" style="display: none;" disabled="disabled">
-						<input value="${Detail.pr_address3}" name="pr_address3" style="display: none;" disabled="disabled">
-					</div>
-				</div>
-			</div>
-			<!-- ============================ [상품 관련 코드] [End] ============================ -->
-		</div>
-	</div>
-	<!-- ============================ [상품 상세 관련 코드] [Start] ============================ -->
-	<div style="margin-left: 15%; margin-right: 15%; border-bottom: 1px solid #cbcbcb; margin-bottom: 30px">
-		<!-- 예약 부분 -->
-		<label class="control-label" for="datepicker">예약 날짜</label>
-		<div style="width: 250px; margin-right: 30px; display: flex; margin-bottom: 10px">
-			<input class="form-control" type="text" id="datepicker" name="re_str_date" placeholder="2023-01-01" />
-			<p style="font-weight: bold; margin-left: 5px; margin-right: 5px; margin-top: 4;">~</p>
-			<input class="form-control" type="text" id="datepicker2" name="re_end_date" placeholder="2023-01-02" />
-		</div>
-		<!-- 상세 상품 [ROOM] 사진 -->
-		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; margin-bottom: 50px; display: inline-flex;">
-			<div style="width: 300px; height: 300px; border-radius: 10px; margin-left: 20px; margin-right: 20px; margin-top: 20px; outline: 1px solid #cbcbcb; border-radius: 5px;">
-				<img src="https://via.placeholder.com/300x300.jpg" alt="300 * 300 size image" style="border-right: 1px solid #cbcbcb; padding-right: 50px;">
-			</div>
-			<!-- 상세 상품 [ROOM] 제목 -->
-			<div style="width: 100%; margin-left: 75px; padding: 25px; position: relative;">
-				<div style="border: 1px solid #ced4da; border-radius: 10px; height: 50px; margin-bottom: 20px">
-					<input value="${RDetail.ro_name}" disabled="disabled">
-				</div>
-					<!-- ====================================== [대실 / 숙박] [Start] ============================================= -->
+				<!-- Room 개 수 / 최대 최소 인원 박스 -->
 				<div style="display: flex;">
-					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 50%; height: 225px; margin-right: 10px">
-					<!-- ========================== 이 아래부터 대실 ========================== -->
-						<p style="font-size: 18px; position: relative; padding-left: 20px; padding-top: 20px">대실</p>
-						<!-- 대실 가격 박스 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-bottom: 5px">
-							<input value="" name="ro_price" placeholder="room 가격 (ro_price)" style="outline: none; width: 100%; height: 100%; border: none;">
-						</div>
-						<!-- 대실 입실 시간 / 퇴실 시간 박스 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; margin-bottom: 5px; display: flex; width: 100%">
-						<div style="margin-left: 5px; font-weight: bold; font-size: 14px; margin-bottom: 0px; width: 78px;">이용시간</div>
-							<input value="" name="pr_in_time" placeholder="09:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
-							<p style="margin-left: 5px; margin-right: 5px; font-weight: bold; margin-bottom: 0px; height: 25px;">~</p>
-							<input value="" name="pr_out_time" placeholder="12:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
-						</div>
-						<!-- 예약 버튼 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-top: 20px">
-							<a href='<c:url value="/"></c:url>' id="motel-Btn"
-		            			style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; text-decoration: none; width: 100%; height: 100%">예약하기</a>
-						</div>
+					<!-- Room 갯 수 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; width: 33%; margin-top: 10px; padding-top: 10px; padding-bottom: 10px; margin-right: 5px;">
+						<input type="text" placeholder="방 개수"  onkeyup="SimultaneousInput(this.value)" name="ro_num" value="" style="outline: none; border: none; width: 100%; font-weight: bold; text-align: center;" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					</div>
-					<!-- ========================== 이 아래부터 숙박 ========================== -->
-					<div style="border: 1px solid #ced4da; border-radius: 10px; height: 50px; width: 50%; height: 225px; margin-left: 10px">
-						<p style="font-size: 18px; position: relative; padding-left: 20px; padding-top: 20px">숙박</p>
-						<!-- 숙박 가격 박스 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-bottom: 5px">
-							<input value="" name="ro_price" placeholder="room 가격 (ro_price)" style="outline: none; width: 100%; height: 100%; border: none;">
-						</div>
-						<!-- 숙박 입실 시간 / 퇴실 시간 박스 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; margin-bottom: 5px; display: flex; width: 100%">
-						<p style="margin-left: 5px; font-weight: bold; font-size: 14px; margin-bottom: 0px; width: 78px;">이용시간</p>
-							<input value="" name="pr_in_time" placeholder="09:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
-							<p style="margin-left: 5px; margin-right: 5px; font-weight: bold; margin-bottom: 0px; height: 25px;">~</p>
-							<input value="" name="pr_out_time" placeholder="12:00:00" style="outline: none; border: none; width: 70px; height: 100%;">
-						</div>
-						<!-- 예약 버튼 -->
-						<div style="border: 1px solid #ced4da; border-radius: 10px; height: 40px; margin-top: 20px">
-							<a href='<c:url value="/"></c:url>' id="motel-Btn"
-		            			style="background: #f8f9fa; padding: 7px; border-radius: 5px; color: black; text-decoration: none; width: 100%; height: 100%">예약하기</a>
-						</div>
+					<!-- 최대/최소 인원 -->
+					<div style="border: none; width: 66%; margin-top: 10px; margin-left: 5px; display: flex;">
+						<input type="text" placeholder="최소 인원"  onkeyup="SimultaneousInput(this.value)" name="ro_min_people" value="" style="outline: none; border: 1px solid #ced4da; border-radius: 10px; width: 50%; font-weight: bold; margin-right: 5px; text-align: center;" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+						<input type="text" placeholder="최대 인원"  onkeyup="SimultaneousInput(this.value)" name="ro_max_people" value="" style="outline: none; border: 1px solid #ced4da; border-radius: 10px; width: 50%; font-weight: bold; margin-left: 5px; text-align: center;" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					</div>
-					<!-- ====================================== [대실 / 숙박] [End] ============================================= -->
+				</div>
+				<!-- 대실 전체 박스 -->
+				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
+					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
+						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">대실</p>
+						<input value="" name="ro_t_price" id="t_stop" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
+						<input type='button' value='사용안함'  onclick='btnActive()' style="display: block; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="noneUse">
+						<input type='button' value='사용함'  onclick='btnActive()' style="display: none; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="Use">
+					</div>
+					<!-- 대실 입실/퇴실 박스 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;" id="t_time_box">
+					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
+						<input value="" name="ro_t_in_time" id="t_stop" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time1">
+						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
+						<input value="" name="ro_t_out_time" id="t_stop" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time2">
+					</div>
+				</div>	
+				<!-- 숙박 전체 박스 -->
+				<div style="border: 1px solid #ced4da; border-radius: 10px; width: 100%; margin-top: 10px">
+					<div style="display: flex; margin: 10px; border: 1px solid #ced4da; border-radius: 10px; margin-top: 10px; padding-top: 15px;">
+						<p style="font-size: 18px; position: relative; padding-left: 20px; margin-right: 85px; width: 70px;">숙박</p>
+						<input value="" name="ro_s_price" id="s_stop" placeholder="가격을 입력해주세요." style="outline: none; border: none; width: 300px; height: 100%; font-size: 18px; font-weight: bold;" onkeyup="inputNumberFormat(this)">
+						<input type='button' value='사용안함'  onclick='btnActive2()' style="display: block; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="noneUse2">
+						<input type='button' value='사용함'  onclick='btnActive2()' style="display: none; height: 100%; border: 1px solid #ced4da; border-radius: 10px; margin-right: 10px; width: 90px" id="Use2">
+					</div>
+					<!-- 숙박 입실/퇴실 박스 -->
+					<div style="border: 1px solid #ced4da; border-radius: 10px; margin: 10px; display: flex; align-items: center; height: 40px; padding: 20px;" id="s_time_box">
+					<p style="font-weight: bold; font-size: 17px; width: 78px; margin-bottom: 0px; margin-right: 20px">이용시간</p>
+						<input value="" name="ro_s_in_time" id="s_stop" placeholder="09:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time3">
+						<p style="font-weight: bold; margin-bottom: 0px;">~</p>
+						<input value="" name="ro_s_out_time" id="s_stop" placeholder="12:00:00" style="outline: none; border:none; width: 120px; font-size: 18px; text-align: center;" class="time4">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- ============================ [상품 상세 관련 코드] [End] ============================ -->
+		<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [End] ==================================================== -->		
 	
-    <!-- ===================================== 끝 지점 [End] ===================================== -->
-  
+			<div class="form-group has-feedback">
+				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
+				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
+			</div>
+	</div>
+</form>
+    <!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
 
 
@@ -448,7 +431,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     
 
 
-  <script src="resources/seapalace-master/vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="resources/seapalace-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="resources/seapalace-master/vendors/magnefic-popup/jquery.magnific-popup.min.js"></script>
   <script src="resources/seapalace-master/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -465,14 +447,214 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="resources/js/jquery-ui.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<!-- datepicker 달력 -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script type="text/javascript">
+//============================= 숙박/대실 [사용함 / 사용안함] [Start] ============================
+function btnActive()  {
+	//대실 전용
+	  const timebox = document.getElementById('t_time_box');
+	  const stop = document.getElementById('t_stop');
+	  
+	  const timebox2 = document.getElementById('s_time_box');
+	// 토글 할 버튼 선택 (noneUse/Use)
+	//대실 전용
+	  const noneUse = document.getElementById('noneUse');
+	  const Use = document.getElementById('Use');
+//================= [대실 사용 금지] =================		  
+	  // noneUse 숨기기 (display: none)
+	  if(noneUse.style.display !== 'none' && timebox2.style.display !== 'none') {
+		 noneUse.style.display = 'none';
+		 Use.style.display = 'block';
+		 //input 비활성
+		 stop.disabled = true;
+		 timebox.style.display = 'none';
+	  } else if(timebox2.style.display == 'none'){
+		  alert('둘 중 하나를 선택해주세요.')
+	  
+	  // btn` 보이기 (display: block)
+	  } else {
+		noneUse.style.display = 'block';
+	    Use.style.display = 'none';
+	  //input 활성
+	    stop.disabled = false;
+	    timebox.style.display = 'flex';
+	  }
+	}
+	
+function btnActive2()  {
+
+	//숙박 전용
+	  const timebox2 = document.getElementById('s_time_box');
+	  const stop2 = document.getElementById('s_stop');
+	  
+	  const timebox3 = document.getElementById('t_time_box');
+	// 토글 할 버튼 선택 (noneUse/Use)
+
+  	//숙박 전용
+	  const noneUse2 = document.getElementById('noneUse2');
+	  const Use2 = document.getElementById('Use2');
+
+//================= [숙박 사용 금지] =================	  
+	// noneUse 숨기기 (display: none)
+	  if(noneUse2.style.display !== 'none' && timebox3.style.display !== 'none') {
+		 noneUse2.style.display = 'none';
+		 Use2.style.display = 'block';
+		 //input 비활성
+		 stop2.disabled = true;
+		 timebox2.style.display = 'none';
+		 
+	  } else if(timebox3.style.display == 'none'){
+		  alert('둘 중 하나를 선택해주세요.')
+		  
+		  // btn` 보이기 (display: block)
+	  } else {
+		noneUse2.style.display = 'block';
+	    Use2.style.display = 'none';
+	  //input 활성
+	    stop2.disabled = false;
+	    timebox2.style.display = 'flex';
+	  }
+	  
+	}
+//============================== 숙박/대실 [사용함 / 사용안함] [End] ==============================
+//============================== 3자리 수 마다 (,) 입력 [Start] ==============================
+function inputNumberFormat(obj) {
+    obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+//============================== 3자리 수 마다 (,) 입력 [End] ==============================
+	
+//============================== input 동시입력 [Start] ==============================
+function eventKeyup(str){
+	$("#afterAmt").val(str);    // jQuery 이용
+	//document.all.afterAmt.value = str;    // jsp name 이용
+	//document.getElementById("afterAmt").value = str;   // jsp id 이용
+}
+
+function SimultaneousInput(str){
+	$("#RoomState").val(str);    // jQuery 이용
+	//document.all.afterAmt.value = str;    // jsp name 이용
+	//document.getElementById("afterAmt").value = str;   // jsp id 이용
+}
+//=============================== input 동시입력 [End] ===============================
+//========================= 게시판 카테고리 선택 드롭박스 [Start] =========================
+$(document).ready(function() {
+
+           // 콤보박스가 변경될 때
+           $('#lstFavorites').change(function () {
+
+               // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
+
+               var selectedText = // $("#lstFavorites option:selected").text();
+
+                   // $("option:selected").text();
+
+                   $(":selected").text();
+
+               $('#txtFavorite').val(selectedText);
+
+           });
+
+       });
+       
+$(document).ready(function() {
+
+    // 콤보박스가 변경될 때
+    $('#lstFavorites2').change(function () {
+
+        // 드롭다운리스트에서 선택된 값을 텍스트박스에 출력
+
+        var selectedText = // $("#lstFavorites option:selected").text();
+
+            // $("option:selected").text();
+
+            $(":selected").text();
+
+        $('#txtFavorite2').val(selectedText);
+
+    });
+
+});
+       
+
+//========================= 게시판 카테고리 선택 드롭박스 [End] =========================
+
+
+//========================= timepicker [Start] =========================
+$(function() {
+    $(".time1").timepicker({
+        timeFormat: 'HH:mm',
+        interval: 60,
+        minTime: '9',
+        maxTime: '6:00pm',
+        defaultTime: '9',
+        startTime: '09:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true       
+        
+    });
+});
+
+
+$(function() {
+    $(".time2").timepicker({
+        timeFormat: 'HH:mm',
+        interval: 60,
+        minTime: '9',
+        maxTime: '6:00pm',
+        defaultTime: '12',
+        startTime: '12:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true       
+        
+    });
+});
+
+$(function() {
+    $(".time3").timepicker({
+        timeFormat: 'HH:mm',
+        interval: 60,
+        minTime: '9',
+        maxTime: '6:00pm',
+        defaultTime: '9',
+        startTime: '09:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true       
+        
+    });
+});
+
+$(function() {
+    $(".time4").timepicker({
+        timeFormat: 'HH:mm',
+        interval: 60,
+        minTime: '9',
+        maxTime: '6:00pm',
+        defaultTime: '12',
+        startTime: '12:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true       
+        
+    });
+});
+//========================= timepicker [End] =========================
+	
 	//========================= Login 모달창 [Start] =========================
-/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01] 
+/* 현재 Login 모달창으로 인해 아래 제이쿼리가 작동하지 않게 됨. (임시 사용 중지) [2023.05.01]
 	const modal = document.querySelector('.modal');
 	const loginBtn = document.querySelector('#loginBtn');
 	
@@ -489,7 +671,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		$('#mod').modal('hide'); 
         $('#mod').hide();
 	}
-	*/
+*/
 	//========================= Login 모달창 [End] ===========================
 
 // ===================================== 카카오 주소창 api 사용 =====================================
@@ -630,9 +812,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	   		}
 	   	});
 	   	
-// ===================================== 데이터피커 =====================================		
+// ===================================== 비밀번호 유효성 및 비밀번호 확인 체크 =====================================		
   $( function() {
-    $( "#datepicker" ).datepicker({ minDate: 0});
+    $( "#datepicker" ).datepicker();
   } );
   
   $.datepicker.setDefaults({
@@ -647,23 +829,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       showMonthAfterYear: true,
       yearSuffix: '년'
   });
-  
-  $( function() {
-	    $( "#datepicker2" ).datepicker({ minDate: 0});
-	  } );
-	  
-	  $.datepicker.setDefaults({
-	      dateFormat: 'yy-mm-dd',
-	      prevText: '이전 달',
-	      nextText: '다음 달',
-	      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	      monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	      dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-	      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-	      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-	      showMonthAfterYear: true,
-	      yearSuffix: '년'
-	  });
 //===================================== 전화번호 유효성 [010-0000-0000] =====================================
   const autoHyphen2 = (target) => {
 	  target.value = target.value

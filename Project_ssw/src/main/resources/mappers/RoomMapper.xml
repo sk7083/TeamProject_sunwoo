@@ -12,7 +12,7 @@
 	<!-- 방 생성(추가) -->
 	 <insert id="RoomInsert">
 	 	insert into room (ro_pid, ro_num, ro_name, ro_explanation, ro_min_people, ro_max_people, ro_select_s_or_t, ro_s_in_time, ro_s_out_time, ro_s_price, ro_t_in_time, ro_t_out_time, ro_t_price)
-	 	 values(#{ro_pid}, #{ro_num}, #{ro_name}, #{ro_explanation}, #{ro_min_people}, #{ro_max_people}, #{ro_select_s_or_t}, #{ro_s_in_time} #{ro_s_out_time}, #{ro_s_price}, #{ro_t_in_time}, #{ro_t_out_time}, #{ro_t_price})
+	 	 values (#{ro_pid}, #{ro_num}, #{ro_name}, #{ro_explanation}, #{ro_min_people}, #{ro_max_people}, #{ro_select_s_or_t}, #{ro_s_in_time}, #{ro_s_out_time}, #{ro_s_price}, #{ro_t_in_time}, #{ro_t_out_time}, #{ro_t_price})
 	 </insert>
 
 	<!-- 방 상세 페이지 -->
