@@ -12,10 +12,10 @@ public interface RoomDAO {
 	public List<RoomVO> RoomList();
 	
 	//상품 생성(추가)
-	public int RoomInsert(RoomVO Room);
+	public int RoomInsert(RoomVO room);
 	
 	//상품 수정
-	public int RoomUpdate(RoomVO Room);
+	public int RoomUpdate(RoomVO room);
 	
 	//상품 상세 페이지
 	public RoomVO RoomSelect(int ro_pid);

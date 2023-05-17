@@ -7,13 +7,13 @@ import kr.kh.springTest.vo.RoomVO;
 public interface RoomService {
 
 	//상품 전체 리스트
-	public List<RoomVO> RoomList(RoomVO Room);
+	public List<RoomVO> RoomList(RoomVO room);
 
 	//상품 생성(추가)
-	public int RoomAdd(RoomVO Room);
+	public int RoomInsert(RoomVO room);
 	
 	//상품 수정
-	public int RoomUpdate(RoomVO Room);
+	public int RoomUpdate(RoomVO room);
 	
 	//상품 상세 페이지
 	public RoomVO RoomDetail(int ro_pid);

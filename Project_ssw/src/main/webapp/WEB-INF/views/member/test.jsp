@@ -7,8 +7,34 @@
 	<!-- ================ Style End ================= -->	
 
   <title>Seaplace Hotel</title>
+<html>
+<head>
+</head>
+<body>
+	<form action="<c:url value="/test"></c:url>" method="post">
+			<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [Start] ==================================================== -->
+		<div style=" border-top: 2px solid #ced4da;"></div>
+		<div style="margin-left: 20%; margin-right: 20%; padding-top: 50px;">
+			  			
 	
+	
+		<input type="text" placeholder="방 이름을 입력해주세요." name="ro_name" value="" style="outline: none; border: none; width: 100%; font-weight: bold;">
+				
+		<button type="submit">완료 버튼</button>
+		<!-- ==================================================== 상품 사진 첨부 및 대실/숙박 설정 [End] ==================================================== -->		
+	
+			<div class="form-group has-feedback">
+				<button type="submit" class="btn btn-light" style="margin-top : 20px" id="signup">상품 등록</button>
+				<button class="btn btn-light" type="reset" style="margin-top : 20px; margin-left: 20px">취소</button>
+			</div>
+	</div>
+</form>
 
+</body>
+</html>
+
+		
+		
   
   <!-- w3schools 부트스트랩 Forms (로그인 창) -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">

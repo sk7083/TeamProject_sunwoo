@@ -15,27 +15,27 @@ public class RoomServiceImp implements RoomService{
 	
 	//상품 전체 리스트
 	@Override
-	public List<RoomVO> RoomList(RoomVO Room){
+	public List<RoomVO> RoomList(RoomVO room){
 		return roomDao.RoomList();
 	}
 	
 	//상품 생성(추가)
 	@Override
-	public int RoomAdd(RoomVO Room){
-		if(Room == null) {
+	public int RoomInsert(RoomVO room){
+		if(room == null) {
 			System.out.println("Room null 발생");
 			return 0;
 		}
-		return roomDao.RoomInsert(Room);
+		return roomDao.RoomInsert(room);
 	}
 	
 	//상품 수정
 	@Override
-	public int RoomUpdate(RoomVO Room){
-		if(Room == null || roomDao.RoomList().size() == 0) {
+	public int RoomUpdate(RoomVO room){
+		if(room == null || roomDao.RoomList().size() == 0) {
 			return 0;
 		}
-		return roomDao.RoomUpdate(Room);
+		return roomDao.RoomUpdate(room);
 	}
 	
 	//상품 상세 페이지

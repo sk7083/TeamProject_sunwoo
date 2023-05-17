@@ -57,7 +57,7 @@ public class ProductController {
 	//상품 생성(추가) (POST)
 	@RequestMapping(value = "/productInsert", method = RequestMethod.POST)
 	public ModelAndView ProductInsertPost(ModelAndView mv, ProductVO product, RoomVO room) throws Exception{
-		int roomInt = roomService.RoomAdd(room);
+		int roomInt = roomService.RoomInsert(room);
 		System.out.println("Room int값 : "+ room);
 		System.out.println("접속은 했음");
 		int pns = productService.productAdd(product);
@@ -158,6 +158,27 @@ public class ProductController {
 		mv.addObject("proList", proList);
 		System.out.println("proList 정보 : "+proList);
 		mv.setViewName("product/motel");
+		return mv;
+	}
+	
+	
+	//상품 현황 [모텔]
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ModelAndView prducel(ModelAndView mv, RoomVO room) throws Exception{
+
+		mv.setViewName("member/test");
+		return mv;
+	}
+	@RequestMapping(value = "/test", method = RequestMethod.POST)
+	public ModelAndView prducelasd(ModelAndView mv, RoomVO room) throws Exception{
+		int ros = roomService.RoomInsert(room);
+		System.out.println("ros 확인 : "+ros);
+	    if(ros != 0) {
+	    	System.out.println("성공!");
+	    }
+
+		mv.setViewName("member/test");
 		return mv;
 	}
 }
