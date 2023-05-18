@@ -253,7 +253,7 @@ display: inline-block;
 	
     <!-- ===================================== 시작 지점 [Start] ===================================== -->
 
-	<div style="margin-left: 20%; margin-right: 20%">
+	<div style="margin-left: 20%; margin-right: 25%">
 		<p style="font-size: 22px; margin-left: 150px; font-weight: bold; position: relative; margin-bottom: 40px">내 정보</p>
 		 <form class="form-inline" action="/action_page.php" style="border-top: 1px solid #cfcfcf; padding-top: 5px; margin-bottom: 0px; margin-left: 200px;">
 			  <label for="email" class="mr-sm-2" style="width: 150px; display: block;">ID</label>
@@ -306,9 +306,51 @@ display: inline-block;
 				  <input type="text" class="form-control mb-2 mr-sm-2" value="${user.me_auth}" disabled style="background: white;">
 			</form>
 		</c:if>
-		<a href="<c:url value="/Update?me_id=${user.me_id}#location123"></c:url>" class="btn-updateLink" style="text-decoration:none; margin-top : 50px; margin-left: 190px; margin-bottom: 50px;">회원수정</a>
-		<a href="<c:url value="/"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-left: 10px; margin-bottom: 50px">뒤로가기</a>
-		<a href="<c:url value="/Delete/${user.me_id}"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-left: 180px; margin-bottom: 50px;">회원탈퇴</a>
+		
+		<div style="">
+			<a href="<c:url value="/Update?me_id=${user.me_id}#location123"></c:url>" class="btn-updateLink" style="text-decoration:none; margin-top : 50px; margin-left: 165px; margin-bottom: 50px;">회원수정</a>
+			<a href="<c:url value="/Delete/${user.me_id}"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-bottom: 50px; margin-left: 10px">회원탈퇴</a>
+			<a href="<c:url value="/"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-bottom: 50px; margin-left: 10px">뒤로가기</a>
+		</div>
+		
+	</div>
+   	<div style=" border-top: 2px solid #ced4da; margin-bottom: 50px; margin-top: 50px"></div>
+   	<div style=" margin-left: 20%; margin-right: 20%">
+		<p style="font-size: 22px; margin-left: 150px; font-weight: bold; position: relative; margin-bottom: 40px;">내 예약 정보</p>
+	</div>
+	<div style="margin-left: 30%; margin-right: 25%">
+		<!-- 내 예약 정보 -->
+		
+		<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 25px; display: flex; display: inline-flex;">
+			<div style="display: flex; width: 100%">
+				<!-- 예약한 사진 [첨부파일] -->
+				<div style="width: 150px; height: 150px; border-radius: 10px; outline: 1px solid #cbcbcb; border-radius: 5px;">
+					<img src="https://via.placeholder.com/150x150.jpg" alt="150 * 150 size image">
+				</div>
+				<div style="margin-left: 20px">
+					<!-- 상품 이름 / 방 이름 확인 -->
+					<input value="pr_name" style="width: 100%; font-weight: bold; font-size: 20px; border: none; outline: none;" disabled="disabled">
+					<input value="ro_name" style="width: 100%; border: none; outline: none;" disabled="disabled">
+					<div style="display: flex; width: 100%; margin-top: 20px">
+						<!-- 예약 날짜 확인 -->
+						<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 5px; width: 50%; margin-right: 10px">
+							<p style="font-size: 12px">체크인</p>
+							<input value="${re_str_date} ${ro_in_time}" style="width: 100%; font-weight: bold; font-size: 20px; border: none; outline: none;" disabled="disabled">
+						</div>
+						<div style="border: 1px solid #ced4da; border-radius: 10px; padding: 5px; width: 50%; margin-left: 10px">
+							<p style="font-size: 12px">체크아웃</p>
+							<input value="${re_end_date} ${ro_out_time}" style="width: 100%; font-weight: bold; font-size: 20px; border: none; outline: none;" disabled="disabled">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 예약 관련 버튼 -->
+		<div style="">
+			<a href="<c:url value="/Update?me_id=${user.me_id}#location123"></c:url>" class="btn-updateLink" style="text-decoration:none; margin-top : 50px; margin-bottom: 50px;">리뷰 작성</a>
+			<a href="<c:url value="/Delete/${user.me_id}"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-bottom: 50px; margin-left: 10px">예약 삭제</a>
+			<a href="<c:url value="/"></c:url>" class="btn-updateLink" style="margin-top : 50px; margin-bottom: 50px; margin-left: 10px">뒤로가기</a>
+		</div>
 	</div>
 	<!-- ======================================= 끝 지점 [End] ======================================= -->
 </main>
