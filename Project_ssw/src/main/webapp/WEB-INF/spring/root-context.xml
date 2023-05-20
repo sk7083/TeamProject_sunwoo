@@ -13,11 +13,11 @@
 	<bean id="dataSource"
 	      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <!-- MySQL 버전에 따라 driverClassName의 value값이 달라짐 아래 코드는 Mysql 8기준 -->
-	    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 	    <!-- MySQL 버전이 6인 경우 아래 코드 반영 -->
 	    <!-- <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property> -->
 	    <property name="url"
-	              value="jdbc:mysql://localhost:3306/spring_ssw?useSSL=false&amp;serverTimezone=Asia/Seoul">
+	              value="jdbc:mysql://34.64.211.167:3306/spring_ssw?useSSL=false&amp;serverTimezone=Asia/Seoul">
 	    </property>
 	    <property name="username" value="root"></property>
 	    <property name="password" value="root"></property>
@@ -25,22 +25,9 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource" />
-	    <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+	    <property name="mapperLocations" value="classpath:mappers/*Mapper.xml"></property>
 	</bean>
 	<mybatis-spring:scan base-package="kr.kh.springTest.dao"/>
-
-
-	<!-- 파일 업로드 관련 bean 추가 (2023-04-18) -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	   <!--  파일업로드 용량 (10MB)-->
-	  <property name="maxUploadSize" value="10485760"/>
-	  <property name="defaultEncoding" value="UTF-8" />
-	</bean>
-	
-	<!--  파일업로드 디렉토리 설정 -->
-	<bean id="uploadPath" class="java.lang.String">
-	  <constructor-arg value="D:\git\uploadfiles"/>
-	</bean>
 
 	
 </beans>

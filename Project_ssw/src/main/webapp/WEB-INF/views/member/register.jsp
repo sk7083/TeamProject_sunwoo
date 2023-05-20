@@ -235,6 +235,9 @@
 	
   <div class="container">
 	<form action="<c:url value="/register"></c:url>" method="post">
+		
+		<input value="0" style="display: none;" name="me_auth">
+		
 		<div class="form-group">
 			<label for="user_id">아이디</label>
 				<input type="text" class="form-control" id="user_id" name="me_id" placeholder="ID" required maxlength="16">

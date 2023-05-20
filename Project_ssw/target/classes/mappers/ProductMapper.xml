@@ -20,8 +20,7 @@
 		select pr_pid, pr_ca_pid, pr_name, pr_content, pr_address1, pr_address2, pr_address3 from product
 			where pr_pid = #{pr_pid}
 	</select>
-	
-	
+
   
 	<!-- 상품 수정 -->
 	<update id="ProductUpdate">
@@ -47,5 +46,7 @@
 	<select id="CategoryList" resultType="kr.kh.springTest.vo.ProductVO">
 		select ca_pid from category
   	</select>
+  	
+
   	
 </mapper>
